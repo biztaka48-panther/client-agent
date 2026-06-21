@@ -1,0 +1,2300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI活用代行｜臼井貴紀【建設業界出身】ホームページ・チャットボット・業務効率化を丸ごとお任せ</title>
+<meta name="description" content="建設業界出身の臼井貴紀が運営するAI活用代行サービス。ホームページ制作（最短3日）・チャットボット作成・業務効率化を代行。専門知識ゼロでもOK。初回相談無料。個人事業主・中小企業向けAI導入支援。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #3a2418;
+    --navy-mid: #5a3a26;
+    --blue: #b5773d;
+    --sky: #d99a76;
+    --orange: #c95d3a;
+    --orange-light: #e8896a;
+    --cream: #faf3e7;
+    --warm-white: #fdf8ef;
+    --gray-soft: #efe6d7;
+    --gray-text: #7a6f5e;
+    --dark-text: #2a1d13;
+    --gold: #d4a045;
+    --green: #8a9a5b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--warm-white);
+    color: var(--dark-text);
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER NAV ===== */
+  .site-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(58, 36, 24, 0.97);
+    backdrop-filter: blur(12px);
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 900; font-size: 1.1rem; color: #fff;
+    letter-spacing: 0.03em;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-cta {
+    background: var(--orange);
+    color: #fff; font-weight: 700; font-size: 0.85rem;
+    padding: 10px 22px; border-radius: 50px;
+    text-decoration: none; transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(201, 93, 58,0.4);
+  }
+  .nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--navy);
+    padding: 140px 24px 80px;
+    position: relative; overflow: hidden;
+    min-height: 100vh;
+    display: flex; align-items: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(181, 119, 61,0.35) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 10% 80%, rgba(201, 93, 58,0.12) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .hero-inner {
+    max-width: 860px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201, 93, 58,0.2);
+    border: 1px solid rgba(201, 93, 58,0.5);
+    color: var(--orange-light);
+    font-size: 0.8rem; font-weight: 700;
+    padding: 6px 16px; border-radius: 50px;
+    margin-bottom: 28px; letter-spacing: 0.05em;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero-trouble {
+    background: rgba(255,255,255,0.07);
+    border-left: 3px solid var(--orange);
+    padding: 18px 22px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 36px;
+  }
+  .hero-trouble p {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.95rem; line-height: 2.1;
+  }
+  .hero-trouble p::before { content: '😓 '; }
+
+  .hero h1 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 5.5vw, 3.4rem);
+    color: #fff; line-height: 1.3;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    color: var(--orange);
+    font-style: normal;
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1 em::after {
+    content: '';
+    position: absolute; bottom: -2px; left: 0; right: 0;
+    height: 4px; background: var(--orange);
+    border-radius: 2px; opacity: 0.5;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    margin-bottom: 14px;
+  }
+  .hero-promise {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 22px 28px;
+    margin: 32px 0;
+    color: rgba(255,255,255,0.9);
+    font-size: 1.05rem; line-height: 2;
+    font-weight: 500;
+  }
+  .hero-promise strong { color: var(--gold); }
+
+  .hero-ctas {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    margin-top: 36px;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: #fff; font-weight: 900;
+    font-size: 1.05rem;
+    padding: 18px 40px; border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(201, 93, 58,0.5);
+    transition: all 0.25s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(201, 93, 58,0.6); }
+  .btn-secondary {
+    background: transparent;
+    color: #fff; font-weight: 700;
+    font-size: 1rem;
+    padding: 18px 36px; border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.4);
+    text-decoration: none; transition: all 0.25s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+  .hero-trust {
+    margin-top: 48px;
+    display: flex; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.65); font-size: 0.85rem;
+  }
+  .trust-item .icon { font-size: 1.1rem; }
+
+  /* ===== SECTION BASE ===== */
+  section { padding: 90px 24px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--orange); text-transform: uppercase;
+    background: rgba(201, 93, 58,0.1);
+    padding: 5px 14px; border-radius: 50px;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--navy);
+    line-height: 1.35;
+    margin-bottom: 16px;
+  }
+  .section-title span { color: var(--blue); }
+  .section-lead {
+    color: var(--gray-text);
+    font-size: 1.05rem; line-height: 2;
+    max-width: 680px;
+    margin-bottom: 52px;
+  }
+  .text-center { text-align: center; }
+  .text-center .section-lead { margin-left: auto; margin-right: auto; }
+
+  /* ===== PROBLEM/SOLUTION ===== */
+  .problem-section { background: var(--cream); }
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; margin-bottom: 48px;
+  }
+  @media (max-width: 640px) { .problem-grid { grid-template-columns: 1fr; } }
+
+  .problem-card {
+    background: #fff;
+    border: 2px solid #ede8e0;
+    border-radius: 20px;
+    padding: 28px;
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .problem-icon { font-size: 2rem; flex-shrink: 0; }
+  .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--navy); }
+  .problem-card p { font-size: 0.9rem; color: var(--gray-text); }
+
+  .solution-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: 24px;
+    padding: 40px 44px;
+    text-align: center; color: #fff;
+    position: relative; overflow: hidden;
+  }
+  .solution-banner::before {
+    content: '→';
+    position: absolute; left: 50%; top: -60px;
+    transform: translateX(-50%);
+    font-size: 5rem; color: rgba(255,255,255,0.05);
+    font-weight: 900;
+  }
+  .solution-banner h3 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 900; margin-bottom: 14px;
+    line-height: 1.4;
+  }
+  .solution-banner h3 em { color: var(--orange); font-style: normal; }
+  .solution-banner p { color: rgba(255,255,255,0.75); font-size: 1rem; }
+
+  /* ===== SERVICES ===== */
+  .services-section { background: var(--warm-white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 36px 30px;
+    border: 1.5px solid #ede8e0;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--orange));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: var(--sky); box-shadow: 0 16px 48px rgba(181, 119, 61,0.1); transform: translateY(-4px); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-emoji { font-size: 2.8rem; margin-bottom: 18px; display: block; }
+  .service-card h3 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1.15rem; font-weight: 900;
+    color: var(--navy); margin-bottom: 10px;
+  }
+  .service-card p { color: var(--gray-text); font-size: 0.9rem; line-height: 1.85; }
+  .service-tag {
+    display: inline-block; margin-top: 16px;
+    background: rgba(181, 119, 61,0.08);
+    color: var(--blue); font-size: 0.75rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 50px;
+  }
+
+  /* ===== RESULTS ===== */
+  .results-section { background: var(--navy); color: #fff; }
+  .results-section .section-title { color: #fff; }
+  .results-section .section-title span { color: var(--orange); }
+  .results-section .section-lead { color: rgba(255,255,255,0.65); }
+
+  .results-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  @media (max-width: 640px) { .results-grid { grid-template-columns: 1fr; } }
+
+  .result-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 24px; padding: 36px 32px;
+    position: relative; overflow: hidden;
+  }
+  .result-card::after {
+    content: attr(data-num);
+    position: absolute; right: -10px; top: -10px;
+    font-size: 7rem; font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+  }
+  .result-label {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+    color: var(--orange); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .result-label::before { content: ''; width: 20px; height: 2px; background: var(--orange); border-radius: 2px; }
+  .result-card h3 { font-size: 1.2rem; font-weight: 900; margin-bottom: 18px; }
+  .result-stats {
+    display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 18px;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 2.2rem; font-weight: 900; color: var(--gold);
+    line-height: 1.1; display: block;
+  }
+  .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.55); }
+  .result-card p { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.9; }
+  .result-voice {
+    margin-top: 18px;
+    padding: 16px 18px;
+    background: rgba(255,255,255,0.06);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 12px 12px 0;
+    font-size: 0.88rem; color: rgba(255,255,255,0.75);
+    font-style: italic;
+  }
+
+  /* ===== REASONS ===== */
+  .reasons-section { background: var(--cream); }
+  .reasons-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .reason-card {
+    background: #fff; border-radius: 20px;
+    padding: 32px 28px;
+    border: 1.5px solid #ede8e0;
+  }
+  .reason-num {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 3rem; font-weight: 900;
+    color: rgba(181, 119, 61,0.1); line-height: 1;
+    margin-bottom: -8px;
+  }
+  .reason-card h3 {
+    font-size: 1.05rem; font-weight: 900;
+    color: var(--navy); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .reason-card h3 .reason-icon { font-size: 1.3rem; }
+  .reason-card p { font-size: 0.9rem; color: var(--gray-text); line-height: 1.9; }
+
+  /* ===== PRICING ===== */
+  .pricing-section { background: var(--warm-white); }
+  .pricing-note {
+    background: rgba(201, 93, 58,0.08);
+    border: 1px solid rgba(201, 93, 58,0.2);
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 40px;
+    font-size: 0.9rem; color: var(--gray-text);
+  }
+  .pricing-note strong { color: var(--orange); }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+  }
+  .pricing-card {
+    background: #fff;
+    border: 2px solid #ede8e0;
+    border-radius: 22px; padding: 32px 26px;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .pricing-card.featured {
+    border-color: var(--blue);
+    box-shadow: 0 12px 40px rgba(181, 119, 61,0.15);
+  }
+  .pricing-card.featured::before {
+    content: '人気No.1';
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--blue); color: #fff;
+    font-size: 0.75rem; font-weight: 700;
+    padding: 4px 16px; border-radius: 50px;
+    white-space: nowrap;
+  }
+  .pricing-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--gray-text); margin-bottom: 8px; }
+  .pricing-price {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 2rem; font-weight: 900;
+    color: var(--navy); line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .pricing-price small { font-size: 0.85rem; font-weight: 400; color: var(--gray-text); }
+  .pricing-range { font-size: 0.8rem; color: var(--gray-text); margin-bottom: 18px; }
+  .pricing-list { list-style: none; }
+  .pricing-list li {
+    font-size: 0.88rem; color: var(--gray-text);
+    padding: 6px 0; border-bottom: 1px solid #f0ece6;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .pricing-list li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* ===== PRICING (HP PLAN TABLE) ===== */
+  .pricing-subhead {
+    margin-top: 48px;
+    margin-bottom: 18px;
+  }
+  .pricing-subhead h3{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+  .pricing-subhead p{
+    margin-top: 8px;
+    font-size: 0.92rem;
+    color: var(--gray-text);
+    line-height: 1.9;
+    max-width: 760px;
+  }
+  .pricing-subhead .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top: 12px;
+    padding:6px 14px;border-radius:999px;
+    background: rgba(181, 119, 61,0.08);
+    border: 1px solid rgba(181, 119, 61,0.18);
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 0.78rem;
+  }
+  .pricing-surface {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: 26px;
+    padding: 36px 28px;
+    margin-top: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-surface::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 70% 70% at 20% 20%, rgba(217, 154, 118,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 90% 40%, rgba(201, 93, 58,0.18) 0%, transparent 55%);
+    pointer-events:none;
+  }
+  .pricing-surface *{ position: relative; z-index: 1; }
+  .hp-plan-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:18px;
+    margin-top: 18px;
+  }
+  .hp-plan-card{
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 18px;
+    padding: 26px 22px;
+    transition: transform .25s, border-color .25s, box-shadow .25s;
+    display:flex;
+    flex-direction:column;
+    min-height: 100%;
+  }
+  .hp-plan-card:hover{
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.26);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.25);
+  }
+  .hp-plan-card.popular{
+    border-color: rgba(201, 93, 58,0.75);
+    box-shadow: 0 18px 52px rgba(201, 93, 58,0.12);
+  }
+  .hp-popular-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background: rgba(201, 93, 58,0.95);
+    color: #fff;
+    font-weight: 900;
+    font-size: 0.76rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    width: fit-content;
+    margin-bottom: 14px;
+  }
+  .hp-plan-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom: 10px;
+  }
+  .hp-plan-name{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 900;
+    color:#fff;
+    font-size: 1.06rem;
+    line-height: 1.35;
+  }
+  .hp-plan-icon{ font-size: 1.5rem; opacity: 0.95; }
+  .hp-plan-tagline{
+    color: rgba(255,255,255,0.72);
+    font-size: 0.84rem;
+    line-height: 1.8;
+    margin-bottom: 14px;
+    min-height: 46px;
+  }
+  .hp-plan-price{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .hp-plan-price small{
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+  }
+  .hp-plan-price-note{
+    color: rgba(255,255,255,0.65);
+    font-size: 0.78rem;
+    margin-top: 6px;
+    margin-bottom: 14px;
+  }
+  .hp-plan-divider{
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.14);
+    margin: 14px 0;
+  }
+  .hp-plan-features{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin: 0 0 18px 0;
+    flex: 1;
+  }
+  .hp-plan-features li{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    color: rgba(255,255,255,0.78);
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+  .hp-plan-features .i{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 0.8rem;
+    flex-shrink:0;
+    margin-top: 1px;
+  }
+  .hp-i-check{ background: rgba(46,204,113,0.18); color: #7ff0b1; border:1px solid rgba(46,204,113,0.35); }
+  .hp-i-star{ background: rgba(212, 160, 69,0.18); color: #ffd38b; border:1px solid rgba(212, 160, 69,0.35); }
+  .hp-i-ai{ background: rgba(155,117,255,0.18); color: #d2baff; border:1px solid rgba(155,117,255,0.35); }
+  .hp-i-line{ background: rgba(217, 154, 118,0.18); color: #b8dcff; border:1px solid rgba(217, 154, 118,0.35); }
+
+  .hp-card-callout{
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 14px;
+    padding: 14px 14px;
+    margin-bottom: 12px;
+  }
+  .hp-card-callout .t{
+    color: rgba(255,255,255,0.9);
+    font-weight: 900;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .hp-card-callout p{
+    color: rgba(255,255,255,0.72);
+    font-size: 0.82rem;
+    line-height: 1.75;
+  }
+  .hp-plan-btn{
+    display:block;
+    text-align:center;
+    padding: 13px 16px;
+    border-radius: 999px;
+    text-decoration:none;
+    font-weight: 900;
+    font-size: 0.92rem;
+    border: 1.5px solid rgba(255,255,255,0.32);
+    color: #fff;
+    transition: transform .2s, background .2s, border-color .2s;
+  }
+  .hp-plan-btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+  .hp-plan-btn.primary{
+    background: var(--orange);
+    border-color: rgba(201, 93, 58,0.9);
+  }
+  .hp-plan-btn.primary:hover{ background: var(--orange-light); border-color: rgba(232, 137, 106,0.95); }
+
+  .hp-options-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .hp-option-card{
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+    padding: 18px 18px;
+  }
+  .hp-option-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .hp-option-title h4{
+    color: #fff;
+    font-weight: 900;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  .hp-option-price{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 900;
+    color: #fff;
+    font-size: 1.15rem;
+    white-space: nowrap;
+  }
+  .hp-option-desc{
+    color: rgba(255,255,255,0.72);
+    font-size: 0.84rem;
+    line-height: 1.8;
+  }
+  .hp-option-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top: 10px;
+    font-size: 0.76rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.18);
+  }
+
+  .hp-compare-wrap{
+    margin-top: 22px;
+    overflow-x: auto;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(0,0,0,0.18);
+  }
+  .hp-compare-table{
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+  }
+  .hp-compare-table th, .hp-compare-table td{
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.84rem;
+    text-align: center;
+    color: rgba(255,255,255,0.75);
+  }
+  .hp-compare-table th{
+    color: rgba(255,255,255,0.9);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.04);
+  }
+  .hp-compare-table th:first-child, .hp-compare-table td:first-child{
+    text-align:left;
+    color:#fff;
+    width: 34%;
+  }
+  .hp-compare-table tr:hover td{ background: rgba(255,255,255,0.03); }
+  .hp-compare-table .section-row td{
+    color: rgba(255,255,255,0.9);
+    font-weight: 900;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    background: rgba(201, 93, 58,0.12);
+    border-bottom: 1px solid rgba(201, 93, 58,0.28);
+  }
+  .hp-popular-col{ background: rgba(201, 93, 58,0.10); }
+  .hp-check-yes{ color: #7ff0b1; font-weight: 900; }
+  .hp-check-no{ color: rgba(255,255,255,0.45); }
+  .hp-check-opt{ color: #ffd38b; font-weight: 900; font-size: 0.82rem; }
+  .hp-legend{
+    margin-top: 10px;
+    font-size: 0.76rem;
+    color: rgba(255,255,255,0.6);
+    text-align: right;
+  }
+
+  /* reveal animation (pricing parts) */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: .08s; }
+  .reveal-delay-2 { transition-delay: .16s; }
+  .reveal-delay-3 { transition-delay: .24s; }
+
+  @media (max-width: 640px){
+    .pricing-surface { padding: 28px 18px; }
+    .hp-legend { text-align: left; }
+  }
+
+  /* ===== FLOW ===== */
+  .flow-section { background: var(--cream); }
+  .flow-steps {
+    display: flex; flex-direction: column; gap: 0;
+    position: relative;
+  }
+  .flow-steps::before {
+    content: '';
+    position: absolute; left: 30px; top: 40px; bottom: 40px;
+    width: 2px; background: linear-gradient(180deg, var(--blue) 0%, var(--orange) 100%);
+  }
+  @media (max-width: 640px) { .flow-steps::before { left: 24px; } }
+
+  .flow-step {
+    display: flex; gap: 28px; align-items: flex-start;
+    padding: 28px 0;
+    position: relative;
+  }
+  .step-num-wrap { flex-shrink: 0; }
+  .step-num {
+    width: 62px; height: 62px;
+    background: linear-gradient(135deg, var(--blue), var(--navy));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1.4rem; font-weight: 900; color: #fff;
+    position: relative; z-index: 1;
+    box-shadow: 0 6px 20px rgba(181, 119, 61,0.3);
+  }
+  .step-body {
+    background: #fff;
+    border-radius: 18px; padding: 26px 28px;
+    flex: 1;
+    border: 1.5px solid #ede8e0;
+    margin-top: 6px;
+  }
+  .step-body h3 { font-size: 1.05rem; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+  .step-body p { font-size: 0.9rem; color: var(--gray-text); line-height: 1.9; }
+  .step-time {
+    display: inline-block; margin-top: 10px;
+    font-size: 0.78rem; font-weight: 700;
+    color: var(--orange); background: rgba(201, 93, 58,0.1);
+    padding: 3px 12px; border-radius: 50px;
+  }
+
+  /* ===== FAQ ===== */
+  .faq-section { background: var(--warm-white); }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    background: #fff;
+    border: 1.5px solid #ede8e0;
+    border-radius: 16px; overflow: hidden;
+  }
+  .faq-q {
+    padding: 22px 26px;
+    display: flex; align-items: flex-start; gap: 14px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .faq-q:hover { background: var(--cream); }
+  .faq-q-mark {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1.4rem; font-weight: 900;
+    color: var(--blue); flex-shrink: 0; line-height: 1.2;
+  }
+  .faq-q-text { font-size: 0.95rem; font-weight: 700; color: var(--navy); flex: 1; padding-top: 2px; }
+  .faq-toggle { font-size: 1.2rem; flex-shrink: 0; transition: transform 0.3s; }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+  .faq-a {
+    padding: 0 26px 0 64px;
+    max-height: 0; overflow: hidden; transition: all 0.35s;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding-bottom: 24px; }
+  .faq-a p { font-size: 0.9rem; color: var(--gray-text); line-height: 2; }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a7a 50%, var(--navy-mid) 100%);
+    padding: 90px 24px;
+    text-align: center; color: #fff;
+    position: relative; overflow: hidden;
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(201, 93, 58,0.12) 0%, transparent 70%);
+  }
+  .cta-banner .container { position: relative; z-index: 1; }
+  .cta-banner h2 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 900; margin-bottom: 16px; line-height: 1.4;
+  }
+  .cta-banner h2 em { color: var(--orange); font-style: normal; }
+  .cta-banner p { color: rgba(255,255,255,0.7); margin-bottom: 36px; font-size: 1rem; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .cta-sub { margin-top: 20px; font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+
+  /* ===== CONTACT ===== */
+  .contact-section { background: var(--cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .contact-info h3 { font-size: 1.3rem; font-weight: 900; color: var(--navy); margin-bottom: 14px; }
+  .contact-info p { font-size: 0.93rem; color: var(--gray-text); line-height: 2; margin-bottom: 24px; }
+  .contact-methods { display: flex; flex-direction: column; gap: 12px; }
+  .contact-method {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.9rem; color: var(--navy); font-weight: 600;
+  }
+  .contact-method .icon {
+    width: 40px; height: 40px;
+    background: rgba(181, 119, 61,0.1);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .contact-form-area {
+    background: #fff;
+    border-radius: 22px; padding: 36px 30px;
+    border: 1.5px solid #ede8e0;
+  }
+  .contact-form-area h3 { font-size: 1.1rem; font-weight: 900; color: var(--navy); margin-bottom: 22px; }
+  .form-row { margin-bottom: 16px; }
+  .form-row label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--gray-text); margin-bottom: 6px; }
+  .form-row input, .form-row textarea, .form-row select {
+    width: 100%; padding: 12px 16px;
+    border: 1.5px solid #ddd; border-radius: 10px;
+    font-size: 0.9rem; font-family: inherit;
+    transition: border-color 0.2s;
+    background: var(--warm-white);
+  }
+  .form-row input:focus, .form-row textarea:focus, .form-row select:focus {
+    outline: none; border-color: var(--blue);
+  }
+  .form-row textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%;
+    background: var(--orange); color: #fff;
+    font-weight: 900; font-size: 1.05rem;
+    padding: 16px; border: none; border-radius: 50px;
+    cursor: pointer; transition: all 0.25s;
+    box-shadow: 0 6px 22px rgba(201, 93, 58,0.4);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201, 93, 58,0.5); }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: var(--navy); color: rgba(255,255,255,0.55);
+    padding: 40px 24px;
+    text-align: center; font-size: 0.83rem;
+  }
+  .site-footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ===== FLOATING CTA ===== */
+  .float-cta {
+    position: fixed; bottom: 24px; right: 24px; z-index: 99;
+    background: var(--orange);
+    color: #fff; font-weight: 900; font-size: 0.9rem;
+    padding: 16px 24px; border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 28px rgba(201, 93, 58,0.55);
+    display: flex; align-items: center; gap: 8px;
+    transition: all 0.25s;
+    animation: floatIn 0.6s 1.2s both;
+  }
+  @keyframes floatIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+  .float-cta:hover { transform: translateY(-3px) scale(1.03); }
+
+  /* ===== PROFILE SECTION ===== */
+  .profile-section { background: var(--warm-white); }
+  .profile-wrap {
+    display: grid; grid-template-columns: 320px 1fr;
+    gap: 52px; align-items: start;
+  }
+  @media (max-width: 768px) { .profile-wrap { grid-template-columns: 1fr; } }
+
+  .profile-card {
+    background: var(--navy);
+    border-radius: 28px; padding: 40px 32px;
+    text-align: center; color: #fff;
+    position: sticky; top: 90px;
+  }
+  .profile-avatar {
+    width: 110px; height: 110px;
+    background: linear-gradient(135deg, var(--sky) 0%, var(--blue) 100%);
+    border-radius: 50%; margin: 0 auto 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.2rem;
+    border: 4px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+  .profile-name {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1.5rem; font-weight: 900; margin-bottom: 4px;
+  }
+  .profile-name-en { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.12em; margin-bottom: 16px; }
+  .profile-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 20px; }
+  .profile-tag {
+    font-size: 0.72rem; font-weight: 700;
+    background: rgba(201, 93, 58,0.25);
+    border: 1px solid rgba(201, 93, 58,0.4);
+    color: var(--orange-light);
+    padding: 4px 12px; border-radius: 50px;
+  }
+  .profile-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-top: 20px; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .profile-stat-item { text-align: center; }
+  .profile-stat-num {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1.7rem; font-weight: 900; color: var(--gold);
+    line-height: 1.1; display: block;
+  }
+  .profile-stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.5); }
+  .profile-cta-inline {
+    display: block; margin-top: 22px;
+    background: var(--orange); color: #fff;
+    font-weight: 900; font-size: 0.9rem;
+    padding: 14px 20px; border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(201, 93, 58,0.45);
+    transition: all 0.25s;
+  }
+  .profile-cta-inline:hover { transform: translateY(-2px); }
+
+  .profile-story h3 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1.6rem; font-weight: 900;
+    color: var(--navy); margin-bottom: 20px; line-height: 1.35;
+  }
+  .profile-story h3 span { color: var(--blue); }
+  .story-block {
+    background: var(--cream);
+    border-radius: 20px; padding: 30px 28px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--blue);
+  }
+  .story-block h4 {
+    font-size: 0.8rem; font-weight: 700; color: var(--blue);
+    letter-spacing: 0.08em; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .story-block p { font-size: 0.93rem; color: var(--gray-text); line-height: 2; }
+  .story-highlight {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a7a 100%);
+    border-radius: 20px; padding: 30px 28px;
+    color: #fff;
+  }
+  .story-highlight p { font-size: 1rem; line-height: 2.1; color: rgba(255,255,255,0.85); }
+  .story-highlight strong { color: var(--gold); font-size: 1.1rem; }
+  .profile-free-note {
+    margin-top: 22px;
+    background: rgba(201, 93, 58,0.08);
+    border: 1.5px dashed rgba(201, 93, 58,0.4);
+    border-radius: 14px; padding: 18px 22px;
+    font-size: 0.9rem; color: var(--gray-text); line-height: 1.9;
+  }
+  .profile-free-note strong { color: var(--orange); }
+
+  /* ===== FREE CONSULT STRIP ===== */
+  .free-strip {
+    background: linear-gradient(90deg, var(--orange) 0%, #ff8f2b 100%);
+    padding: 26px 24px;
+    text-align: center;
+  }
+  .free-strip p {
+    color: #fff; font-size: 1.05rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    flex-wrap: wrap;
+  }
+  .free-strip a {
+    color: #fff; background: rgba(255,255,255,0.25);
+    border: 2px solid rgba(255,255,255,0.6);
+    padding: 8px 24px; border-radius: 50px;
+    text-decoration: none; font-weight: 900; font-size: 0.95rem;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .free-strip a:hover { background: rgba(255,255,255,0.4); }
+
+  /* ===== ENHANCED RESULTS ===== */
+  .result-spec-list { list-style: none; margin: 14px 0; }
+  .result-spec-list li {
+    font-size: 0.85rem; color: rgba(255,255,255,0.7);
+    padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .result-spec-list li::before { content: '▸'; color: var(--orange); font-size: 0.75rem; }
+
+  /* ===== FREE BADGE on pricing ===== */
+  .free-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(46,204,113,0.15);
+    border: 1.5px solid rgba(46,204,113,0.4);
+    color: var(--green); font-size: 0.8rem; font-weight: 700;
+    padding: 5px 14px; border-radius: 50px;
+    margin-bottom: 12px;
+  }
+
+
+  .design-doc {
+    background: #fff;
+    border-top: 3px dashed #ddd;
+    padding: 60px 24px;
+  }
+  .design-doc .container { max-width: 960px; margin: 0 auto; }
+  .design-doc h2 { font-size: 1.4rem; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+  .design-doc .doc-label {
+    display: inline-block; background: var(--navy); color: #fff;
+    font-size: 0.72rem; font-weight: 700; padding: 3px 10px;
+    border-radius: 4px; margin-bottom: 28px; letter-spacing: 0.08em;
+  }
+  .doc-block { margin-bottom: 44px; }
+  .doc-block h3 {
+    font-size: 1rem; font-weight: 900; color: var(--blue);
+    margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 2px solid rgba(181, 119, 61,0.15);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .doc-tag {
+    font-size: 0.72rem; background: rgba(181, 119, 61,0.1);
+    color: var(--blue); padding: 2px 8px; border-radius: 4px;
+    font-weight: 700; letter-spacing: 0.05em;
+  }
+  .doc-copy {
+    background: var(--gray-soft);
+    border-radius: 10px; padding: 18px 20px;
+    font-size: 0.9rem; line-height: 1.9; color: #333;
+    white-space: pre-wrap;
+  }
+  .copy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .copy-card {
+    background: var(--navy);
+    border-radius: 14px; padding: 22px 20px;
+    color: #fff;
+  }
+  .copy-card .num {
+    font-size: 0.7rem; color: var(--orange);
+    font-weight: 700; margin-bottom: 8px; letter-spacing: 0.08em;
+  }
+  .copy-card p { font-size: 1rem; font-weight: 700; line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    section { padding: 64px 20px; }
+    .hero { padding: 110px 20px 64px; }
+    .hero-promise { padding: 18px 20px; }
+    .results-grid, .problem-grid, .contact-grid { grid-template-columns: 1fr; }
+    .flow-steps::before { left: 22px; }
+    .step-num { width: 50px; height: 50px; font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-logo">臼井貴紀の<span>AI活用</span>代行</div>
+  <a href="#contact" class="nav-cta">無料で相談する →</a>
+</nav>
+
+<!-- FLOATING CTA -->
+<a href="#contact" class="float-cta">📩 今すぐ無料相談</a>
+
+<!-- ==================== SECTION 1: HERO ==================== -->
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+
+    <div class="hero-badge">臼井貴紀 が運営するAI活用代行サービス｜個人事業主・中小企業向け</div>
+
+    <!-- 悩み提示 -->
+    <div class="hero-trouble">
+      <p>AIって便利そうだけど、何から始めればいいか分からない…</p>
+      <p>ホームページやチャットボットを作りたいけど、時間も知識もない…</p>
+      <p>業務を自動化したいのに、誰に頼めばいいか分からない…</p>
+    </div>
+
+    <!-- H1 -->
+    <h1>
+      AIの難しいことは<br>
+      <em>すべて、こちらに</em>お任せください。
+    </h1>
+
+    <p class="hero-sub">
+      AI活用代行サービス｜ホームページ制作・チャットボット作成・業務効率化を丸ごとサポート
+    </p>
+
+    <!-- 約束の一言（必須フレーズ・更新版） -->
+    <div class="hero-promise">
+      <strong>「AIの難しいことは、すべてお任せください。</strong><br>
+      あなたは「やりたいこと」を話すだけで大丈夫です。」
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">📩 無料で相談してみる</a>
+      <a href="#flow" class="btn-secondary">▶ 導入の流れを見る</a>
+    </div>
+
+    <div class="hero-trust">
+      <div class="trust-item"><span class="icon">✅</span> 初回相談・見積り<strong style="color:var(--gold)">完全無料</strong></div>
+      <div class="trust-item"><span class="icon">✅</span> 専門知識ゼロでもOK</div>
+      <div class="trust-item"><span class="icon">✅</span> 最短3日で納品実績あり</div>
+      <div class="trust-item"><span class="icon">✅</span> 建設業界出身・現場対応の安心感</div>
+      <div class="trust-item"><span class="icon">✅</span> しつこい営業は一切なし</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== SECTION 2: PROBLEM → SOLUTION ==================== -->
+<section class="problem-section">
+  <div class="container">
+    <span class="section-label">こんな悩みはありませんか？</span>
+    <h2 class="section-title">「AIって便利そう」だけで<br><span>止まっていませんか？</span></h2>
+    <p class="section-lead">
+      AIを使えば業務が楽になる、と分かっていても「どこから始めていいか分からない」という方がほとんどです。そのお悩み、私が全部解決します。
+    </p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">😰</div>
+        <div>
+          <h3>AIって難しそうで怖い</h3>
+          <p>専門用語だらけで何が何だか…。自分には無理かもと思っている方でも大丈夫です。</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">⏰</div>
+        <div>
+          <h3>勉強する時間がない</h3>
+          <p>毎日の業務で手一杯。新しいことを学ぶ余裕がないという方に代わって、すべて対応します。</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">💸</div>
+        <div>
+          <h3>費用対効果が不安</h3>
+          <p>お金をかけても成果が出なかったら…。ご安心ください。まず無料でご相談いただけます。</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🤷</div>
+        <div>
+          <h3>何を頼めばいいか分からない</h3>
+          <p>「こんなことできる？」という段階からご相談OK。一緒に整理していきましょう。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="solution-banner">
+      <h3>安心してください。<br><em>あなたはやりたいことを話すだけ。</em><br>AIの設定・操作はすべて私が代わりに行います。</h3>
+      <p>AI代行サービスとは「AIを使った作業を丸ごと代わりにやってあげるサービス」です。<br>建設業界出身の代表・臼井貴紀が、現場感覚で丁寧に対応します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 3: SERVICES ==================== -->
+<section class="services-section" id="services">
+  <div class="container text-center">
+    <span class="section-label">提供サービス</span>
+    <h2 class="section-title">お任せできる<span>4つのサービス</span></h2>
+    <p class="section-lead">
+      AIを活用したホームページ制作からチャットボット作成、業務効率化まで。「こんなことできる？」という段階からご相談いただけます。
+    </p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-emoji">🌐</span>
+        <h3>AIを使ったホームページ制作</h3>
+        <p>AIの力を使って、短期間・低コストでプロ品質のホームページを制作。集客につながるSEO対策も込みでお任せいただけます。</p>
+        <span class="service-tag">AI代行 / SEO / HP制作</span>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">🤖</span>
+        <h3>チャットボット作成</h3>
+        <p>お客さまからのよくある質問に24時間自動で答えるチャットボットを作成。問い合わせ対応の手間を大幅に削減できます。</p>
+        <span class="service-tag">チャットボット制作 / 自動化</span>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">⚙️</span>
+        <h3>業務効率化サポート</h3>
+        <p>繰り返し行っている作業をAIで自動化。見積書作成・メール対応・データ整理など、あなたの時間を取り戻します。</p>
+        <span class="service-tag">業務効率化 / AI活用</span>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">💡</span>
+        <h3>AI導入コンサルティング</h3>
+        <p>「自社にAIを取り入れたいけど何から？」という段階から伴走支援。あなたのビジネスに合ったAI活用方法を一緒に考えます。</p>
+        <span class="service-tag">AI導入支援 / コンサル</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px;">
+      <a href="#contact" class="btn-primary">どのサービスか迷ったら無料相談 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 4: RESULTS ==================== -->
+<section class="results-section" id="results">
+  <div class="container">
+    <span class="section-label" style="background:rgba(201, 93, 58,0.2); color:var(--orange-light);">実績・事例</span>
+    <h2 class="section-title">実際にお手伝いした<span>2つの事例</span></h2>
+    <p class="section-lead">
+      「本当にできるの？」と思う方へ。実際のご依頼内容と結果をそのままお見せします。
+    </p>
+
+    <div class="results-grid">
+      <div class="result-card" data-num="01">
+        <div class="result-label">CASE 01｜塗装会社様</div>
+        <h3>地域密着の塗装会社が<br>Web経由の問い合わせを安定獲得</h3>
+        <div class="result-stats">
+          <div class="stat">
+            <span class="stat-num">3日</span>
+            <span class="stat-label">制作期間</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">月5件+</span>
+            <span class="stat-label">問い合わせ増加</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">SP対応</span>
+            <span class="stat-label">スマホ完全対応</span>
+          </div>
+        </div>
+        <ul class="result-spec-list">
+          <li>制作期間：わずか<strong style="color:var(--gold)">3日</strong>で納品完了</li>
+          <li>問い合わせ導線を設計・ボタン最適化済み</li>
+          <li>スマートフォン対応（全ページ）</li>
+          <li>地域名×業種のSEO設計込み</li>
+        </ul>
+        <div class="result-voice">「以前はチラシだけだったが、Googleから毎月問い合わせが来るようになった。話を聞いて3日で形にしてくれて驚いた。」（塗装業・40代男性）</div>
+      </div>
+
+      <div class="result-card" data-num="02">
+        <div class="result-label">CASE 02｜飲食店様</div>
+        <h3>個人経営カフェが<br>予約・問い合わせ対応を完全自動化</h3>
+        <div class="result-stats">
+          <div class="stat">
+            <span class="stat-num">24h</span>
+            <span class="stat-label">予約受付自動化</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">月40h</span>
+            <span class="stat-label">対応時間を削減</span>
+          </div>
+        </div>
+        <ul class="result-spec-list">
+          <li>予約導線をAIチャットボットで完全自動化</li>
+          <li>営業時間・メニュー案内をAIが24時間対応</li>
+          <li>HP＋チャットボットをセットで導入</li>
+          <li>オーナー様の電話・SNS対応時間が激減</li>
+        </ul>
+        <div class="result-voice">「返信が遅れることがなくなって口コミ評価も上がった。料理と接客だけに集中できるようになった。」（カフェオーナー・30代女性）</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px; text-align: center;">
+      <p style="color:rgba(255,255,255,0.55); font-size:0.9rem; margin-bottom:18px;">「私の業種だとどうなりますか？」→ 無料で確認できます</p>
+      <a href="#contact" class="btn-primary" style="background:var(--orange);">📩 無料で相談してみる →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FREE STRIP -->
+<div class="free-strip">
+  <p>
+    💡 「何ができるか分からない」という段階でも大丈夫。
+    <a href="#contact">まずは無料相談から →</a>
+  </p>
+</div>
+
+<!-- ==================== SECTION: PROFILE ==================== -->
+<section class="profile-section" id="profile">
+  <div class="container">
+    <span class="section-label">運営者について</span>
+    <div style="margin-bottom: 48px;">
+      <h2 class="section-title">「この人に頼みたい」と<br><span>思っていただけるように</span></h2>
+      <p class="section-lead">
+        依頼する前に「どんな人が運営しているのか」を知ってほしいと思っています。少し自己紹介させてください。
+      </p>
+    </div>
+
+    <div class="profile-wrap">
+      <!-- プロフィールカード -->
+      <div class="profile-card">
+        <div class="profile-avatar">👷</div>
+        <div class="profile-name">臼井　貴紀</div>
+        <div class="profile-name-en">TAKANORI USUI</div>
+        <div class="profile-tags">
+          <span class="profile-tag">建設業界出身</span>
+          <span class="profile-tag">AI活用代行</span>
+          <span class="profile-tag">個人事業主</span>
+        </div>
+        <div class="profile-stats">
+          <div class="profile-stat-item">
+            <span class="profile-stat-num">3日</span>
+            <span class="profile-stat-label">最短納品実績</span>
+          </div>
+          <div class="profile-stat-item">
+            <span class="profile-stat-num">無料</span>
+            <span class="profile-stat-label">初回相談</span>
+          </div>
+          <div class="profile-stat-item">
+            <span class="profile-stat-num">2件+</span>
+            <span class="profile-stat-label">納品実績</span>
+          </div>
+          <div class="profile-stat-item">
+            <span class="profile-stat-num">1日</span>
+            <span class="profile-stat-label">返信目安</span>
+          </div>
+        </div>
+        <a href="#contact" class="profile-cta-inline">📩 臼井に無料相談する</a>
+      </div>
+
+      <!-- ストーリー -->
+      <div class="profile-story">
+        <h3>現場も管理も知っているから、<br><span>「使える」AIを提案できます。</span></h3>
+
+        <div class="story-block">
+          <h4>📋 BACKGROUND ／ 経歴</h4>
+          <p>
+            建設業界にて<strong>営繕管理・設備管理</strong>に長年従事してきました。現場の最前線で働く経験と、管理業務の両方を経験しています。<br><br>
+            「現場で何が起きているか」「管理側が何に困っているか」の両方が分かるからこそ、<strong>机上の空論ではない、実際に使えるAI活用の提案</strong>ができます。
+          </p>
+        </div>
+
+        <div class="story-block">
+          <h4>💡 WHY AI ／ なぜAI代行を始めたか</h4>
+          <p>
+            現場で働く中で「もっと効率よくできるのに」「この作業、自動化できないのか」と感じることが何度もありました。<br><br>
+            AIを自分で使い始めてみると、<strong>専門知識がなくても驚くほど多くのことが実現できる</strong>ことに気づきました。<br>
+            それなのに「難しそう」「よく分からない」という理由でAIを使えていない方がたくさんいる。
+            そのギャップを埋めたいと思い、このサービスを始めました。
+          </p>
+        </div>
+
+        <div class="story-highlight">
+          <p>
+            <strong>「専門知識がなくても分かる・任せられる」</strong><br><br>
+            これが私のサービスで大切にしていることです。<br>
+            難しい言葉は使いません。あなたのやりたいことをそのまま話してください。<br>
+            それだけで、私がすべて形にします。
+          </p>
+        </div>
+
+        <div class="profile-free-note">
+          まずは<strong>無料相談</strong>からでもOKです。「何ができるのか分からない」という段階でも大丈夫ですので、お気軽にご相談ください。費用のお話は、あなたが納得してから。しつこい営業は一切しません。
+        </div>
+
+        <div style="margin-top: 22px;">
+          <a href="#contact" class="btn-primary">📩 臼井に無料で相談する →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="reasons-section" id="reasons">
+  <div class="container text-center">
+    <span class="section-label">選ばれる理由</span>
+    <h2 class="section-title">「臼井さんに頼んでよかった」と<br><span>言っていただける5つの理由</span></h2>
+    <p class="section-lead">
+      初めてAIを使う方でも安心して任せられる。それが私がいちばん大切にしていることです。
+    </p>
+
+    <div class="reasons-grid">
+      <div class="reason-card">
+        <div class="reason-num">01</div>
+        <h3><span class="reason-icon">🟢</span>専門知識ゼロでもOK</h3>
+        <p>「AIって何ですか？」という段階から丁寧にご説明します。難しい言葉は使いません。話すだけで全部対応します。</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">02</div>
+        <h3><span class="reason-icon">👷</span>現場経験者だから話が通じる</h3>
+        <p>建設業界で現場・管理の両方を経験してきました。「現場の感覚」を知っているから、あなたの業務の悩みを正確に理解して形にできます。</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">03</div>
+        <h3><span class="reason-icon">💰</span>個人でも頼みやすい料金</h3>
+        <p>大手制作会社と比べてリーズナブルな価格設定。予算に合わせた提案が可能です。まず無料相談でお気軽にご確認ください。</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">04</div>
+        <h3><span class="reason-icon">⚡</span>最短3日の爆速納品</h3>
+        <p>AIを活用することで、通常の制作会社より圧倒的に短い期間で納品が可能です。塗装会社様のHPは実際に3日で納品しています。急ぎの案件もご相談ください。</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">05</div>
+        <h3><span class="reason-icon">🔒</span>納品後もしっかりサポート</h3>
+        <p>「完成したら終わり」ではありません。納品後の修正・追加対応も丁寧にサポートします。長くお付き合いできる関係を大切にしています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 6: PRICING ==================== -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <span class="section-label">料金の目安</span>
+    <h2 class="section-title">料金の<span>ざっくりした目安</span></h2>
+    <p class="section-lead">
+      ご依頼内容によって最適なプランをご提案します。<strong>まずは無料相談でお気軽にご確認ください。</strong>「予算〇〇円で何ができますか？」という段階から大歓迎です。
+    </p>
+    <div style="text-align:center; margin-bottom: 32px;">
+      <span class="free-badge">✅ 初回相談・お見積り　完全無料</span>
+    </div>
+
+    <div class="pricing-note">
+      <strong>⚠️ 表示は目安です：</strong>ご依頼内容の規模・複雑さによって変動します。「予算〇〇円で何ができる？」というご相談も大歓迎です。
+    </div>
+
+    <!-- HP PLAN TABLE (from pricing.html, brushed up & integrated) -->
+    <div class="pricing-subhead" id="hp-plans">
+      <h3>ホームページ制作｜4つの料金プラン（LINE連動・AIチャットも対応）</h3>
+      <p>
+        「まずは名刺代わりに」「集客を強化したい」「問い合わせ対応を自動化したい」まで、目的に合わせて選べます。迷ったら無料相談で、最短ルートをご提案します。
+      </p>
+      <div class="pill">✅ 初回相談・お見積り：完全無料</div>
+    </div>
+
+    <div class="pricing-surface">
+      <div class="hp-plan-grid">
+        <div class="hp-plan-card reveal">
+          <div class="hp-plan-top">
+            <div class="hp-plan-name">ライトプラン</div>
+            <div class="hp-plan-icon">🌐</div>
+          </div>
+          <div class="hp-plan-tagline">まずはWebに存在感を。<br>シンプルで伝わるHP。</div>
+          <div class="hp-plan-price">¥50,000<small>〜</small></div>
+          <div class="hp-plan-price-note">目安：50,000〜80,000円（一括）</div>
+          <hr class="hp-plan-divider">
+          <ul class="hp-plan-features">
+            <li><span class="i hp-i-check">✓</span> ページ数：3〜5ページ</li>
+            <li><span class="i hp-i-check">✓</span> スマートフォン完全対応</li>
+            <li><span class="i hp-i-check">✓</span> 基本SEO（メタ・見出し設計）</li>
+            <li><span class="i hp-i-check">✓</span> お問い合わせフォーム設置</li>
+            <li><span class="i hp-i-check">✓</span> 納品後1ヶ月サポート</li>
+          </ul>
+          <a href="#contact" class="hp-plan-btn">このプランを相談する</a>
+        </div>
+
+        <div class="hp-plan-card reveal reveal-delay-1">
+          <div class="hp-plan-top">
+            <div class="hp-plan-name">スタンダードプラン</div>
+            <div class="hp-plan-icon">⚡</div>
+          </div>
+          <div class="hp-plan-tagline">集客に本気で取り組む方へ。<br>SEO・導線設計込みの本格HP。</div>
+          <div class="hp-plan-price">¥80,000<small>〜</small></div>
+          <div class="hp-plan-price-note">目安：80,000〜120,000円（一括）</div>
+          <hr class="hp-plan-divider">
+          <ul class="hp-plan-features">
+            <li><span class="i hp-i-check">✓</span> ページ数：5〜10ページ</li>
+            <li><span class="i hp-i-star">★</span> SEO強化（地域名×業種キーワード設計）</li>
+            <li><span class="i hp-i-star">★</span> 問い合わせ導線の設計・最適化</li>
+            <li><span class="i hp-i-check">✓</span> Googleアナリティクス設置</li>
+            <li><span class="i hp-i-check">✓</span> 納品後1ヶ月サポート＋修正対応</li>
+          </ul>
+          <a href="#contact" class="hp-plan-btn">このプランを相談する</a>
+        </div>
+
+        <div class="hp-plan-card popular reveal reveal-delay-2">
+          <div class="hp-popular-badge">🔥 人気 No.1</div>
+          <div class="hp-plan-top">
+            <div class="hp-plan-name">AIチャットボット付きプラン</div>
+            <div class="hp-plan-icon">🤖</div>
+          </div>
+          <div class="hp-plan-tagline">24時間自動で問い合わせ対応。<br>オーナーの負担を大幅削減。</div>
+          <div class="hp-plan-price">¥120,000<small>〜</small></div>
+          <div class="hp-plan-price-note">目安：120,000〜160,000円（一括）</div>
+          <hr class="hp-plan-divider">
+          <div class="hp-card-callout">
+            <div class="t">🤖 AIチャットを入れると</div>
+            <p>営業時間外の質問対応・よくある質問の自動化で、電話/メール対応の負担を軽くできます。</p>
+          </div>
+          <ul class="hp-plan-features">
+            <li><span class="i hp-i-check">✓</span> スタンダードの内容をすべて含む</li>
+            <li><span class="i hp-i-ai">●</span> HP内AIチャットボット設置</li>
+            <li><span class="i hp-i-ai">●</span> 初回シナリオ設計（FAQ最大20件）</li>
+            <li><span class="i hp-i-ai">●</span> 24時間365日 自動回答</li>
+            <li><span class="i hp-i-check">✓</span> 納品後2ヶ月サポート</li>
+          </ul>
+          <a href="#contact" class="hp-plan-btn primary">このプランを相談する →</a>
+        </div>
+
+        <div class="hp-plan-card reveal reveal-delay-3">
+          <div class="hp-plan-top">
+            <div class="hp-plan-name">LINE連動フルプラン</div>
+            <div class="hp-plan-icon">💫</div>
+          </div>
+          <div class="hp-plan-tagline">HP・AI・LINEをまるごと連携。<br>集客・顧客管理を仕組み化。</div>
+          <div class="hp-plan-price">¥180,000<small>〜</small></div>
+          <div class="hp-plan-price-note">目安：180,000〜250,000円（一括）</div>
+          <hr class="hp-plan-divider">
+          <div class="hp-card-callout">
+            <div class="t">💬 LINE連動を入れると</div>
+            <p>HP→LINEへ誘導して関係が続き、クーポン/お知らせ配信で“リピート”が作りやすくなります。</p>
+          </div>
+          <ul class="hp-plan-features">
+            <li><span class="i hp-i-check">✓</span> AIチャット付きプランの内容をすべて含む</li>
+            <li><span class="i hp-i-line">◆</span> LINE公式アカウント連動設定</li>
+            <li><span class="i hp-i-line">◆</span> HP→LINE誘導導線の設計</li>
+            <li><span class="i hp-i-line">◆</span> LINEチャットボット設定</li>
+            <li><span class="i hp-i-check">✓</span> 納品後3ヶ月サポート</li>
+          </ul>
+          <a href="#contact" class="hp-plan-btn">このプランを相談する</a>
+        </div>
+      </div>
+
+      <div class="pricing-subhead" style="margin-top:34px;">
+        <h3>オプション追加メニュー</h3>
+        <p>「これだけ追加したい」もOK。後から追加もできます。</p>
+      </div>
+      <div class="hp-options-grid reveal">
+        <div class="hp-option-card">
+          <div class="hp-option-title">
+            <h4>💬 LINE公式アカウント連動</h4>
+            <div class="hp-option-price">＋¥30,000〜</div>
+          </div>
+          <p class="hp-option-desc">HPのお問い合わせをLINEと連携。友だち追加したお客様へメッセージ配信でき、リピーター獲得に繋げやすくなります。</p>
+          <span class="hp-option-tag">LINE連動</span>
+        </div>
+        <div class="hp-option-card">
+          <div class="hp-option-title">
+            <h4>🤖 AIチャットボット追加</h4>
+            <div class="hp-option-price">＋¥30,000〜</div>
+          </div>
+          <p class="hp-option-desc">既存HPに後付けでAIチャットを設置。よくある質問を24時間自動対応し、問い合わせ対応の負担を削減します。</p>
+          <span class="hp-option-tag">AIチャット</span>
+        </div>
+        <div class="hp-option-card">
+          <div class="hp-option-title">
+            <h4>🔍 SEO強化パック</h4>
+            <div class="hp-option-price">＋¥20,000〜</div>
+          </div>
+          <p class="hp-option-desc">地域名×業種のキーワード設計、構造の最適化など、集客に寄せたSEOを追加します。</p>
+          <span class="hp-option-tag">SEO対策</span>
+        </div>
+        <div class="hp-option-card">
+          <div class="hp-option-title">
+            <h4>⚙️ 業務自動化連携</h4>
+            <div class="hp-option-price">＋¥20,000〜/月</div>
+          </div>
+          <p class="hp-option-desc">フォーム内容をスプレッドシートへ自動記録、AIが返信ドラフト生成など、バックオフィスを効率化します。</p>
+          <span class="hp-option-tag">自動化</span>
+        </div>
+      </div>
+
+      <div class="pricing-subhead" style="margin-top:34px;">
+        <h3>プラン比較表</h3>
+        <p>どのプランに何が含まれるか、一目で分かります。</p>
+      </div>
+      <div class="hp-compare-wrap reveal">
+        <table class="hp-compare-table" aria-label="ホームページ制作プラン比較表">
+          <thead>
+            <tr>
+              <th>機能・サービス内容</th>
+              <th>ライト</th>
+              <th>スタンダード</th>
+              <th class="hp-popular-col">AIチャット付き</th>
+              <th>LINE連動フル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="section-row"><td colspan="5">▶ ホームページ基本機能</td></tr>
+            <tr>
+              <td>ページ数</td>
+              <td>3〜5P</td>
+              <td>5〜10P</td>
+              <td class="hp-popular-col">5〜10P</td>
+              <td>5〜10P</td>
+            </tr>
+            <tr>
+              <td>スマートフォン対応</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-popular-col hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+            <tr>
+              <td>お問い合わせフォーム</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-popular-col hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+            <tr>
+              <td>Googleアナリティクス</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-popular-col hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+
+            <tr class="section-row"><td colspan="5">▶ SEO・集客対策</td></tr>
+            <tr>
+              <td>基本SEO（メタ・見出し）</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-popular-col hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+            <tr>
+              <td>地域×業種キーワード設計</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-popular-col hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+            <tr>
+              <td>問い合わせ導線最適化</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-popular-col hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+
+            <tr class="section-row"><td colspan="5">▶ AIチャットボット</td></tr>
+            <tr>
+              <td>AIチャットボット設置（HP内）</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-popular-col hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+            <tr>
+              <td>24時間自動FAQ回答</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-popular-col hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+            <tr>
+              <td>シナリオ設計（FAQ20件）</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-popular-col hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+            <tr>
+              <td>AIによる問い合わせ自動仕分け</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-popular-col hp-check-no">—</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+
+            <tr class="section-row"><td colspan="5">▶ LINE公式アカウント連動</td></tr>
+            <tr>
+              <td>LINE公式アカウント連動設定</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-popular-col hp-check-opt">+OP</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+            <tr>
+              <td>HP→LINE誘導導線設計</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-popular-col hp-check-opt">+OP</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+            <tr>
+              <td>LINEチャットボット設定</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-popular-col hp-check-opt">+OP</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+            <tr>
+              <td>初回メッセージ配信設計</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-check-no">—</td>
+              <td class="hp-popular-col hp-check-no">—</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+
+            <tr class="section-row"><td colspan="5">▶ サポート・アフターフォロー</td></tr>
+            <tr>
+              <td>納品後サポート期間</td>
+              <td>1ヶ月</td>
+              <td>1ヶ月</td>
+              <td class="hp-popular-col">2ヶ月</td>
+              <td>3ヶ月</td>
+            </tr>
+            <tr>
+              <td>修正対応（無料期間内）</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+              <td class="hp-popular-col hp-check-yes">✓</td>
+              <td class="hp-check-yes">✓</td>
+            </tr>
+
+            <tr class="section-row"><td colspan="5">▶ 目安価格</td></tr>
+            <tr>
+              <td>標準料金（目安）</td>
+              <td class="hp-check-yes">¥50,000〜</td>
+              <td class="hp-check-yes">¥80,000〜</td>
+              <td class="hp-popular-col hp-check-yes">¥120,000〜</td>
+              <td class="hp-check-yes">¥180,000〜</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="hp-legend">✓ = 標準含む｜+OP = オプション追加で対応可｜— = 対象外</div>
+    </div>
+
+    <!-- other services pricing (existing) -->
+    <div class="pricing-subhead">
+      <h3>AI活用代行メニュー｜料金の目安</h3>
+      <p>ホームページ以外（チャットボット単体・業務効率化・AI導入コンサル）もこちらに目安をまとめました。</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>🌐 ホームページ制作</h3>
+        <div class="pricing-price">¥50,000<small>〜</small></div>
+        <div class="pricing-range">目安：50,000円〜150,000円</div>
+        <ul class="pricing-list">
+          <li>5〜10ページ構成</li>
+          <li>スマートフォン対応</li>
+          <li>基本的なSEO対策</li>
+          <li>お問い合わせフォーム設置</li>
+          <li>納品後1ヶ月サポート</li>
+        </ul>
+      </div>
+      <div class="pricing-card featured">
+        <h3>🤖 チャットボット作成</h3>
+        <div class="pricing-price">¥30,000<small>〜</small></div>
+        <div class="pricing-range">目安：30,000円〜80,000円</div>
+        <ul class="pricing-list">
+          <li>よくある質問に自動回答</li>
+          <li>24時間365日対応</li>
+          <li>LINE・HPに設置可能</li>
+          <li>初回シナリオ設計込み</li>
+          <li>導入後の動作確認サポート</li>
+        </ul>
+      </div>
+      <div class="pricing-card">
+        <h3>⚙️ 業務効率化サポート</h3>
+        <div class="pricing-price">¥20,000<small>〜</small></div>
+        <div class="pricing-range">目安：20,000円〜／月額プランあり</div>
+        <ul class="pricing-list">
+          <li>作業の自動化設定</li>
+          <li>ツール選定・導入支援</li>
+          <li>使い方レクチャー込み</li>
+          <li>月次レポート対応</li>
+          <li>継続サポートプランあり</li>
+        </ul>
+      </div>
+      <div class="pricing-card">
+        <h3>💡 AI導入コンサル</h3>
+        <div class="pricing-price">¥15,000<small>〜</small></div>
+        <div class="pricing-range">目安：15,000円〜／1回</div>
+        <ul class="pricing-list">
+          <li>現状ヒアリング・課題整理</li>
+          <li>AI活用プランの提案</li>
+          <li>優先度・予算感のご提示</li>
+          <li>ロードマップ作成</li>
+          <li>継続伴走プランあり</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 44px;">
+      <a href="#contact" class="btn-primary">無料見積もりを依頼する →</a>
+      <p style="margin-top: 14px; font-size: 0.85rem; color: var(--gray-text);">「予算〇〇円で何ができますか？」という相談も大歓迎です</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 7: FLOW ==================== -->
+<section class="flow-section" id="flow">
+  <div class="container">
+    <span class="section-label">導入の流れ</span>
+    <h2 class="section-title">始めるのは<span>驚くほど簡単</span>です</h2>
+    <p class="section-lead">
+      「問い合わせしてみよう」と思ったその日から、最短2週間で納品できます。全部で4ステップ、難しいことは何もありません。
+    </p>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num-wrap">
+          <div class="step-num">1</div>
+        </div>
+        <div class="step-body">
+          <h3>📩 無料相談・お問い合わせ</h3>
+          <p>フォーム・LINE・メールのいずれかでご連絡ください。「どんなことができますか？」という段階からOKです。まず気軽にお声がけください。</p>
+          <span class="step-time">⏱ 5分もあれば送れます</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num-wrap">
+          <div class="step-num">2</div>
+        </div>
+        <div class="step-body">
+          <h3>💬 ヒアリング・お打ち合わせ</h3>
+          <p>ZoomやLINEでのオンライン面談にて、現状のお悩みとやりたいことをじっくりお聞きします。専門用語は使いません。雑談感覚でOKです。</p>
+          <span class="step-time">⏱ 30〜60分のオンライン面談</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num-wrap">
+          <div class="step-num">3</div>
+        </div>
+        <div class="step-body">
+          <h3>📋 お見積もり・プランご提案</h3>
+          <p>ヒアリング内容をもとに、最適なプランとお見積もりをご提示します。「予算が合わなかった場合は断っても大丈夫？」→ もちろん大丈夫です。</p>
+          <span class="step-time">⏱ 面談後2〜3営業日以内</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num-wrap">
+          <div class="step-num">4</div>
+        </div>
+        <div class="step-body">
+          <h3>🚀 制作・納品・アフターサポート</h3>
+          <p>ご契約後は進捗をこまめにご報告しながら制作を進めます。納品後も修正・追加のご依頼に対応します。長くお付き合いできる関係を大切にしています。</p>
+          <span class="step-time">⏱ 最短2週間〜で納品</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 52px;">
+      <a href="#contact" class="btn-primary">まず無料相談から始める →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 8: FAQ ==================== -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <span class="section-label">よくある質問</span>
+    <h2 class="section-title">不安なことは<span>なんでも聞いてください</span></h2>
+    <p class="section-lead">
+      よく寄せられるご質問をまとめました。ここにないことも、お気軽にお問い合わせください。
+    </p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">AIや技術のことが全く分かりませんが大丈夫ですか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>まったく問題ありません。「こんなことがしたい」「こんな悩みがある」という言葉だけで十分です。技術的なことはすべてこちらで対応します。専門用語を使わず、分かりやすくご説明しますのでご安心ください。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">どのくらいの費用がかかりますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>ご依頼内容によって異なりますが、ホームページ制作は5万円〜、チャットボット作成は3万円〜が目安です。「予算〇〇円で何ができますか？」という相談も大歓迎です。まずは無料相談でご確認ください。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">どのくらいの期間で完成しますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>ホームページの場合、シンプルなものであれば最短2週間程度での納品が可能です。ページ数や機能によって変わりますので、ヒアリング時にご希望をお聞きしてスケジュールをご提案します。急ぎのご依頼もご相談ください。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">納品後に修正をお願いできますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>もちろんです。納品後1ヶ月は修正対応を無料でお受けします。それ以降の追加修正や継続的なサポートについても別途ご相談いただけます。長くお付き合いいただける関係を大切にしています。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">クラウドワークスから依頼できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>はい、クラウドワークスからのご依頼も承っております。直接のご連絡（フォーム・LINE・メール）でも対応しています。どちらでもお気軽にご連絡ください。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">相談だけでも大丈夫ですか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>もちろんです！「まだ何も決まっていない」「ちょっと話を聞いてみたい」という段階から大歓迎です。相談するだけで費用は一切かかりません。まずは気軽にお声がけください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA BANNER ==================== -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>「ちょっと聞いてみたい」も<br><em>大歓迎です。無料ですから。</em></h2>
+    <p>相談は完全無料。断っても大丈夫。「何ができるか分からない」段階でも、臼井が一緒に整理します。</p>
+    <div class="cta-actions">
+      <a href="#contact" class="btn-primary">📩 今すぐ無料で相談する</a>
+      <a href="#profile" class="btn-secondary">👷 臼井について知る</a>
+    </div>
+    <p class="cta-sub">※ しつこい営業・勧誘は一切行いません。安心してご連絡ください。</p>
+  </div>
+</section>
+
+<!-- ==================== SECTION 9: CONTACT ==================== -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <span class="section-label">お問い合わせ</span>
+    <h2 class="section-title">まずは<span>無料でご相談</span>ください</h2>
+    <p class="section-lead">
+      「こんな相談でいいの？」という心配は不要です。臼井が直接ご対応します。思ったことをそのままお送りください。<strong>1営業日以内にご返信</strong>します。
+    </p>
+
+    <div style="text-align:center; margin-bottom: 36px;">
+      <div style="display:inline-flex; gap: 20px; flex-wrap: wrap; justify-content: center; padding: 20px 32px; background: var(--navy); border-radius: 16px; color: #fff; font-size: 0.9rem;">
+        <span>✅ 初回相談　<strong style="color:var(--gold)">完全無料</strong></span>
+        <span>✅ 見積り　<strong style="color:var(--gold)">完全無料</strong></span>
+        <span>✅ 断っても<strong style="color:var(--gold)">OK</strong></span>
+        <span>✅ しつこい営業　<strong style="color:var(--gold)">なし</strong></span>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>臼井が直接<br>対応します</h3>
+        <p>外注なし。代表の臼井貴紀が直接ご相談をお聞きします。フォームが苦手な方はLINEやメールでも大丈夫です。「ちょっと聞いてみたい」という段階からお気軽にどうぞ。</p>
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="icon">📩</div>
+            <span>お問い合わせフォーム（このページ）</span>
+          </div>
+          <div class="contact-method">
+            <div class="icon">💬</div>
+            <span>LINE公式アカウント（友達追加で相談可）</span>
+          </div>
+          <div class="contact-method">
+            <div class="icon">✉️</div>
+            <span>メール（1営業日以内にご返信）</span>
+          </div>
+          <div class="contact-method">
+            <div class="icon">🖥️</div>
+            <span>クラウドワークスからも依頼可能</span>
+          </div>
+        </div>
+        <div style="margin-top: 28px; padding: 20px; background: rgba(201, 93, 58,0.08); border-radius: 14px; border-left: 3px solid var(--orange);">
+          <p style="font-size: 0.88rem; color: var(--gray-text); line-height: 2;">
+            <strong style="color: var(--navy);">🔒 安心してご相談ください</strong><br>
+            しつこい営業・セールス電話は一切しません。ご相談いただいた情報は厳重に管理します。
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-form-area">
+        <h3>📩 無料相談フォーム</h3>
+        <div class="form-row">
+          <label>お名前（ニックネームでもOK）</label>
+          <input type="text" placeholder="例：田中 太郎">
+        </div>
+        <div class="form-row">
+          <label>メールアドレス</label>
+          <input type="email" placeholder="例：example@mail.com">
+        </div>
+        <div class="form-row">
+          <label>興味のあるサービス</label>
+          <select>
+            <option value="">選んでください</option>
+            <option>AIを使ったホームページ制作</option>
+            <option>チャットボット作成</option>
+            <option>業務効率化サポート</option>
+            <option>AI導入コンサルティング</option>
+            <option>まだ決まっていない / 相談したい</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>ご相談内容（どんな内容でもOK）</label>
+          <textarea placeholder="例：飲食店をやっていて、ホームページを作りたいのですが何から始めればいいか分かりません。予算は10万円くらいで考えています。"></textarea>
+        </div>
+        <button class="form-submit">無料で相談する →</button>
+        <p style="margin-top: 12px; font-size: 0.78rem; color: var(--gray-text); text-align: center;">※ 1営業日以内にご返信いたします</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p><strong>AI活用代行サービス</strong>｜代表：臼井　貴紀</p>
+  <p style="margin-top: 6px; font-size: 0.78rem;">建設業界出身・AI活用代行｜個人事業主・中小企業向けAI導入支援</p>
+  <p style="margin-top: 8px;">AI代行 / チャットボット制作 / ホームページ制作 / 業務効率化 / AI活用支援</p>
+  <p style="margin-top: 16px;">© 2025 臼井貴紀 AI活用代行サービス All rights reserved.</p>
+</footer>
+
+<!-- ==================== DESIGN DOCUMENT ==================== -->
+<div class="design-doc">
+  <div class="container">
+    <span class="doc-label">📋 DESIGN DOCUMENT v2.0｜改善版</span>
+    <h2>ホームページ設計書（制作指示書）</h2>
+    <p style="font-size:0.85rem; color:var(--gray-text); margin-bottom:36px;">※ 前回版からの改善ポイント：①運営者の個人化（臼井貴紀を前面に）②実績を数字で具体化③「無料」の導線を全面強化④「私たち→私」に統一</p>
+
+    <!-- キャッチコピー案 -->
+    <div class="doc-block">
+      <h3><span class="doc-tag">COPY</span> キャッチコピー案（3つ）</h3>
+      <div class="copy-grid">
+        <div class="copy-card">
+          <div class="num">CATCHCOPY 01 ／ メインキャッチ推奨</div>
+          <p>AIの難しいことは、すべてお任せください。あなたは「やりたいこと」を話すだけで大丈夫です。</p>
+        </div>
+        <div class="copy-card">
+          <div class="num">CATCHCOPY 02 ／ 問題提起型</div>
+          <p>「AIって便利そう」で止まっていませんか？建設業界出身の臼井が全部、代わりにやります。</p>
+        </div>
+        <div class="copy-card">
+          <div class="num">CATCHCOPY 03 ／ 安心・実績訴求型</div>
+          <p>最短3日で納品。専門知識ゼロでもOK。AIを使ったHP・チャットボット・業務効率化、臼井に丸ごとお任せ。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ページ構成 -->
+    <div class="doc-block">
+      <h3><span class="doc-tag">STRUCTURE</span> ページ構成（H1〜H3）【v2.0 改善版】</h3>
+      <div class="doc-copy">【H1】AIの難しいことは、すべてお任せください。
+      あなたは「やりたいこと」を話すだけで大丈夫です。
+      ─ 臼井貴紀のAI活用代行｜HP制作・チャットボット・業務効率化
+
+【Section 1: ファーストビュー】
+  - バッジ：「臼井貴紀が運営するAI活用代行サービス」
+  - 悩み提示（3点）
+  - H1見出し + サブキャッチ
+  - ★必須フレーズ：「AIの難しいことは、すべてお任せください。
+                    あなたは『やりたいこと』を話すだけで大丈夫です。」
+  - CTA×2（無料で相談してみる / 導入の流れを見る）
+  - 信頼バッジ×5（初回無料・専門知識ゼロ・最短3日・建設業界出身・営業なし）
+
+【Section 2: 課題→解決】
+  H2: 「AIって便利そう」だけで止まっていませんか？
+  H3: 各悩みカード×4（難しそう / 時間がない / 費用不安 / 誰に頼む？）
+  → 解決バナー：「あなたはやりたいことを話すだけ。AIの操作はすべて私が代わりに行います。
+                建設業界出身の代表・臼井貴紀が、現場感覚で丁寧に対応します。」
+
+【Section 3: サービス内容】
+  H2: お任せできる4つのサービス
+  H3: ①AIを使ったホームページ制作（最短3日・SEO込み）
+  H3: ②チャットボット作成（24時間自動対応）
+  H3: ③業務効率化サポート（繰り返し作業を自動化）
+  H3: ④AI導入コンサルティング（「何から？」の段階からOK）
+
+【Section 4: 実績（数字付き）】★改善
+  H2: 実際にお手伝いした2つの事例
+  H3: CASE01 塗装会社様
+    ・制作期間：3日（実績値）
+    ・問い合わせ：月5件増加
+    ・スマホ対応・問い合わせ導線設計済み
+  H3: CASE02 飲食店様（HP＋チャットボット）
+    ・予約導線を完全自動化（24時間対応）
+    ・月40時間の対応時間を削減
+    ・営業時間案内をAIが自動回答
+
+【Section 5: 運営者プロフィール】★新規追加
+  H2: 「この人に頼みたい」と思っていただけるように
+  - 代表：臼井　貴紀 プロフィールカード
+    （実績数値：最短納品3日・初回無料・2件+納品・返信1日）
+  - 経歴ストーリー：建設業界／営繕管理・設備管理
+  - WHYストーリー：なぜAI代行を始めたか
+  - 約束文：「専門知識がなくても分かる・任せられる」
+  - 「無料相談から大丈夫」の一文
+
+【Section 6: 選ばれる理由】★改善
+  H2: 「臼井さんに頼んでよかった」と言っていただける5つの理由
+  H3: ①専門知識ゼロでもOK
+  H3: ②現場経験者だから話が通じる（建設業界歴）★追加
+  H3: ③個人でも頼みやすい料金
+  H3: ④最短3日の爆速納品（実績値）★改善
+  H3: ⑤納品後もしっかりサポート
+
+【Section 7: 料金（無料強調）】★改善
+  H2: 料金のざっくりした目安
+  - 「初回相談・お見積り　完全無料」バッジ★追加
+  H3: ①HP制作 50,000円〜
+  H3: ②チャットボット 30,000円〜
+  H3: ③業務効率化 20,000円〜
+  H3: ④AIコンサル 15,000円〜
+
+【Section 8: 導入の流れ】
+  H2: 始めるのは驚くほど簡単です
+  STEP1〜STEP4（変更なし）
+
+【Section 9: よくある質問】
+  H2: 不安なことはなんでも聞いてください（変更なし）
+
+【中間CTAバナー】★改善
+  「ちょっと聞いてみたい」も大歓迎です。無料ですから。
+  → サブCTA：「臼井について知る」ボタン追加
+
+【Section 10: お問い合わせ】★改善
+  H2: まずは無料でご相談ください
+  - 「初回相談 完全無料・見積り 完全無料・断ってもOK・営業なし」の4点一覧
+  - 「臼井が直接対応します・外注なし」明記
+  - お問い合わせフォーム
+</div>
+    </div>
+
+    <!-- CTA文言 -->
+    <div class="doc-block">
+      <h3><span class="doc-tag">CTA</span> CTA文言一覧（設置箇所別）【v2.0】</h3>
+      <div class="doc-copy">【ナビゲーション（固定）】
+→ 「無料で相談する →」
+
+【ファーストビュー（メインCTA）】
+→ 「📩 無料で相談してみる」（オレンジ・大）
+→ 「▶ 導入の流れを見る」（サブ・透明枠）
+
+【フリーストリップ（実績直後・オレンジ帯）】★追加
+→ 「💡 『何ができるか分からない』という段階でも大丈夫。まずは無料相談から →」
+
+【プロフィールカード内】★追加
+→ 「📩 臼井に無料相談する」
+
+【プロフィールストーリー下】★追加
+→ 「📩 臼井に無料で相談する →」
+
+【サービスセクション下】
+→ 「どのサービスか迷ったら無料相談 →」
+
+【実績セクション下】
+→ 「📩 無料で相談してみる →」
+→ サブ文：「『私の業種だとどうなりますか？』→ 無料で確認できます」
+
+【料金セクション】★改善
+→ バッジ：「✅ 初回相談・お見積り　完全無料」
+→ 「無料見積もりを依頼する →」
+→ サブ文：「『予算〇〇円で何ができますか？』という相談も大歓迎です」
+
+【中間CTAバナー】★改善
+→ 「📩 今すぐ無料で相談する」（メイン）
+→ 「👷 臼井について知る」（サブ：プロフィールへ）
+
+【問い合わせセクション上部】★追加
+→ 4点明示：初回相談完全無料 / 見積り完全無料 / 断ってもOK / 営業なし
+
+【フローティングボタン（常時表示）】
+→ 「📩 今すぐ無料相談」
+</div>
+    </div>
+
+    <!-- SEOキーワード -->
+    <div class="doc-block">
+      <h3><span class="doc-tag">SEO</span> 対策キーワード（自然含有）【v2.0】</h3>
+      <div class="doc-copy">【タイトルタグ（更新済み）】
+「AI活用代行｜臼井貴紀【建設業界出身】ホームページ・チャットボット・業務効率化を丸ごとお任せ」
+
+【メタディスクリプション（更新済み）】
+「建設業界出身の臼井貴紀が運営するAI活用代行サービス。ホームページ制作（最短3日）・
+チャットボット作成・業務効率化を代行。専門知識ゼロでもOK。初回相談無料。
+個人事業主・中小企業向けAI導入支援。」
+
+【主要キーワード（本文含有）】
+・AI代行　→ タイトル・H1・バッジ・本文多数
+・AI活用　→ ファーストビュー・サービス・フッター
+・チャットボット制作　→ サービス・実績・FAQ・フッター
+・AI導入支援　→ サービス・選ばれる理由・メタ
+・ホームページ制作　→ サービス・実績（3日）・料金
+・業務効率化　→ サービス・実績（月40h削減）・FAQ
+
+【ロングテールキーワード（想定検索）】
+・AI 代行 個人事業主
+・AI活用 建設業界 支援
+・チャットボット 作成 依頼 個人
+・ホームページ AI 最短 安い
+・業務効率化 AI 外注
+・臼井貴紀 AI代行（指名検索対策）
+
+【構造化データ推奨】
+・LocalBusiness スキーマ（代表名：臼井貴紀）
+・FAQPage スキーマ（よくある質問セクション）
+・Service スキーマ（4サービス）
+</div>
+    </div>
+
+    <!-- 必須フレーズ -->
+    <div class="doc-block">
+      <h3><span class="doc-tag">COPY</span> 必須フレーズ【v2.0 更新版】</h3>
+      <div class="doc-copy">■ 必須一言（更新済み）
+「AIの難しいことは、すべてお任せください。
+あなたは『やりたいこと』を話すだけで大丈夫です。」
+
+→ 設置箇所: ファーストビュー内（枠付きボックスで強調表示）
+→ 強調：「AIの難しいことは、すべてお任せください。」をゴールドで表示
+
+■ 追加フレーズ（運営者・無料強調）
+・「建設業界出身の代表・臼井貴紀が、現場感覚で丁寧に対応します。」
+・「外注なし。臼井貴紀が直接ご対応します。」
+・「まずは無料相談からでもOKです。『何ができるか分からない』段階でも大丈夫です。」
+・「相談は完全無料。断っても大丈夫。」
+</div>
+    </div>
+
+    <!-- 改善サマリー -->
+    <div class="doc-block">
+      <h3><span class="doc-tag">DIFF</span> v1.0 → v2.0 変更サマリー</h3>
+      <div class="doc-copy">① 「私たち」→「私（臼井）」に全面統一
+   - 個人への信頼を高めるため、法人的な表現を排除
+
+② 運営者プロフィールセクションを新規追加
+   - 臼井貴紀・建設業界出身（営繕管理・設備管理）
+   - 経歴ストーリー・WHYストーリーで人柄を開示
+   - プロフィールカードに実績数値を掲載
+
+③ 実績を数字付きで具体化
+   - 塗装会社：「2週間」→「3日」に更新（実績値）
+   - 飲食店：「HP制作」→「HP＋チャットボット」に詳細化
+   - 各実績にスペックリスト（箇条書き）を追加
+
+④ 「無料」の導線を全面強化（8箇所に設置）
+   - ヒーロー：「完全無料」をゴールドで強調
+   - フリーストリップ（オレンジ帯）を新設
+   - 問い合わせ上部に4点安心バッジを設置
+   - 料金セクションに「完全無料バッジ」追加
+
+⑤ ナビ・タイトル・フッターに「臼井貴紀」を明記
+   - 指名検索・信頼感向上のため名前を前面に出した
+
+⑥ 選ばれる理由 02 を「LINEで相談」→「現場経験者」に変更
+   - 建設業界出身という差別化ポイントを理由に組み込んだ
+</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+
+// reveal animation for pricing blocks
+const pricingObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach((el) => pricingObserver.observe(el));
+</script>
+</body>
+</html>

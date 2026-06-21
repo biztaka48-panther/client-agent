@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>合同会社PanIchie Works｜AI活用パートナー｜中小企業のAI導入・チャットボット支援</title>
+<meta name="description" content="合同会社PanIchie Works（パニシエワークス）は、中小企業・個人事業主のためのAI活用パートナー。AI導入サポート、AIチャットボット作成、業務効率化、AIライティング、ホームページ制作、SNS活用までを伴走型で支援します。初回相談無料。" />
+<meta name="keywords" content="AI導入支援,AIチャットボット,中小企業,業務効率化,AIライティング,ホームページ制作,SNS活用,伴走型支援,合同会社PanIchie Works" />
+<meta property="og:title" content="合同会社PanIchie Works｜AIを、もっと身近に。" />
+<meta property="og:description" content="中小企業の『困った』を支えるAI活用パートナー。AI導入・チャットボット作成・業務効率化を、初心者目線で伴走支援します。" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon-256.png" />
+<link rel="apple-touch-icon" sizes="512x512" href="assets/favicon-512.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "合同会社PanIchie Works",
+  "alternateName": "パニシエワークス",
+  "description": "中小企業・個人事業主のためのAI活用パートナー。AI導入支援・AIチャットボット作成・業務効率化・ホームページ制作・SNS活用を伴走型でサポート。",
+  "url": "https://example.com/",
+  "founder": {
+    "@type": "Person",
+    "name": "臼井 貴紀"
+  },
+  "knowsAbout": [
+    "AI導入支援", "AIチャットボット", "業務効率化", "AIライティング", "ホームページ制作", "SNS活用支援"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "AIチャットボット作成支援",
+  "provider": {
+    "@type": "Organization",
+    "name": "合同会社PanIchie Works"
+  },
+  "areaServed": "JP",
+  "offers": [
+    { "@type": "Offer", "name": "スタートプラン", "price": "198000", "priceCurrency": "JPY" },
+    { "@type": "Offer", "name": "集客強化プラン", "price": "298000", "priceCurrency": "JPY" },
+    { "@type": "Offer", "name": "プレミアムプラン", "price": "498000", "priceCurrency": "JPY" }
+  ]
+}
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            50:  '#f5f7fb',
+            100: '#e8eef6',
+            200: '#cfdaea',
+            300: '#a8bcd6',
+            400: '#7793b9',
+            500: '#5577a3',
+            600: '#3d5a80',
+            700: '#264363',
+            800: '#1a3050',
+            900: '#0f2549',
+          },
+          sky2: {
+            500: '#5b8bb5',
+          },
+          gold: {
+            300: '#e4c97a',
+            400: '#d4af5b',
+            500: '#b8932e',
+          },
+          paper: '#fafbfd',
+        },
+        fontFamily: {
+          sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif'],
+          display: ['"Zen Kaku Gothic New"', '"Noto Sans JP"', 'sans-serif'],
+        },
+        boxShadow: {
+          soft: '0 8px 30px rgba(15, 37, 73, 0.08)',
+          softer: '0 4px 18px rgba(15, 37, 73, 0.06)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-feature-settings: "palt"; letter-spacing: 0.01em; }
+  .underline-accent { background-image: linear-gradient(transparent 70%, rgba(91,139,181,0.28) 70%); }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-icon { transform: rotate(45deg); }
+  .faq-icon { transition: transform .2s ease; }
+  /* チャット吹き出し */
+  .bubble-bot   { background:#f1f4f9; color:#0f2549; border-radius: 18px 18px 18px 4px; }
+  .bubble-user  { background:#1e3a5f; color:#fff;    border-radius: 18px 18px 4px 18px; }
+  /* 控えめなフェードイン */
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in { animation: fade .6s ease both; }
+    @keyframes fade { from {opacity:0; transform:translateY(8px);} to {opacity:1; transform:none;} }
+    .fade-up-on-scroll { opacity: 0; transform: translateY(16px); transition: opacity .4s ease, transform .4s ease; }
+    .fade-up-on-scroll.in-view { opacity: 1; transform: none; }
+  }
+  /* 集客強化プランの軽い発光 */
+  .glow-standard {
+    box-shadow:
+      0 0 0 1px rgba(38, 67, 99, 0.08),
+      0 20px 50px rgba(38, 67, 99, 0.14),
+      0 0 0 6px rgba(38, 67, 99, 0.05);
+  }
+  /* プレミアム黒×ゴールド */
+  .premium-bg {
+    background:
+      radial-gradient(ellipse at top right, rgba(212, 175, 91, 0.18) 0%, transparent 55%),
+      linear-gradient(180deg, #0d1f3d 0%, #0a172e 100%);
+  }
+  .premium-divider { background: linear-gradient(90deg, transparent, rgba(212, 175, 91, 0.4), transparent); }
+  /* プラン比較表 */
+  .pricing-compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pricing-compare-table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 14px; }
+  .pricing-compare-table th {
+    padding: 14px 12px; text-align: center; font-weight: 700; color: #264363;
+    border-bottom: 2px solid #e8eef6; background: #f5f7fb;
+  }
+  .pricing-compare-table th:first-child { text-align: left; min-width: 11rem; }
+  .pricing-compare-table th.col-popular { background: #eef2f8; color: #0f2549; }
+  .pricing-compare-table td {
+    padding: 12px; text-align: center; color: #5577a3;
+    border-bottom: 1px solid #e8eef6;
+  }
+  .pricing-compare-table td:first-child { text-align: left; color: #264363; font-weight: 500; }
+  .pricing-compare-table td.col-popular { background: rgba(238, 242, 248, 0.6); }
+  .pricing-compare-table tr.section-row td {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.12em; color: #5577a3;
+    padding-top: 1.25rem; background: #fafbfd;
+  }
+  .pricing-compare-table .mark-yes { color: #2d6a4f; font-weight: 700; }
+  .pricing-compare-table .mark-no { color: #a8bcd6; }
+  .header-logo img {
+    height: 48px;
+    width: auto;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .header-logo img {
+      height: 36px;
+    }
+  }
+  .footer-logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
+</style>
+</head>
+<body class="bg-white text-navy-900 font-sans text-[17px] leading-relaxed">
+
+<!-- スキップリンク（アクセシビリティ） -->
+<a href="#top" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-navy-900 focus:text-white focus:rounded">本文へスキップ</a>
+
+<!-- ============================================================
+     HEADER NAV
+============================================================ -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-navy-100">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="#top" class="header-logo flex items-center shrink-0">
+      <img
+        src="assets/logo-header-600.png"
+        srcset="assets/logo-header-600.png 1x, assets/logo-header-1200.png 2x"
+        alt="PanIchie Works"
+        width="300"
+      />
+    </a>
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-navy-700">
+      <a href="#services" class="hover:text-navy-900">サービス</a>
+      <a href="#chatbot"  class="hover:text-navy-900">チャットボット</a>
+      <a href="#pricing"  class="hover:text-navy-900">料金</a>
+      <a href="#flow"     class="hover:text-navy-900">導入の流れ</a>
+      <a href="#why"      class="hover:text-navy-900">選ばれる理由</a>
+      <a href="#faq"      class="hover:text-navy-900">よくある質問</a>
+      <a href="#company"  class="hover:text-navy-900">会社情報</a>
+    </nav>
+    <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-navy-700 hover:bg-navy-800 text-white text-sm font-bold transition">
+      無料で相談する
+    </a>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="top" class="relative overflow-hidden">
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute -top-32 -right-24 w-[480px] h-[480px] rounded-full bg-navy-100/60 blur-3xl"></div>
+    <div class="absolute top-40 -left-24 w-[360px] h-[360px] rounded-full bg-sky2-500/10 blur-3xl"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-20 sm:pb-28 grid lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 fade-in">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-50 border border-navy-100 text-navy-700 text-xs sm:text-sm font-bold mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-navy-500"></span>
+        中小企業・個人事業主のためのAI活用パートナー
+      </div>
+
+      <h1 class="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-navy-900 leading-snug tracking-tight">
+        AIを、もっと身近に。<br />
+        中小企業の<span class="underline-accent">"困った"</span>を支える<br class="hidden sm:block" />
+        AI活用パートナー
+      </h1>
+      <p class="mt-7 text-navy-700 text-base sm:text-lg leading-loose max-w-2xl">
+        難しい専門知識がなくても大丈夫。<br />
+        業務効率化・情報発信・ホームページ運営まで、<br class="hidden sm:block" />
+        <strong class="text-navy-900">実践目線でAI活用をサポート</strong>します。
+      </p>
+
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="#contact" class="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-navy-700 hover:bg-navy-800 text-white font-bold shadow-soft transition">
+          無料で相談してみる
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="#chatbot" class="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white border border-navy-200 hover:border-navy-400 text-navy-800 font-bold transition">
+          AIチャットボット導入を相談
+        </a>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-navy-600">
+        <span class="inline-flex items-center gap-1.5">✔ 初回相談 完全無料</span>
+        <span class="inline-flex items-center gap-1.5">✔ 専門知識ゼロでもOK</span>
+        <span class="inline-flex items-center gap-1.5">✔ しつこい営業なし</span>
+      </div>
+    </div>
+
+    <!-- ヒーロー右側：チャットUIモック -->
+    <div class="lg:col-span-5 fade-in">
+      <div class="bg-white rounded-2xl shadow-soft border border-navy-100 p-5 sm:p-6">
+        <div class="flex items-center gap-2 pb-3 border-b border-navy-100">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          <span class="font-bold text-navy-800 text-sm">AIサポートデスク</span>
+          <span class="ml-auto text-xs text-navy-500">24時間対応</span>
+        </div>
+        <div class="space-y-3 mt-4 text-sm">
+          <div class="flex">
+            <div class="bubble-bot px-4 py-2.5 max-w-[85%]">こんにちは。ご質問はありますか？営業時間や予約も24時間ご案内できます。</div>
+          </div>
+          <div class="flex justify-end">
+            <div class="bubble-user px-4 py-2.5 max-w-[85%]">今日の営業時間を教えてください</div>
+          </div>
+          <div class="flex">
+            <div class="bubble-bot px-4 py-2.5 max-w-[85%]">本日は <strong>11:00〜21:00</strong> 営業です。ご予約はこちらから承れます。</div>
+          </div>
+          <div class="flex justify-end">
+            <div class="bubble-user px-4 py-2.5 max-w-[85%]">19時に2名で予約お願いします</div>
+          </div>
+          <div class="flex">
+            <div class="bubble-bot px-4 py-2.5 max-w-[85%]">承知しました。19:00／2名様で仮押さえし、確認メールをお送りしますね。</div>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-navy-100 flex items-center gap-2 text-xs text-navy-500">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          AIが応答中
+        </div>
+      </div>
+      <p class="text-center text-xs text-navy-500 mt-3">▲ サイトに設置できるAIチャットボットの一例</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+============================================================ -->
+<section id="services" class="bg-paper py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">SERVICES</p>
+      <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900 leading-snug">
+        AI活用支援を中心に、<br />
+        御社の課題に合わせて伴走します
+      </h2>
+      <p class="mt-5 text-navy-700">「AIで何ができるか分からない」段階からご相談OK。お困りごとを伺い、最適な一歩をご提案します。</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- 中心サービス：チャットボット -->
+      <article class="sm:col-span-2 lg:col-span-2 bg-navy-900 text-white rounded-2xl p-7 shadow-soft relative overflow-hidden">
+        <span class="absolute top-4 right-4 text-[10px] font-black tracking-widest px-2 py-1 rounded-full bg-white/15">CORE SERVICE</span>
+        <div class="text-3xl">🤖</div>
+        <h3 class="mt-3 font-display font-black text-xl">AIチャットボット作成支援</h3>
+        <p class="mt-3 text-navy-100 text-sm leading-loose">
+          ホームページに「24時間対応の受付スタッフ」を。問い合わせ・予約・FAQ・LINE連携まで、御社の状況に合わせて設計します。
+        </p>
+        <ul class="mt-4 grid sm:grid-cols-2 gap-2 text-sm text-navy-100">
+          <li>・ホームページ問い合わせ対応</li>
+          <li>・FAQ自動応答</li>
+          <li>・LINE / Instagram 連携</li>
+          <li>・予約受付サポート</li>
+        </ul>
+        <a href="#chatbot" class="inline-flex items-center gap-1.5 mt-6 text-white font-bold text-sm hover:underline">
+          詳しく見る →
+        </a>
+      </article>
+
+      <article class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">💡</div>
+        <h3 class="mt-3 font-display font-bold text-lg text-navy-900">AI導入サポート</h3>
+        <p class="mt-2 text-navy-700 text-sm leading-loose">「何から始めればいい？」の段階から伴走。御社に合うAIの取り入れ方を一緒に整理します。</p>
+      </article>
+
+      <article class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">🧭</div>
+        <h3 class="mt-3 font-display font-bold text-lg text-navy-900">AIエージェント活用支援</h3>
+        <p class="mt-2 text-navy-700 text-sm leading-loose">繰り返し作業をAIに任せる仕組みづくり。社員の手間を減らし、本業に集中できる環境へ。</p>
+      </article>
+
+      <article class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">⚙️</div>
+        <h3 class="mt-3 font-display font-bold text-lg text-navy-900">業務効率化支援</h3>
+        <p class="mt-2 text-navy-700 text-sm leading-loose">見積書・メール・帳票など、日々の作業をAI＋自動化で短縮。月◯時間の削減を目指します。</p>
+      </article>
+
+      <article class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">✍️</div>
+        <h3 class="mt-3 font-display font-bold text-lg text-navy-900">AIライティング支援</h3>
+        <p class="mt-2 text-navy-700 text-sm leading-loose">ブログ・LP・社内文書など、AIを活用した文章作成をサポート。手戻りの少ない型をつくります。</p>
+      </article>
+
+      <article class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">🌐</div>
+        <h3 class="mt-3 font-display font-bold text-lg text-navy-900">ホームページ制作</h3>
+        <p class="mt-2 text-navy-700 text-sm leading-loose">小規模事業者のための、伝わるHP制作。スマホ対応・SEO・お問い合わせ導線まで一括対応。</p>
+      </article>
+
+      <article class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">📣</div>
+        <h3 class="mt-3 font-display font-bold text-lg text-navy-900">SNS活用支援</h3>
+        <p class="mt-2 text-navy-700 text-sm leading-loose">Instagram・LINE公式を中心に、無理なく続けられる運用とAI活用をご提案します。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WORRIES SOLVED
+============================================================ -->
+<section id="worries" class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">PROBLEMS</p>
+      <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900 leading-snug">
+        AIで解決できる、よくある"困った"
+      </h2>
+      <p class="mt-5 text-navy-700">どれかひとつでも当てはまったら、お気軽にご相談ください。</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-navy-50/70 border border-navy-100 rounded-xl p-6">
+        <div class="text-xl mb-2">🤔</div>
+        <h3 class="font-bold text-navy-900">何から始めればいいか分からない</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">専門用語は使わずに、まず"小さな一歩"から整理します。</p>
+      </div>
+      <div class="bg-navy-50/70 border border-navy-100 rounded-xl p-6">
+        <div class="text-xl mb-2">📞</div>
+        <h3 class="font-bold text-navy-900">問い合わせ対応に時間がかかる</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">AIチャットボットで24時間自動対応。本業に集中できます。</p>
+      </div>
+      <div class="bg-navy-50/70 border border-navy-100 rounded-xl p-6">
+        <div class="text-xl mb-2">👥</div>
+        <h3 class="font-bold text-navy-900">人手が足りない</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">単純作業はAIに、人は判断や接客に。役割分担で楽になります。</p>
+      </div>
+      <div class="bg-navy-50/70 border border-navy-100 rounded-xl p-6">
+        <div class="text-xl mb-2">🌐</div>
+        <h3 class="font-bold text-navy-900">ホームページが活用できていない</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">問い合わせ導線とチャットボットで「動くHP」に。</p>
+      </div>
+      <div class="bg-navy-50/70 border border-navy-100 rounded-xl p-6">
+        <div class="text-xl mb-2">🕘</div>
+        <h3 class="font-bold text-navy-900">営業時間外の対応ができない</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">夜間・休日もAIが一次対応。見込み客を逃しません。</p>
+      </div>
+      <div class="bg-navy-50/70 border border-navy-100 rounded-xl p-6">
+        <div class="text-xl mb-2">💸</div>
+        <h3 class="font-bold text-navy-900">大きな予算はかけられない</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">小さく始めて、効果を見ながら広げる設計をご提案します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHATBOT CAPABILITIES
+============================================================ -->
+<section id="chatbot" class="bg-paper py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">AI CHATBOT</p>
+      <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900 leading-snug">
+        AIチャットボットでできること
+      </h2>
+      <p class="mt-5 text-navy-700">「難しいAI」ではなく、<strong class="text-navy-900">"便利な受付スタッフ"</strong>として導入できます。</p>
+    </div>
+
+    <!-- 図解風グリッド -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-14">
+      <div class="bg-white border border-navy-100 rounded-xl p-5 text-center shadow-softer">
+        <div class="text-3xl mb-2">🕐</div>
+        <h3 class="font-bold text-navy-900 text-sm">営業時間案内</h3>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-xl p-5 text-center shadow-softer">
+        <div class="text-3xl mb-2">📅</div>
+        <h3 class="font-bold text-navy-900 text-sm">予約受付</h3>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-xl p-5 text-center shadow-softer">
+        <div class="text-3xl mb-2">❓</div>
+        <h3 class="font-bold text-navy-900 text-sm">よくある質問対応</h3>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-xl p-5 text-center shadow-softer">
+        <div class="text-3xl mb-2">📦</div>
+        <h3 class="font-bold text-navy-900 text-sm">サービス説明</h3>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-xl p-5 text-center shadow-softer">
+        <div class="text-3xl mb-2">📨</div>
+        <h3 class="font-bold text-navy-900 text-sm">お問い合わせ誘導</h3>
+      </div>
+    </div>
+
+    <!-- 3層構造の図解 -->
+    <div class="bg-white rounded-2xl border border-navy-100 shadow-soft p-7 sm:p-10 mb-10">
+      <div class="text-center mb-8">
+        <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">ARCHITECTURE</p>
+        <h3 class="mt-3 font-display font-black text-xl sm:text-2xl text-navy-900">3層構造で、無理なく自然に導入できます</h3>
+        <p class="mt-3 text-sm sm:text-base text-navy-700">「全部AIに任せる」のではなく、<strong>役割分担で段階的に</strong>導入します。</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-4 relative">
+        <!-- 即答層 -->
+        <div class="bg-navy-50/70 border border-navy-100 rounded-2xl p-6 relative">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-black tracking-widest text-navy-500">LAYER 1</span>
+            <span class="text-2xl">⚡</span>
+          </div>
+          <h4 class="font-display font-bold text-lg text-navy-900">① 即答層</h4>
+          <p class="text-sm text-navy-700 mt-2 leading-loose">よくある質問はAIが即座に回答。営業時間・料金・場所・キャンセル規定など。</p>
+          <p class="mt-4 text-xs text-navy-500">例：「営業時間は？」→ 即答</p>
+        </div>
+        <!-- 受付層 -->
+        <div class="bg-navy-50/70 border border-navy-100 rounded-2xl p-6 relative">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-black tracking-widest text-navy-500">LAYER 2</span>
+            <span class="text-2xl">📝</span>
+          </div>
+          <h4 class="font-display font-bold text-lg text-navy-900">② 受付層</h4>
+          <p class="text-sm text-navy-700 mt-2 leading-loose">予約・見積・体験申込などのヒアリングを自動化。構造化データで取得します。</p>
+          <p class="mt-4 text-xs text-navy-500">例：「日時／人数／連絡先」をAIが聞き取り</p>
+        </div>
+        <!-- エスカレ層 -->
+        <div class="bg-navy-900 text-white border border-navy-900 rounded-2xl p-6 relative">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-black tracking-widest text-navy-300">LAYER 3</span>
+            <span class="text-2xl">📣</span>
+          </div>
+          <h4 class="font-display font-bold text-lg">③ エスカレ層</h4>
+          <p class="text-sm text-navy-100 mt-2 leading-loose">AIで対応しきれない案件は、メール／LINE／Slackで担当者へ即通知。</p>
+          <p class="mt-4 text-xs text-navy-300">例：個別相談 → 担当者へエスカレーション</p>
+        </div>
+      </div>
+
+      <p class="text-center text-sm text-navy-600 mt-7">
+        御社の業務に合わせて、<strong class="text-navy-900">どの層から始めるか</strong>を一緒に決められます。
+      </p>
+    </div>
+
+    <!-- Before / After 比較 -->
+    <div class="bg-white rounded-2xl border border-navy-100 shadow-soft p-7 sm:p-10 mb-10">
+      <div class="text-center mb-8">
+        <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">BEFORE / AFTER</p>
+        <h3 class="mt-3 font-display font-black text-xl sm:text-2xl text-navy-900">導入Before&After</h3>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5">
+        <!-- Before -->
+        <div class="border border-navy-100 rounded-2xl p-6 bg-navy-50/40">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-black tracking-widest text-navy-500 bg-white border border-navy-200 px-2 py-1 rounded-full">BEFORE</span>
+            <span class="font-bold text-navy-700">導入前</span>
+          </div>
+          <ul class="space-y-3 text-sm text-navy-700 leading-loose">
+            <li class="flex gap-2"><span>✗</span>営業時間外の問い合わせに返せない</li>
+            <li class="flex gap-2"><span>✗</span>同じ質問への返信に1日◯時間かかる</li>
+            <li class="flex gap-2"><span>✗</span>電話対応で接客が止まる</li>
+            <li class="flex gap-2"><span>✗</span>機会損失が見えない・改善できない</li>
+          </ul>
+        </div>
+        <!-- After -->
+        <div class="border-2 border-navy-700 rounded-2xl p-6 bg-white relative">
+          <div class="absolute -top-3 left-6 inline-flex items-center px-3 py-1 rounded-full bg-navy-700 text-white text-xs font-black tracking-widest">AFTER</div>
+          <div class="flex items-center gap-2 mb-4 mt-2">
+            <span class="font-bold text-navy-900">導入後</span>
+            <span class="text-xs text-navy-500">（小規模事業者の想定値）</span>
+          </div>
+          <ul class="space-y-3 text-sm text-navy-800 leading-loose">
+            <li class="flex gap-2"><span class="text-emerald-600 font-black">✓</span>24時間対応で <strong>機会損失ゼロ</strong></li>
+            <li class="flex gap-2"><span class="text-emerald-600 font-black">✓</span>問い合わせ対応工数 <strong>月◯時間削減</strong></li>
+            <li class="flex gap-2"><span class="text-emerald-600 font-black">✓</span>電話本数が減って <strong>接客に集中</strong></li>
+            <li class="flex gap-2"><span class="text-emerald-600 font-black">✓</span>会話ログから <strong>改善ヒント</strong>が見える</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center text-xs text-navy-500 mt-6">※ 実数値は業種・規模により異なります。無料相談時に試算します。</p>
+    </div>
+
+    <!-- メリット -->
+    <div class="bg-white rounded-2xl border border-navy-100 shadow-soft p-7 sm:p-10">
+      <h3 class="font-display font-black text-xl text-navy-900 text-center mb-8">導入することで、こんな変化があります</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="flex gap-3"><span class="text-navy-700 font-black">01</span>
+          <div><p class="font-bold text-navy-900">24時間対応できる</p><p class="text-sm text-navy-700 mt-1">夜間・休日でも自動で一次対応。</p></div></div>
+        <div class="flex gap-3"><span class="text-navy-700 font-black">02</span>
+          <div><p class="font-bold text-navy-900">問い合わせ負担を軽減</p><p class="text-sm text-navy-700 mt-1">よくある質問はAIが対応。</p></div></div>
+        <div class="flex gap-3"><span class="text-navy-700 font-black">03</span>
+          <div><p class="font-bold text-navy-900">顧客対応の効率化</p><p class="text-sm text-navy-700 mt-1">本当に必要な対応に集中できます。</p></div></div>
+        <div class="flex gap-3"><span class="text-navy-700 font-black">04</span>
+          <div><p class="font-bold text-navy-900">見込み客を逃しにくい</p><p class="text-sm text-navy-700 mt-1">返信遅れによる機会損失を防止。</p></div></div>
+        <div class="flex gap-3"><span class="text-navy-700 font-black">05</span>
+          <div><p class="font-bold text-navy-900">初心者でも導入しやすい</p><p class="text-sm text-navy-700 mt-1">難しい設定は不要、こちらで設計します。</p></div></div>
+        <div class="flex gap-3"><span class="text-navy-700 font-black">06</span>
+          <div><p class="font-bold text-navy-900">低コストで始められる</p><p class="text-sm text-navy-700 mt-1">小さく始めて、効果を見ながら拡張。</p></div></div>
+      </div>
+      <div class="text-center mt-9">
+        <a href="#contact" class="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-navy-700 hover:bg-navy-800 text-white font-bold shadow-soft transition">
+          AIチャットボット導入を相談 →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INDUSTRY EXAMPLES
+============================================================ -->
+<section id="industries" class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">USE CASES</p>
+      <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900 leading-snug">
+        業種別のAIチャットボット活用例
+      </h2>
+      <p class="mt-5 text-navy-700">小規模事業者でも、こんな形で活用できます。</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-lg bg-navy-50 grid place-items-center text-xl">🍽️</span>
+          <h3 class="font-display font-bold text-lg text-navy-900">飲食店</h3>
+        </div>
+        <ul class="text-sm text-navy-700 space-y-1 leading-loose">
+          <li>・営業時間・定休日の案内</li>
+          <li>・席予約の一次受付</li>
+          <li>・メニュー・アレルゲンの説明</li>
+        </ul>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-lg bg-navy-50 grid place-items-center text-xl">💇</span>
+          <h3 class="font-display font-bold text-lg text-navy-900">美容室・サロン</h3>
+        </div>
+        <ul class="text-sm text-navy-700 space-y-1 leading-loose">
+          <li>・予約・空き状況案内</li>
+          <li>・メニュー・料金のご案内</li>
+          <li>・LINE連携でリピート促進</li>
+        </ul>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-lg bg-navy-50 grid place-items-center text-xl">🏠</span>
+          <h3 class="font-display font-bold text-lg text-navy-900">不動産</h3>
+        </div>
+        <ul class="text-sm text-navy-700 space-y-1 leading-loose">
+          <li>・物件問い合わせの一次対応</li>
+          <li>・内見予約の受付</li>
+          <li>・条件ヒアリングの自動化</li>
+        </ul>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-lg bg-navy-50 grid place-items-center text-xl">🎓</span>
+          <h3 class="font-display font-bold text-lg text-navy-900">教室・スクール</h3>
+        </div>
+        <ul class="text-sm text-navy-700 space-y-1 leading-loose">
+          <li>・体験申込の受付</li>
+          <li>・コース・料金のご案内</li>
+          <li>・よくある質問の自動応答</li>
+        </ul>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-lg bg-navy-50 grid place-items-center text-xl">🏗️</span>
+          <h3 class="font-display font-bold text-lg text-navy-900">工務店・建築</h3>
+        </div>
+        <ul class="text-sm text-navy-700 space-y-1 leading-loose">
+          <li>・見積依頼の一次ヒアリング</li>
+          <li>・施工事例・対応エリア案内</li>
+          <li>・現地調査予約の受付</li>
+        </ul>
+      </div>
+      <div class="bg-navy-50/70 border border-navy-100 rounded-2xl p-6 grid place-items-center text-center">
+        <div>
+          <p class="text-sm text-navy-700">他の業種でもご相談OK</p>
+          <a href="#contact" class="inline-flex items-center gap-1.5 mt-3 text-navy-800 font-bold hover:underline">
+            ご相談はこちら →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 事業規模別の活用パターン -->
+    <div class="mt-14 bg-white border border-navy-100 rounded-2xl shadow-soft overflow-hidden">
+      <div class="px-6 py-5 bg-navy-50 border-b border-navy-100">
+        <h3 class="font-display font-black text-lg text-navy-900">事業規模別の活用パターン</h3>
+        <p class="text-sm text-navy-600 mt-1">人手の余裕に合わせて、無理なく始められます。</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-paper text-left text-navy-500">
+              <th class="px-5 py-3 font-bold whitespace-nowrap">事業規模</th>
+              <th class="px-5 py-3 font-bold whitespace-nowrap">想定用途</th>
+              <th class="px-5 py-3 font-bold whitespace-nowrap">期待効果</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-navy-100">
+            <tr>
+              <td class="px-5 py-4 font-bold text-navy-900 whitespace-nowrap">1人事業主</td>
+              <td class="px-5 py-4 text-navy-700">営業時間外の一次対応</td>
+              <td class="px-5 py-4 text-navy-700">機会損失ゼロ・睡眠時間の確保</td>
+            </tr>
+            <tr>
+              <td class="px-5 py-4 font-bold text-navy-900 whitespace-nowrap">家族経営店舗</td>
+              <td class="px-5 py-4 text-navy-700">予約受付の自動化</td>
+              <td class="px-5 py-4 text-navy-700">電話対応で接客が止まらない</td>
+            </tr>
+            <tr>
+              <td class="px-5 py-4 font-bold text-navy-900 whitespace-nowrap">数名スタッフ</td>
+              <td class="px-5 py-4 text-navy-700">FAQで電話本数を減らす</td>
+              <td class="px-5 py-4 text-navy-700">接客クオリティの向上</td>
+            </tr>
+            <tr>
+              <td class="px-5 py-4 font-bold text-navy-900 whitespace-nowrap">個人サロン</td>
+              <td class="px-5 py-4 text-navy-700">LINE連携でリピート促進</td>
+              <td class="px-5 py-4 text-navy-700">友だち追加→クーポン配布の動線</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING（HP制作プラン｜Light / Standard / Premium）
+============================================================ -->
+<section id="pricing" class="bg-white py-24 sm:py-32">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <!-- セクションヘッダー -->
+    <div class="text-center max-w-2xl mx-auto mb-16 fade-up-on-scroll">
+      <p class="inline-block text-xs font-bold tracking-[0.2em] text-navy-500 bg-navy-50 px-3 py-1 rounded-full">PRICING</p>
+      <h2 class="mt-5 font-display font-black text-3xl sm:text-4xl text-navy-900 leading-snug tracking-tight">
+        料金プラン
+      </h2>
+      <p class="mt-6 text-navy-700 leading-loose">
+        ご予算や目的に合わせて、<br class="sm:hidden" />
+        最適なホームページ制作をご提案します。
+      </p>
+      <span class="inline-flex items-center gap-1.5 mt-5 text-xs font-bold text-navy-700 bg-white border border-navy-200 px-3 py-1 rounded-full">
+        ✔ 初回相談・お見積り 完全無料
+      </span>
+    </div>
+
+    <!-- 目安の注意 -->
+    <div class="max-w-3xl mx-auto mb-12 fade-up-on-scroll">
+      <div class="bg-navy-50/80 border border-navy-100 rounded-2xl px-5 py-4 sm:px-6 sm:py-5 text-sm text-navy-700 leading-loose">
+        <strong class="text-navy-900">表示は目安です。</strong>
+        建物の状態・ページ数・機能によって変動します。「予算◯円で何ができますか？」というご相談も大歓迎です。
+      </div>
+    </div>
+
+    <!-- 3カラム（SPは集客強化を先頭表示） -->
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8 md:items-stretch">
+
+      <!-- 🥉 START PLAN（SPで2番目） -->
+      <article class="order-2 md:order-1 group bg-white border border-navy-100 rounded-3xl p-8 sm:p-9 shadow-softer hover:-translate-y-1 hover:shadow-soft transition duration-300 flex flex-col fade-up-on-scroll">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[11px] font-black tracking-[0.22em] text-navy-500">START PLAN</span>
+          <span class="inline-flex w-10 h-10 rounded-full bg-navy-50 grid place-items-center text-navy-500 text-lg">🥉</span>
+        </div>
+        <h3 class="font-display font-black text-2xl text-navy-900 leading-tight">スタートプラン</h3>
+        <p class="text-sm text-navy-600 mt-3 leading-loose">まずはホームページを持ちたい方へ。</p>
+
+        <div class="mt-7 pb-7 border-b border-navy-100">
+          <p class="font-display font-black text-4xl text-navy-900 tracking-tight">¥198,000</p>
+          <p class="text-xs text-navy-500 mt-1">初期費用（税込・目安）</p>
+        </div>
+
+        <ul class="mt-7 space-y-3 text-[15px] text-navy-800 flex-1">
+          <li class="flex gap-2.5"><span class="text-navy-400 mt-0.5">✓</span>1〜3ページ構成</li>
+          <li class="flex gap-2.5"><span class="text-navy-400 mt-0.5">✓</span>スマートフォン対応</li>
+          <li class="flex gap-2.5"><span class="text-navy-400 mt-0.5">✓</span>GoogleMap連携</li>
+          <li class="flex gap-2.5"><span class="text-navy-400 mt-0.5">✓</span>Instagram連携</li>
+          <li class="flex gap-2.5"><span class="text-navy-400 mt-0.5">✓</span>テンプレート構成</li>
+          <li class="flex gap-2.5"><span class="text-navy-400 mt-0.5">✓</span>修正対応 2回まで</li>
+        </ul>
+
+        <a href="#contact" class="mt-8 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white border border-navy-300 hover:bg-navy-50 hover:border-navy-500 text-navy-900 font-bold text-base transition">
+          まずは相談する
+        </a>
+      </article>
+
+      <!-- 🥈 GROWTH PLAN（SPで先頭・強調） -->
+      <article class="order-1 md:order-2 group relative bg-white border-2 border-navy-700 rounded-3xl p-8 sm:p-10 glow-standard md:-my-2 md:scale-[1.03] hover:-translate-y-1 transition duration-300 flex flex-col fade-up-on-scroll">
+        <!-- 人気No.1 バッジ -->
+        <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-navy-900 text-white text-[11px] font-black tracking-[0.18em] shadow-soft">
+          <span class="text-amber-300">★</span> 人気 No.1
+        </span>
+
+        <div class="flex items-center justify-between mb-4 mt-2">
+          <span class="text-[11px] font-black tracking-[0.22em] text-navy-700">GROWTH PLAN</span>
+          <span class="inline-flex w-10 h-10 rounded-full bg-navy-700 text-white grid place-items-center text-lg">🥈</span>
+        </div>
+        <h3 class="font-display font-black text-2xl sm:text-[26px] text-navy-900 leading-tight">集客強化プラン</h3>
+        <p class="text-sm text-navy-700 mt-3 leading-loose">集客まで考えた、いちばん選ばれるプラン。</p>
+
+        <div class="mt-7 pb-7 border-b border-navy-200">
+          <p class="font-display font-black text-[40px] sm:text-[44px] text-navy-900 tracking-tight">¥298,000<small class="text-lg font-bold text-navy-500 ml-1">〜</small></p>
+          <p class="text-xs text-navy-500 mt-1">初期費用（税込・目安）</p>
+        </div>
+
+        <ul class="mt-7 space-y-3 text-[15px] text-navy-900 flex-1">
+          <li class="flex gap-2.5"><span class="text-navy-700 font-black mt-0.5">✓</span>5〜7ページ構成</li>
+          <li class="flex gap-2.5"><span class="text-navy-700 font-black mt-0.5">✓</span>SEO基本設定（メタ・見出し）</li>
+          <li class="flex gap-2.5"><span class="text-navy-700 font-black mt-0.5">✓</span>GoogleMap連携</li>
+          <li class="flex gap-2.5"><span class="text-navy-700 font-black mt-0.5">✓</span>Instagram連携</li>
+          <li class="flex gap-2.5"><span class="text-navy-700 font-black mt-0.5">✓</span>お問い合わせフォーム</li>
+          <li class="flex gap-2.5"><span class="text-navy-700 font-black mt-0.5">✓</span>写真調整・トリミング</li>
+          <li class="flex gap-2.5"><span class="text-navy-700 font-black mt-0.5">✓</span>修正対応 5回まで</li>
+        </ul>
+
+        <a href="#contact" class="mt-8 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-navy-700 hover:bg-navy-800 text-white font-bold text-base shadow-soft transition">
+          おすすめプランを見る →
+        </a>
+      </article>
+
+      <!-- 🥇 PREMIUM PLAN（黒×ゴールド） -->
+      <article class="order-3 md:order-3 group relative rounded-3xl p-8 sm:p-9 premium-bg text-white hover:-translate-y-1 transition duration-300 flex flex-col overflow-hidden fade-up-on-scroll">
+        <div class="absolute top-0 left-0 right-0 h-px premium-divider"></div>
+
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[11px] font-black tracking-[0.22em] text-gold-300">PREMIUM PLAN</span>
+          <span class="inline-flex w-10 h-10 rounded-full bg-gold-400/15 border border-gold-400/40 text-gold-300 grid place-items-center text-lg">🥇</span>
+        </div>
+        <h3 class="font-display font-black text-2xl text-white leading-tight">プレミアムプラン</h3>
+        <p class="text-sm text-navy-100 mt-3 leading-loose">本格的な集客・採用強化まで見据えた完全オーダー。</p>
+
+        <div class="mt-7 pb-7 border-b border-gold-400/25">
+          <p class="font-display font-black text-4xl text-white tracking-tight">¥498,000<small class="text-lg font-bold text-gold-300 ml-1">〜</small></p>
+          <p class="text-xs text-navy-200 mt-1">初期費用（税込・目安）</p>
+        </div>
+
+        <ul class="mt-7 space-y-3 text-[15px] text-navy-50 flex-1">
+          <li class="flex gap-2.5"><span class="text-gold-300 mt-0.5">✓</span>完全オリジナルデザイン</li>
+          <li class="flex gap-2.5"><span class="text-gold-300 mt-0.5">✓</span><strong class="text-gold-300">AIチャットボット搭載</strong></li>
+          <li class="flex gap-2.5"><span class="text-gold-300 mt-0.5">✓</span>SEO強化（地域×業種）</li>
+          <li class="flex gap-2.5"><span class="text-gold-300 mt-0.5">✓</span>問い合わせ導線の設計</li>
+          <li class="flex gap-2.5"><span class="text-gold-300 mt-0.5">✓</span>採用ページ制作</li>
+          <li class="flex gap-2.5"><span class="text-gold-300 mt-0.5">✓</span>LP（ランディングページ）対応</li>
+        </ul>
+
+        <a href="#contact" class="mt-8 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-gold-400 hover:bg-gold-300 text-navy-900 font-bold text-base transition">
+          本格相談はこちら →
+        </a>
+      </article>
+    </div>
+
+    <!-- プラン比較表 -->
+    <div class="mt-20 sm:mt-24 fade-up-on-scroll">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h3 class="font-display font-black text-xl sm:text-2xl text-navy-900">プラン比較表</h3>
+        <p class="mt-3 text-sm text-navy-600 leading-relaxed">どのプランに何が含まれるか、一目で分かります。</p>
+      </div>
+      <div class="pricing-compare-wrap bg-white border border-navy-100 rounded-2xl shadow-softer">
+        <table class="pricing-compare-table" aria-label="ホームページ制作プラン比較表">
+          <thead>
+            <tr>
+              <th scope="col">内容</th>
+              <th scope="col">スタート</th>
+              <th scope="col" class="col-popular">集客強化</th>
+              <th scope="col">プレミアム</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="section-row"><td colspan="4">▶ 基本構成</td></tr>
+            <tr>
+              <td>ページ数</td>
+              <td>1〜3P</td>
+              <td class="col-popular">5〜7P</td>
+              <td>オリジナル</td>
+            </tr>
+            <tr>
+              <td>スマートフォン対応</td>
+              <td><span class="mark-yes">✓</span></td>
+              <td class="col-popular"><span class="mark-yes">✓</span></td>
+              <td><span class="mark-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>GoogleMap連携</td>
+              <td><span class="mark-yes">✓</span></td>
+              <td class="col-popular"><span class="mark-yes">✓</span></td>
+              <td><span class="mark-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Instagram連携</td>
+              <td><span class="mark-yes">✓</span></td>
+              <td class="col-popular"><span class="mark-yes">✓</span></td>
+              <td><span class="mark-yes">✓</span></td>
+            </tr>
+            <tr class="section-row"><td colspan="4">▶ 集客・問い合わせ</td></tr>
+            <tr>
+              <td>SEO基本設定</td>
+              <td><span class="mark-no">—</span></td>
+              <td class="col-popular"><span class="mark-yes">✓</span></td>
+              <td>強化版</td>
+            </tr>
+            <tr>
+              <td>お問い合わせフォーム</td>
+              <td><span class="mark-no">—</span></td>
+              <td class="col-popular"><span class="mark-yes">✓</span></td>
+              <td><span class="mark-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>問い合わせ導線の設計</td>
+              <td><span class="mark-no">—</span></td>
+              <td class="col-popular"><span class="mark-no">—</span></td>
+              <td><span class="mark-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>AIチャットボット</td>
+              <td><span class="mark-no">—</span></td>
+              <td class="col-popular"><span class="mark-no">—</span></td>
+              <td><span class="mark-yes">✓</span></td>
+            </tr>
+            <tr class="section-row"><td colspan="4">▶ 制作サポート</td></tr>
+            <tr>
+              <td>修正対応（制作時）</td>
+              <td>2回まで</td>
+              <td class="col-popular">5回まで</td>
+              <td>要相談</td>
+            </tr>
+            <tr>
+              <td>初期費用（目安・税込）</td>
+              <td><strong class="text-navy-900">¥198,000</strong></td>
+              <td class="col-popular"><strong class="text-navy-900">¥298,000〜</strong></td>
+              <td><strong class="text-navy-900">¥498,000〜</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center text-xs text-navy-500 mt-4">✓ = 標準含む｜— = 対象外｜強化版・要相談は内容によりご提案</p>
+    </div>
+
+    <!-- オプション（後から追加も可） -->
+    <div class="mt-16 sm:mt-20 fade-up-on-scroll">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h3 class="font-display font-black text-xl sm:text-2xl text-navy-900">オプション追加</h3>
+        <p class="mt-3 text-sm text-navy-600">「これだけ足したい」もOK。プランに後から追加できます。</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white border border-navy-100 rounded-xl p-5 shadow-softer">
+          <p class="text-lg mb-2">💬</p>
+          <p class="font-bold text-navy-900 text-sm">LINE公式連動</p>
+          <p class="font-display font-black text-navy-800 mt-2">+¥30,000〜</p>
+          <p class="text-xs text-navy-600 mt-2 leading-relaxed">HPからLINEへ誘導し、リピートにつなげます。</p>
+        </div>
+        <div class="bg-white border border-navy-100 rounded-xl p-5 shadow-softer">
+          <p class="text-lg mb-2">🤖</p>
+          <p class="font-bold text-navy-900 text-sm">AIチャット追加</p>
+          <p class="font-display font-black text-navy-800 mt-2">+¥30,000〜</p>
+          <p class="text-xs text-navy-600 mt-2 leading-relaxed">既存HPにチャットボットを後付け。</p>
+        </div>
+        <div class="bg-white border border-navy-100 rounded-xl p-5 shadow-softer">
+          <p class="text-lg mb-2">🔍</p>
+          <p class="font-bold text-navy-900 text-sm">SEO強化</p>
+          <p class="font-display font-black text-navy-800 mt-2">+¥20,000〜</p>
+          <p class="text-xs text-navy-600 mt-2 leading-relaxed">地域×業種キーワード設計など。</p>
+        </div>
+        <div class="bg-white border border-navy-100 rounded-xl p-5 shadow-softer">
+          <p class="text-lg mb-2">⚙️</p>
+          <p class="font-bold text-navy-900 text-sm">業務自動化連携</p>
+          <p class="font-display font-black text-navy-800 mt-2">+¥20,000〜/月</p>
+          <p class="text-xs text-navy-600 mt-2 leading-relaxed">フォーム連携・返信ドラフトなど。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 月額サポートへの導線 -->
+    <div class="mt-14 text-center fade-up-on-scroll">
+      <p class="text-navy-700 text-sm sm:text-base leading-loose">
+        公開後の更新・改善は、<strong class="text-navy-900">ホームページ運用サポート</strong>（月額）でも伴走できます。
+      </p>
+      <a href="#maintenance" class="inline-flex items-center gap-2 mt-4 text-navy-800 font-bold hover:underline">
+        月額サポートの料金を見る →
+      </a>
+    </div>
+
+    <p class="text-center text-xs text-navy-500 mt-10">※ 無料相談時に、目的とご予算に合わせて最適な組み合わせをご提案します。</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAINTENANCE
+============================================================ -->
+<section id="maintenance" class="bg-paper py-24 sm:py-32">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 fade-up-on-scroll">
+      <p class="inline-block text-xs font-bold tracking-[0.2em] text-navy-500 bg-navy-50 px-3 py-1 rounded-full">SUPPORT</p>
+      <h2 class="mt-5 font-display font-black text-3xl sm:text-4xl text-navy-900 leading-snug tracking-tight">
+        ホームページ運用サポート
+      </h2>
+      <p class="mt-6 text-navy-700 leading-loose">
+        ホームページは、作って終わりではありません。<br />
+        更新や改善の相談、AIや導線の見直しまで含めて、<br class="hidden sm:block" />
+        安心して相談できる運用サポートをご用意しています。
+      </p>
+    </div>
+
+    <!-- 伴走サポート比較表 -->
+    <div class="bg-white border border-navy-100 rounded-3xl shadow-softer overflow-hidden fade-up-on-scroll">
+      <div class="hidden sm:grid sm:grid-cols-12 bg-navy-50/70 border-b border-navy-100 px-6 py-4 text-[12px] font-black tracking-[0.18em] text-navy-500">
+        <div class="sm:col-span-4">プラン</div>
+        <div class="sm:col-span-3">月額（税込）</div>
+        <div class="sm:col-span-5">主な伴走内容</div>
+      </div>
+
+      <div class="divide-y divide-navy-100">
+        <!-- スタート -->
+        <div class="grid sm:grid-cols-12 px-6 py-5 sm:py-6 items-center gap-3 sm:gap-0">
+          <div class="sm:col-span-4 flex items-center gap-3">
+            <span class="inline-flex w-9 h-9 rounded-full bg-navy-50 grid place-items-center text-base">🥉</span>
+            <div>
+              <p class="font-display font-bold text-navy-900">スタート</p>
+              <p class="text-xs text-navy-500 sm:hidden">月額</p>
+            </div>
+          </div>
+          <div class="sm:col-span-3 font-display font-black text-2xl text-navy-900">¥7,700</div>
+          <div class="sm:col-span-5 text-sm text-navy-700 leading-loose">
+            サーバー・ドメイン管理／ホームページ運用サポート／月2回の更新または軽微修正
+          </div>
+        </div>
+        <!-- 集客強化 -->
+        <div class="grid sm:grid-cols-12 px-6 py-5 sm:py-6 items-center gap-3 sm:gap-0 bg-navy-50/40">
+          <div class="sm:col-span-4 flex items-center gap-3">
+            <span class="inline-flex w-9 h-9 rounded-full bg-navy-700 text-white grid place-items-center text-base">🥈</span>
+            <div>
+              <p class="font-display font-bold text-navy-900">集客強化</p>
+              <p class="text-xs text-navy-500 sm:hidden">月額</p>
+            </div>
+            <span class="text-[10px] font-black tracking-widest text-navy-700 bg-white border border-navy-200 px-2 py-0.5 rounded-full">人気</span>
+          </div>
+          <div class="sm:col-span-3 font-display font-black text-2xl text-navy-900">¥13,200</div>
+          <div class="sm:col-span-5 text-sm text-navy-700 leading-loose">
+            月5回更新／軽微修正／ホームページ運用サポート／バックアップ／簡易分析レポート／AI活用相談／LINE導線改善相談／集客改善アドバイス
+          </div>
+        </div>
+        <!-- プレミアム -->
+        <div class="grid sm:grid-cols-12 px-6 py-5 sm:py-6 items-center gap-3 sm:gap-0">
+          <div class="sm:col-span-4 flex items-center gap-3">
+            <span class="inline-flex w-9 h-9 rounded-full bg-navy-900 text-gold-300 grid place-items-center text-base">🥇</span>
+            <div>
+              <p class="font-display font-bold text-navy-900">プレミアム</p>
+              <p class="text-xs text-navy-500 sm:hidden">月額</p>
+            </div>
+          </div>
+          <div class="sm:col-span-3 font-display font-black text-2xl text-navy-900">¥44,000<small class="text-sm font-bold text-navy-500">〜</small></div>
+          <div class="sm:col-span-5 text-sm text-navy-700 leading-loose">
+            上記＋AIチャットボット運用／月次改善ミーティング／導線改善提案／採用・集客まわりの改善相談
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-navy-500 mt-6">※ 価格はサーバー管理だけでなく、更新・改善・AIや導線の相談まで含む目安です。単発の修正や更新も都度ご相談いただけます。</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     GLOSSARY（用語説明エリア）
+============================================================ -->
+<section id="glossary" class="py-24 sm:py-32">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12 fade-up-on-scroll">
+      <p class="inline-block text-xs font-bold tracking-[0.2em] text-navy-500 bg-navy-50 px-3 py-1 rounded-full">GLOSSARY</p>
+      <h2 class="mt-5 font-display font-black text-2xl sm:text-3xl text-navy-900 leading-snug tracking-tight">
+        ホームページの用語、やさしく解説します
+      </h2>
+      <p class="mt-5 text-navy-700">「よく聞くけど、結局なに？」を一行で。</p>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-5 fade-up-on-scroll">
+      <div class="bg-white border border-navy-100 rounded-2xl p-7 shadow-softer">
+        <div class="inline-flex w-11 h-11 rounded-xl bg-navy-50 grid place-items-center text-xl mb-4">🗄️</div>
+        <h3 class="font-display font-bold text-lg text-navy-900">サーバー</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">ホームページをネット上に公開するための"置き場所"です。</p>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-7 shadow-softer">
+        <div class="inline-flex w-11 h-11 rounded-xl bg-navy-50 grid place-items-center text-xl mb-4">🔗</div>
+        <h3 class="font-display font-bold text-lg text-navy-900">ドメイン</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">「◯◯.com」のような、ホームページの"住所"です。</p>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-7 shadow-softer">
+        <div class="inline-flex w-11 h-11 rounded-xl bg-navy-50 grid place-items-center text-xl mb-4">🛠️</div>
+        <h3 class="font-display font-bold text-lg text-navy-900">ホームページ運用サポート</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">安全性の維持に加えて、更新や改善の相談まで含む継続サポートです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA JUNCTION（LINE / Form / Instagram）
+============================================================ -->
+<section id="cta-junction" class="bg-navy-900 text-white py-20 sm:py-24">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center fade-up-on-scroll">
+    <p class="inline-block text-xs font-bold tracking-[0.2em] text-navy-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full">CONTACT</p>
+    <h2 class="mt-5 font-display font-black text-2xl sm:text-3xl leading-snug">まずはお気軽にご相談ください。</h2>
+    <p class="mt-5 text-navy-200 leading-loose">電話・メールが苦手な方はLINEやInstagram DMでもOK。<br class="hidden sm:block" />お話を伺うだけでも大丈夫です。</p>
+
+    <div class="mt-9 grid sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto">
+      <a href="https://line.me/ti/p/3dR3H8UBtG" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full bg-[#06C755] hover:bg-[#05b54c] text-white font-bold transition">
+        <span aria-hidden="true">💬</span> LINEで相談
+      </a>
+      <a href="#contact"
+         class="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full bg-white hover:bg-navy-100 text-navy-900 font-bold transition">
+        <span aria-hidden="true">📩</span> お問い合わせ
+      </a>
+      <a href="https://www.instagram.com/panichie.art/" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-orange-400 hover:opacity-90 text-white font-bold transition">
+        <span aria-hidden="true">📸</span> Instagram DM
+      </a>
+    </div>
+
+    <p class="mt-6 text-xs text-navy-300">初回相談 完全無料／しつこい営業なし／断ってもOK</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     DEMO WORKS（制作デモサイト）
+============================================================ -->
+<section id="works" class="bg-paper py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 fade-up-on-scroll">
+      <p class="inline-block text-xs font-bold tracking-[0.2em] text-navy-500 bg-navy-50 px-3 py-1 rounded-full">WORKS</p>
+      <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900 leading-snug">
+        制作デモサイトのご紹介
+      </h2>
+      <p class="mt-5 text-navy-700 leading-loose">
+        実際の案件を想定して作成した、<br class="sm:hidden" />
+        ポートフォリオ用のデモサイトです。
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+      <!-- カフェサイト -->
+      <article class="bg-white border border-navy-100 rounded-2xl shadow-softer overflow-hidden fade-up-on-scroll">
+        <div class="h-40 sm:h-48 bg-navy-900/80 relative">
+          <div class="absolute inset-0 bg-cover bg-center opacity-60" style="background-image: radial-gradient(circle at 0 0, rgba(255,255,255,0.18), transparent 55%), radial-gradient(circle at 100% 100%, rgba(255,255,255,0.08), transparent 60%);"></div>
+          <div class="relative h-full flex flex-col justify-between px-5 py-4 text-white">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold tracking-[0.16em] uppercase bg-white/10 border border-white/15 px-3 py-1 rounded-full">
+                <span class="text-[13px]">☕</span> CAFE
+              </span>
+              <span class="text-[11px] font-bold text-white/80">DEMO</span>
+            </div>
+            <div>
+              <p class="text-xs text-white/80 mb-1">カフェ・飲食店向け</p>
+              <h3 class="font-display font-black text-xl leading-snug">KOMOREBI COFFEE</h3>
+              <p class="mt-1 text-xs text-white/80">コンセプト・メニュー・ギャラリー・アクセスを1ページで整理した自家焙煎カフェのデモサイト。</p>
+            </div>
+          </div>
+        </div>
+        <div class="px-5 py-5 space-y-3 text-sm text-navy-700">
+          <p class="leading-loose">
+            木と緑を基調にしたデザインで、<strong>「居心地の良さ」</strong>と<strong>「手作り感」</strong>が伝わる構成にしています。
+            メニューや営業時間、アクセス情報までをコンパクトにまとめた例です。
+          </p>
+          <div class="flex flex-wrap gap-2 text-[11px]">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-navy-50 text-navy-700 font-bold">単一ページ構成</span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-navy-50 text-navy-700 font-bold">飲食店向け</span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-navy-50 text-navy-700 font-bold">予約導線</span>
+          </div>
+          <div class="pt-2 flex justify-between items-center">
+            <a href="https://komorebi-coffee.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-navy-800 font-bold hover:underline">
+              サイトを開く →
+            </a>
+            <span class="text-[11px] text-navy-500">※ ポートフォリオ用デモサイト</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 塗装会社サイト -->
+      <article class="bg-white border border-navy-100 rounded-2xl shadow-softer overflow-hidden fade-up-on-scroll">
+        <div class="h-40 sm:h-48 bg-navy-900/90 relative">
+          <div class="absolute inset-0 bg-cover bg-center opacity-55" style="background-image: radial-gradient(circle at 0 0, rgba(255,255,255,0.20), transparent 55%), radial-gradient(circle at 100% 100%, rgba(212,175,91,0.14), transparent 60%);"></div>
+          <div class="relative h-full flex flex-col justify-between px-5 py-4 text-white">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold tracking-[0.16em] uppercase bg-white/10 border border-white/15 px-3 py-1 rounded-full">
+                <span class="text-[13px]">🎨</span> PAINT
+              </span>
+              <span class="text-[11px] font-bold text-white/80">DEMO</span>
+            </div>
+            <div>
+              <p class="text-xs text-white/80 mb-1">外壁塗装・リフォーム業向け</p>
+              <h3 class="font-display font-black text-xl leading-snug">カラーズペイント</h3>
+              <p class="mt-1 text-xs text-white/80">サービス・施工事例・料金プラン・お客様の声を1ページで網羅した外壁塗装専門店のデモサイト。</p>
+            </div>
+          </div>
+        </div>
+        <div class="px-5 py-5 space-y-3 text-sm text-navy-700">
+          <p class="leading-loose">
+            <strong>「実績・料金・安心感」</strong>が一度に伝わるように、施工事例や料金プラン、よくある質問までを
+            流れで読めるレイアウトにしています。
+          </p>
+          <div class="flex flex-wrap gap-2 text-[11px]">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-navy-50 text-navy-700 font-bold">ワンページLP構成</span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-navy-50 text-navy-700 font-bold">外壁塗装向け</span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-navy-50 text-navy-700 font-bold">料金表・事例付き</span>
+          </div>
+          <div class="pt-2 flex justify-between items-center">
+            <a href="https://ornate-salamander-6e0471.netlify.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-navy-800 font-bold hover:underline">
+              サイトを開く →
+            </a>
+            <span class="text-[11px] text-navy-500">※ ポートフォリオ用デモサイト</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FLOW
+============================================================ -->
+<section id="flow" class="bg-paper py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">FLOW</p>
+      <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900 leading-snug">
+        サービス導入の流れ
+      </h2>
+      <p class="mt-5 text-navy-700">初めての方でも安心。4ステップで進めます。</p>
+    </div>
+
+    <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <li class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-navy-500 font-display font-black text-2xl">STEP 01</div>
+        <h3 class="mt-2 font-bold text-navy-900">無料相談（30分）</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">フォーム・LINE・メールでお気軽にご連絡ください。お話を伺うだけでもOKです。</p>
+      </li>
+      <li class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-navy-500 font-display font-black text-2xl">STEP 02</div>
+        <h3 class="mt-2 font-bold text-navy-900">ヒアリング・ご提案</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">現状の課題を整理し、最適なプランとお見積もりをご提示します。</p>
+      </li>
+      <li class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-navy-500 font-display font-black text-2xl">STEP 03</div>
+        <h3 class="mt-2 font-bold text-navy-900">設計・制作</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">進捗をこまめにご報告しながら、AIチャットボットやHPを構築します。</p>
+      </li>
+      <li class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-navy-500 font-display font-black text-2xl">STEP 04</div>
+        <h3 class="mt-2 font-bold text-navy-900">導入・サポート</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">納品後も伴走サポート。改善や追加機能のご相談もお気軽に。</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY US
+============================================================ -->
+<section id="why" class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">WHY US</p>
+      <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900 leading-snug">
+        PanIchie Works が選ばれる理由
+      </h2>
+      <p class="mt-5 text-navy-700">スタートアップ感より、"伴走型"を大切にしています。</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">🧰</div>
+        <h3 class="mt-3 font-bold text-navy-900">現場のリアルな経験</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">50代会社員として培ってきた実務感覚で、机上の空論にならない提案をします。</p>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">🔰</div>
+        <h3 class="mt-3 font-bold text-navy-900">AI初心者の目線で説明</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">「自分も最初は分からなかった」立場から、噛み砕いてお伝えします。</p>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">🗣️</div>
+        <h3 class="mt-3 font-bold text-navy-900">専門用語を使わない</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">難しいIT用語ではなく、業務の言葉で会話します。</p>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">🤝</div>
+        <h3 class="mt-3 font-bold text-navy-900">伴走型で相談しやすい</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">納品後も「困ったときに聞ける存在」として継続的にサポートします。</p>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">🌱</div>
+        <h3 class="mt-3 font-bold text-navy-900">小規模事業者に寄り添う</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">大企業向けではなく、個人事業主・中小企業に最適化した提案を行います。</p>
+      </div>
+      <div class="bg-white border border-navy-100 rounded-2xl p-6 shadow-softer">
+        <div class="text-2xl">🛠️</div>
+        <h3 class="mt-3 font-bold text-navy-900">実践ベースで提案</h3>
+        <p class="mt-2 text-sm text-navy-700 leading-loose">自社で試した上で「使える」と判断したものだけをご提案します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REPRESENTATIVE MESSAGE
+============================================================ -->
+<section id="message" class="bg-navy-900 text-white py-20 sm:py-28">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-4">
+      <div class="aspect-square w-48 sm:w-56 mx-auto rounded-2xl bg-navy-800 border border-navy-700 overflow-hidden">
+        <img src="assets/representative.png" alt="代表者写真" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <p class="text-center text-navy-200 text-sm mt-4">代表者写真（差し替え可）</p>
+    </div>
+    <div class="lg:col-span-8">
+      <p class="text-xs font-bold tracking-widest text-navy-300">MESSAGE</p>
+      <h2 class="mt-3 font-display font-black text-2xl sm:text-3xl leading-snug">
+        "難しそう"を、<br />"任せて安心"に。
+      </h2>
+      <div class="mt-6 space-y-4 text-navy-100 leading-loose">
+        <p>
+          AIは確かに便利ですが、「何ができるか分からない」「何から始めればいいか分からない」という声を、これまで何度も聞いてきました。
+        </p>
+        <p>
+          PanIchie Worksでは、専門用語を並べるのではなく、お客さまの業務の言葉で、ひとつずつ整理することから始めます。<strong class="text-white">小さく始めて、続けられる仕組みづくり</strong>を一緒に考えるのが、私たちの役割です。
+        </p>
+        <p>
+          まずは「うちでも使えるのかな？」という相談からで大丈夫です。お気軽にお声がけください。
+        </p>
+      </div>
+      <p class="mt-7 text-sm text-navy-200">合同会社PanIchie Works 代表 ／ 臼井 貴紀</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section id="faq" class="py-20 sm:py-28">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">FAQ</p>
+      <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900">よくある質問</h2>
+    </div>
+
+    <div class="space-y-3">
+      <details class="bg-white border border-navy-100 rounded-xl p-5 shadow-softer">
+        <summary class="flex items-center justify-between gap-4 font-bold text-navy-900">
+          <span>AIの知識がゼロですが、相談してもいいですか？</span>
+          <span class="faq-icon text-navy-500 text-2xl leading-none">＋</span>
+        </summary>
+        <p class="mt-3 text-navy-700 leading-loose">もちろん大丈夫です。むしろ「これからAIを取り入れたい」という方こそ、私たちの得意分野です。専門用語を使わず、業務の言葉でお話しします。</p>
+      </details>
+      <details class="bg-white border border-navy-100 rounded-xl p-5 shadow-softer">
+        <summary class="flex items-center justify-between gap-4 font-bold text-navy-900">
+          <span>費用はどのくらいかかりますか？</span>
+          <span class="faq-icon text-navy-500 text-2xl leading-none">＋</span>
+        </summary>
+        <p class="mt-3 text-navy-700 leading-loose">内容によって異なります。AIチャットボットは小さく始められるプランからご用意可能です。まずは無料相談で、ご予算と目的を伺ったうえでご提案します。</p>
+      </details>
+      <details class="bg-white border border-navy-100 rounded-xl p-5 shadow-softer">
+        <summary class="flex items-center justify-between gap-4 font-bold text-navy-900">
+          <span>導入までどのくらいの期間が必要ですか？</span>
+          <span class="faq-icon text-navy-500 text-2xl leading-none">＋</span>
+        </summary>
+        <p class="mt-3 text-navy-700 leading-loose">シンプルなチャットボットであれば最短2週間程度、ホームページと合わせる場合は1〜2ヶ月が目安です。ご希望に合わせて調整します。</p>
+      </details>
+      <details class="bg-white border border-navy-100 rounded-xl p-5 shadow-softer">
+        <summary class="flex items-center justify-between gap-4 font-bold text-navy-900">
+          <span>AIチャットボットは何ができますか？</span>
+          <span class="faq-icon text-navy-500 text-2xl leading-none">＋</span>
+        </summary>
+        <p class="mt-3 text-navy-700 leading-loose">営業時間案内・予約受付・FAQ対応・サービス説明・お問い合わせ誘導など、"受付スタッフ"のような役割をAIに任せられます。LINE連携も可能です。</p>
+      </details>
+      <details class="bg-white border border-navy-100 rounded-xl p-5 shadow-softer">
+        <summary class="flex items-center justify-between gap-4 font-bold text-navy-900">
+          <span>導入後のサポートはありますか？</span>
+          <span class="faq-icon text-navy-500 text-2xl leading-none">＋</span>
+        </summary>
+        <p class="mt-3 text-navy-700 leading-loose">はい。納品後も伴走型で継続サポートします。改善・追加機能・運用相談まで、お気軽にお問い合わせください。</p>
+      </details>
+      <details class="bg-white border border-navy-100 rounded-xl p-5 shadow-softer">
+        <summary class="flex items-center justify-between gap-4 font-bold text-navy-900">
+          <span>相談だけでも大丈夫ですか？</span>
+          <span class="faq-icon text-navy-500 text-2xl leading-none">＋</span>
+        </summary>
+        <p class="mt-3 text-navy-700 leading-loose">大歓迎です。初回相談は完全無料で、しつこい営業もいたしません。「何ができるか聞いてみたい」段階からお気軽にご連絡ください。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section id="contact" class="bg-paper py-20 sm:py-28">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-10">
+      <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">CONTACT</p>
+      <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900">まずは話を聞いてみる</h2>
+      <p class="mt-5 text-navy-700">初回相談無料／しつこい営業なし／断ってもOK</p>
+    </div>
+
+    <!-- 資料ダウンロード（柔らかいリード獲得導線） -->
+    <div class="bg-white border border-navy-100 rounded-2xl p-6 sm:p-7 shadow-softer mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <span class="text-3xl">📕</span>
+      <div class="flex-1">
+        <p class="font-display font-bold text-navy-900">「相談はまだ早いかも…」という方へ</p>
+        <p class="text-sm text-navy-700 mt-1">サービス概要・料金・導入事例をまとめた <strong>資料（PDF）</strong> を無料でお送りします。</p>
+      </div>
+      <a href="#download" onclick="alert('（デモ）資料送付フォームに遷移します。'); return false;" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-navy-300 hover:border-navy-700 text-navy-900 font-bold text-sm transition whitespace-nowrap">
+        📥 資料を受け取る
+      </a>
+    </div>
+
+    <form class="bg-white border border-navy-100 rounded-2xl p-7 sm:p-9 shadow-soft space-y-5" onsubmit="event.preventDefault(); alert('（デモ）送信処理は未実装です。実装時にメール/Slack/フォーム送信サービスと連携します。');">
+      <div>
+        <label class="block text-sm font-bold text-navy-800 mb-2">お名前</label>
+        <input type="text" required class="w-full px-4 py-3 border border-navy-200 rounded-xl focus:outline-none focus:border-navy-700 focus:ring-2 focus:ring-navy-100" placeholder="例：山田太郎">
+      </div>
+      <div>
+        <label class="block text-sm font-bold text-navy-800 mb-2">メールアドレス</label>
+        <input type="email" required class="w-full px-4 py-3 border border-navy-200 rounded-xl focus:outline-none focus:border-navy-700 focus:ring-2 focus:ring-navy-100" placeholder="example@example.com">
+      </div>
+      <div>
+        <label class="block text-sm font-bold text-navy-800 mb-2">ご相談内容</label>
+        <select class="w-full px-4 py-3 border border-navy-200 rounded-xl focus:outline-none focus:border-navy-700 focus:ring-2 focus:ring-navy-100 bg-white">
+          <option>AIチャットボット導入の相談</option>
+          <option>AI導入サポート</option>
+          <option>業務効率化の相談</option>
+          <option>ホームページ制作</option>
+          <option>SNS活用支援</option>
+          <option>まだ決まっていない / 雑談でOK</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-bold text-navy-800 mb-2">メッセージ</label>
+        <textarea rows="5" class="w-full px-4 py-3 border border-navy-200 rounded-xl focus:outline-none focus:border-navy-700 focus:ring-2 focus:ring-navy-100" placeholder="お気軽にお書きください。"></textarea>
+      </div>
+      <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-navy-700 hover:bg-navy-800 text-white font-bold shadow-soft transition">
+        無料で相談してみる →
+      </button>
+      <p class="text-xs text-navy-500 text-center">※ 1営業日以内にご返信いたします。</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPANY INFO
+============================================================ -->
+<section id="company" class="py-20 sm:py-28">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="inline-block text-xs font-bold tracking-widest text-navy-500 bg-navy-50 px-3 py-1 rounded-full">COMPANY</p>
+      <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900">会社情報</h2>
+    </div>
+
+    <dl class="bg-white border border-navy-100 rounded-2xl divide-y divide-navy-100 shadow-softer">
+      <div class="grid sm:grid-cols-4 gap-2 px-6 py-5">
+        <dt class="text-sm font-bold text-navy-500 sm:col-span-1">会社名</dt>
+        <dd class="sm:col-span-3 text-navy-900">合同会社PanIchie Works（パニシエ ワークス）</dd>
+      </div>
+      <div class="grid sm:grid-cols-4 gap-2 px-6 py-5">
+        <dt class="text-sm font-bold text-navy-500 sm:col-span-1">代表者</dt>
+        <dd class="sm:col-span-3 text-navy-900">臼井 貴紀</dd>
+      </div>
+      <div class="grid sm:grid-cols-4 gap-2 px-6 py-5">
+        <dt class="text-sm font-bold text-navy-500 sm:col-span-1">所在地</dt>
+        <dd class="sm:col-span-3 text-navy-900">※設立準備中（後日更新）</dd>
+      </div>
+      <div class="grid sm:grid-cols-4 gap-2 px-6 py-5">
+        <dt class="text-sm font-bold text-navy-500 sm:col-span-1">事業内容</dt>
+        <dd class="sm:col-span-3 text-navy-900 leading-loose">
+          AI活用支援／AIチャットボット作成／AIエージェント活用支援／業務効率化／AIライティング／ホームページ制作／SNS活用支援
+        </dd>
+      </div>
+      <div class="grid sm:grid-cols-4 gap-2 px-6 py-5">
+        <dt class="text-sm font-bold text-navy-500 sm:col-span-1">お問い合わせ</dt>
+        <dd class="sm:col-span-3">
+          <a href="#contact" class="text-navy-700 hover:text-navy-900 font-bold underline-offset-4 hover:underline">お問い合わせフォームへ →</a>
+        </dd>
+      </div>
+      <div class="grid sm:grid-cols-4 gap-2 px-6 py-5">
+        <dt class="text-sm font-bold text-navy-500 sm:col-span-1">プライバシーポリシー</dt>
+        <dd class="sm:col-span-3">
+          <a href="#privacy" class="text-navy-700 hover:text-navy-900 font-bold underline-offset-4 hover:underline">プライバシーポリシーを見る →</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- Instagram（behold.so 埋め込み） -->
+<section id="instagram" class="bg-paper py-16 sm:py-20 border-t border-navy-100">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center fade-up-on-scroll">
+    <p class="inline-block text-xs font-bold tracking-[0.2em] text-navy-500 bg-navy-50 px-3 py-1 rounded-full">INSTAGRAM</p>
+    <h2 class="mt-4 font-display font-black text-2xl sm:text-3xl text-navy-900">📸 最新の投稿</h2>
+    <p class="mt-3 text-sm text-navy-600 leading-relaxed max-w-2xl mx-auto">Instagramの投稿をサイト内で見られるようにしています。</p>
+  </div>
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 mt-8 fade-up-on-scroll">
+    <div class="bg-white border border-navy-100 rounded-2xl shadow-softer p-4 sm:p-6">
+      <behold-widget feed-id="JDxa4JM33VyWaMACZc96"></behold-widget>
+    </div>
+    <p class="mt-4 text-center text-xs text-navy-500">表示が崩れる場合は、広告ブロッカー等の拡張機能を一度オフにしてお試しください。</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="bg-navy-900 text-navy-200 py-14">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid sm:grid-cols-3 gap-8">
+    <div>
+      <a href="#top" class="footer-logo inline-flex rounded-lg bg-white px-2.5 py-1.5">
+        <img
+          src="assets/logo-header-600.png"
+          srcset="assets/logo-header-600.png 1x, assets/logo-header-1200.png 2x"
+          alt="PanIchie Works"
+          width="300"
+        />
+      </a>
+      <p class="mt-4 text-sm leading-loose">中小企業・個人事業主のためのAI活用パートナー。AI導入・チャットボット・業務効率化を伴走支援します。</p>
+    </div>
+    <div>
+      <p class="font-bold text-white mb-3 text-sm">サービス</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#chatbot" class="hover:text-white">AIチャットボット作成</a></li>
+        <li><a href="#pricing" class="hover:text-white">料金プラン</a></li>
+        <li><a href="#services" class="hover:text-white">AI導入サポート</a></li>
+        <li><a href="#services" class="hover:text-white">業務効率化支援</a></li>
+        <li><a href="#services" class="hover:text-white">ホームページ制作</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-bold text-white mb-3 text-sm">情報</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#company" class="hover:text-white">会社情報</a></li>
+        <li><a href="#faq" class="hover:text-white">よくある質問</a></li>
+        <li><a href="#contact" class="hover:text-white">お問い合わせ</a></li>
+        <li><a href="#privacy" class="hover:text-white">プライバシーポリシー</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 mt-10 pt-6 border-t border-navy-800 text-xs text-navy-300 flex flex-wrap items-center justify-between gap-3">
+    <p>© 2026 合同会社PanIchie Works. All rights reserved.</p>
+    <p>AIを、もっと身近に。</p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     FLOATING CHAT BUTTON
+============================================================ -->
+<button id="chatFab" aria-label="チャットで相談する" class="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-50 inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-navy-700 hover:bg-navy-800 text-white font-bold shadow-soft transition">
+  <span class="text-lg leading-none">💬</span>
+  <span class="text-sm">チャットで相談</span>
+</button>
+
+<!-- フローティングチャットパネル（将来OpenAI API / LINE連携を差し込む箇所） -->
+<div id="chatPanel" class="hidden fixed bottom-24 right-5 sm:right-7 z-50 w-[92vw] max-w-sm bg-white rounded-2xl shadow-soft border border-navy-100 overflow-hidden">
+  <div class="bg-navy-900 text-white px-4 py-3 flex items-center gap-2">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span class="font-bold text-sm">PanIchie Works サポート</span>
+    <button id="chatClose" class="ml-auto text-white/80 hover:text-white text-lg leading-none">×</button>
+  </div>
+  <div class="p-4 space-y-3 text-sm h-72 overflow-auto" id="chatLog">
+    <div class="flex"><div class="bubble-bot px-3 py-2 max-w-[85%]">こんにちは。どんなことでお困りですか？「料金」「導入の流れ」「相談したい」などお気軽にどうぞ。</div></div>
+  </div>
+  <form class="p-3 border-t border-navy-100 flex gap-2" onsubmit="event.preventDefault(); panichieChatSend();">
+    <input id="chatInput" type="text" class="flex-1 px-3 py-2 border border-navy-200 rounded-full text-sm focus:outline-none focus:border-navy-700" placeholder="メッセージを入力">
+    <button class="px-4 py-2 rounded-full bg-navy-700 hover:bg-navy-800 text-white text-sm font-bold">送信</button>
+  </form>
+</div>
+
+<script>
+  // フローティングチャットの開閉
+  const fab = document.getElementById('chatFab');
+  const panel = document.getElementById('chatPanel');
+  const close = document.getElementById('chatClose');
+  fab.addEventListener('click', () => panel.classList.toggle('hidden'));
+  close.addEventListener('click', () => panel.classList.add('hidden'));
+
+  // 簡易キーワード応答（将来OpenAI APIに置き換え可能な構造）
+  function panichieChatSend() {
+    const input = document.getElementById('chatInput');
+    const log = document.getElementById('chatLog');
+    const text = input.value.trim();
+    if (!text) return;
+    log.insertAdjacentHTML('beforeend', `<div class="flex justify-end"><div class="bubble-user px-3 py-2 max-w-[85%]">${escapeHtml(text)}</div></div>`);
+    input.value = '';
+    log.scrollTop = log.scrollHeight;
+
+    let reply = 'ありがとうございます。担当より1営業日以内にご連絡いたします。<br>お問い合わせフォームからもどうぞ → <a href="#contact" class="underline">こちら</a>';
+    if (/料金|費用|価格|いくら/.test(text)) reply = 'プランや内容によって異なります。AIチャットボットは小さく始められるプランからご用意可能です。詳しくは無料相談でお伝えします。';
+    else if (/期間|納期|いつ/.test(text))   reply = 'シンプルなチャットボットは最短2週間、HPとセットの場合は1〜2ヶ月が目安です。';
+    else if (/相談|無料|問い合/.test(text)) reply = '初回相談は完全無料です。下のフォームからご連絡いただくか、こちらにご相談内容をお書きください。';
+    else if (/チャットボット|bot/i.test(text)) reply = 'チャットボットは、営業時間案内・予約受付・FAQ対応など"受付スタッフ"のように使えます。LINE連携も可能です。';
+
+    setTimeout(() => {
+      log.insertAdjacentHTML('beforeend', `<div class="flex"><div class="bubble-bot px-3 py-2 max-w-[85%]">${reply}</div></div>`);
+      log.scrollTop = log.scrollHeight;
+    }, 500);
+  }
+  function escapeHtml(s){ return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  // スクロールでフェードアップを発火（過剰演出にならない控えめなアニメ）
+  (function(){
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.fade-up-on-scroll').forEach(el => el.classList.add('in-view'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up-on-scroll').forEach(el => io.observe(el));
+  })();
+</script>
+
+<script type="module">
+  (() => {
+    const d=document,s=d.createElement("script");s.type="module";
+    s.src="https://w.behold.so/widget.js";d.head.append(s);
+  })();
+</script>
+
+</body>
+</html>

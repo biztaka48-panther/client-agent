@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>株式会社西部防災 | 鹿児島の消防設備工事・点検・メンテナンス</title>
+  <meta name="description" content="鹿児島を拠点に南九州全域の消防設備工事・点検・メンテナンスを一社完結で対応。創業25年の実績と有資格者による確実な施工。無料お見積もり受付中。">
+  <meta property="og:title" content="株式会社西部防災 | 鹿児島の消防設備工事・点検">
+  <meta property="og:description" content="創業25年。鹿児島を拠点に南九州全域の消防設備工事・点検・メンテナンスを一社完結で対応。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seibubousai.com">
+  <meta property="og:image" content="https://seibubousai.com/wp-content/themes/seibubousai/img/sakurazima_tyuu.jpg">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-navy':       '#1a2744',
+            'brand-navy-dark':  '#0f1a30',
+            'brand-navy-light': '#e8ecf4',
+            'brand-red':        '#c0392b',
+            'brand-red-dark':   '#922b21',
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "株式会社西部防災",
+    "address": {
+      "@type": "PostalAddress",
+      "postalCode": "890-0054",
+      "addressLocality": "鹿児島市",
+      "streetAddress": "荒田二丁目63番19号"
+    },
+    "telephone": "099-214-2701",
+    "url": "https://seibubousai.com",
+    "areaServed": ["鹿児島県", "宮崎県", "熊本県"],
+    "description": "鹿児島を拠点に南九州全域の消防設備工事・点検・メンテナンス"
+  }
+  </script>
+
+  <style>
+    /* ===== カスタムプロパティ ===== */
+    :root {
+      --brand-red:         #c0392b;
+      --brand-red-dark:    #922b21;
+      --brand-navy:        #1a2744;
+      --brand-navy-dark:   #0f1a30;
+
+      --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow:   500ms cubic-bezier(0.4, 0, 0.2, 1);
+      --spring:            400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; }
+
+    /* ===== ヘッダー ===== */
+    #header {
+      position: fixed;
+      top: 0; width: 100%; z-index: 1000;
+      background: rgba(26, 39, 68, 0.92);
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter var(--transition-slow), box-shadow var(--transition-normal);
+    }
+    #header.scrolled {
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+
+    /* ===== ナビリンク ===== */
+    .nav-link {
+      position: relative;
+      color: rgba(255,255,255,0.8);
+      transition: color var(--transition-fast);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--brand-red);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform var(--transition-normal);
+    }
+    .nav-link:hover { color: white; }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* ===== Hero スライダー ===== */
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .hero-slide.active { opacity: 1; }
+
+    /* ===== ボタン ===== */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--brand-red);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition:
+        transform var(--spring),
+        box-shadow var(--transition-normal),
+        background var(--transition-fast);
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(192, 57, 43, 0.45);
+      background: var(--brand-red-dark);
+    }
+    .btn-primary:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(192, 57, 43, 0.35);
+    }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid white;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform var(--spring), box-shadow var(--transition-normal), background var(--transition-normal);
+    }
+    .btn-secondary:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+    }
+
+    .btn-outline-red {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid var(--brand-red);
+      color: var(--brand-red);
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform var(--spring), background var(--transition-normal), color var(--transition-normal);
+    }
+    .btn-outline-red:hover {
+      transform: translateY(-3px);
+      background: var(--brand-red);
+      color: white;
+    }
+
+    /* ===== カード ===== */
+    .card {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 32px;
+      transition:
+        transform var(--spring),
+        box-shadow var(--transition-normal),
+        border-color var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--brand-red);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform var(--spring);
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+      border-color: transparent;
+    }
+    .card:hover::before { transform: scaleY(1); }
+
+    /* ===== アイコンラッパー ===== */
+    .icon-wrap {
+      transition: transform var(--spring);
+    }
+    .card:hover .icon-wrap {
+      transform: scale(1.2) rotate(-5deg);
+    }
+
+    /* ===== セクションアニメーション ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    /* ===== Flowステップ ===== */
+    .flow-step {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    /* ===== スマホ固定ドック ===== */
+    .dock-btn {
+      transition: transform var(--spring), background var(--transition-fast);
+    }
+    .dock-btn:active { transform: scale(0.93); }
+
+    /* ===== ハンバーガーメニュー ===== */
+    #mobile-menu {
+      transition: opacity var(--transition-normal), visibility var(--transition-normal);
+    }
+    #mobile-menu.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #mobile-menu:not(.hidden) {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ===== サービスカード画像 ===== */
+    .service-img {
+      overflow: hidden;
+      border-radius: 12px 12px 0 0;
+    }
+    .service-img img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    .card:hover .service-img img {
+      transform: scale(1.05);
+    }
+
+    /* ===== Works カード画像 ===== */
+    .work-img {
+      overflow: hidden;
+      border-radius: 12px 12px 0 0;
+    }
+    .work-img img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    .card:hover .work-img img {
+      transform: scale(1.05);
+    }
+
+    /* ===== テーブル ===== */
+    .info-table tr:nth-child(even) td { background: #f9fafb; }
+    .info-table td { padding: 12px 16px; border-bottom: 1px solid #e5e7eb; }
+    .info-table td:first-child { font-weight: 600; color: var(--brand-navy); width: 160px; white-space: nowrap; }
+
+    /* ===== スクロールバー非表示 ===== */
+    html::-webkit-scrollbar { width: 6px; }
+    html::-webkit-scrollbar-thumb { background: #c0392b; border-radius: 3px; }
+
+    @media (max-width: 768px) {
+      .btn-primary, .btn-secondary { padding: 13px 22px; font-size: 0.9rem; }
+      .card { padding: 24px; }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- ===================== HEADER ===================== -->
+<header id="header">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- ロゴ -->
+      <a href="#" class="flex items-center gap-3 flex-shrink-0">
+        <img src="https://seibubousai.com/wp-content/themes/seibubousai/img/logo1.png"
+             alt="株式会社西部防災" class="h-10 w-auto object-contain"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="text-white font-bold text-lg hidden leading-tight">株式会社<br>西部防災</span>
+      </a>
+
+      <!-- PCナビ -->
+      <nav class="hidden md:flex items-center gap-6 lg:gap-8">
+        <a href="#services" class="nav-link">サービス</a>
+        <a href="#works" class="nav-link">施工実績</a>
+        <a href="#testimonials" class="nav-link">お客様の声</a>
+        <a href="#about" class="nav-link">会社概要</a>
+        <a href="#contact" class="nav-link">お問い合わせ</a>
+      </nav>
+
+      <!-- PC 電話 + CTA -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="tel:0992142701" class="flex items-center gap-2 text-white hover:text-red-300 transition-colors">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <span class="font-bold text-sm">099-214-2701</span>
+        </a>
+        <a href="#contact" class="btn-primary py-2.5 px-5 text-sm">無料お見積もり</a>
+      </div>
+
+      <!-- ハンバーガー（スマホ） -->
+      <button id="menu-btn" class="md:hidden text-white p-2 focus:outline-none" aria-label="メニューを開く">
+        <i data-lucide="menu" class="w-6 h-6" id="menu-icon-open"></i>
+        <i data-lucide="x" class="w-6 h-6 hidden" id="menu-icon-close"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- モバイルメニュー -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 top-16 bg-brand-navy-dark z-50 flex flex-col items-center justify-center gap-8">
+    <a href="#services" class="text-white text-2xl font-bold mobile-nav-link" data-close>サービス</a>
+    <a href="#works" class="text-white text-2xl font-bold mobile-nav-link" data-close>施工実績</a>
+    <a href="#testimonials" class="text-white text-2xl font-bold mobile-nav-link" data-close>お客様の声</a>
+    <a href="#about" class="text-white text-2xl font-bold mobile-nav-link" data-close>会社概要</a>
+    <a href="#contact" class="text-white text-2xl font-bold mobile-nav-link" data-close>お問い合わせ</a>
+    <a href="tel:0992142701" class="flex items-center gap-2 text-white text-xl mt-4">
+      <i data-lucide="phone" class="w-6 h-6"></i>099-214-2701
+    </a>
+    <a href="#contact" class="btn-primary mt-2" data-close>無料お見積もり依頼</a>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+  <!-- 背景スライダー -->
+  <div id="hero-bg" class="absolute inset-0">
+    <div class="hero-slide active" style="background-image:url('https://seibubousai.com/wp-content/themes/seibubousai/img/sakurazima_tyuu.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://seibubousai.com/wp-content/themes/seibubousai/img/4361659_m.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://seibubousai.com/wp-content/themes/seibubousai/img/1600435_m.jpg')"></div>
+    <!-- オーバーレイ -->
+    <div class="absolute inset-0" style="background:rgba(15,26,48,0.65)"></div>
+  </div>
+
+  <!-- コンテンツ -->
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+    <div class="max-w-3xl">
+      <p id="hero-tagline" class="inline-flex items-center gap-2 text-red-400 text-sm font-bold tracking-widest uppercase mb-6">
+        <span class="w-8 h-0.5 bg-red-400 inline-block"></span>
+        Fire Safety Specialist
+      </p>
+      <h1 id="hero-title" class="text-5xl md:text-7xl font-black text-white leading-tight tracking-tight mb-6">
+        守る。<br>それが、私たちの仕事。
+      </h1>
+      <p id="hero-sub" class="text-lg md:text-xl text-gray-300 leading-relaxed mb-10 max-w-xl">
+        鹿児島県下各市町村を中心に<br class="hidden md:block">
+        消防設備工事・点検・メンテナンス<br class="hidden md:block">
+        創業25年の実績と有資格者が、あなたの施設を守ります。
+      </p>
+      <div id="hero-btns" class="flex flex-wrap gap-4">
+        <a href="#contact" class="btn-primary text-base">
+          <i data-lucide="file-text" class="w-5 h-5"></i>
+          無料お見積もり依頼
+        </a>
+        <a href="tel:0992142701" class="btn-secondary text-base">
+          <i data-lucide="phone" class="w-5 h-5"></i>
+          電話で相談する
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- スクロール誘導 -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white text-center">
+    <p class="text-xs text-gray-400 mb-2 tracking-widest">SCROLL</p>
+    <div class="w-0.5 h-10 bg-gradient-to-b from-red-400 to-transparent mx-auto animate-bounce"></div>
+  </div>
+</section>
+
+<!-- ===================== 実績数字バー ===================== -->
+<div id="stats-bar" class="bg-brand-red py-10 md:py-14">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-white text-center">
+      <div class="reveal">
+        <p class="text-4xl md:text-5xl font-black" id="count-years">25年以上</p>
+        <p class="text-sm mt-2 opacity-80 font-medium">の実績（創業25年）</p>
+      </div>
+      <div class="reveal">
+        <p class="text-4xl md:text-5xl font-black" id="count-cases">1,000件以上</p>
+        <p class="text-sm mt-2 opacity-80 font-medium">の対応実績</p>
+      </div>
+      <div class="reveal">
+        <p class="text-4xl md:text-5xl font-black">3県対応</p>
+        <p class="text-sm mt-2 opacity-80 font-medium">鹿児島・宮崎・熊本</p>
+      </div>
+      <div class="reveal">
+        <p class="text-4xl md:text-5xl font-black">有資格者</p>
+        <p class="text-sm mt-2 opacity-80 font-medium">消防設備士・防火対象物点検資格者</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== WHY CHOOSE US ===================== -->
+<section class="py-16 md:py-24 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-brand-red text-sm font-bold tracking-widest uppercase mb-3">Why Choose Us</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-navy tracking-tight">選ばれる4つの理由</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 1 -->
+      <div class="card reveal flex gap-5">
+        <div class="icon-wrap flex-shrink-0 w-14 h-14 rounded-xl bg-brand-navy-light flex items-center justify-center">
+          <i data-lucide="map-pin" class="w-7 h-7 text-brand-red"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">地域密着だから迅速対応</h3>
+          <p class="text-gray-600 leading-relaxed text-sm">鹿児島を拠点に南九州全域へ即日対応。緊急時も安心してお任せください。</p>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="card reveal flex gap-5">
+        <div class="icon-wrap flex-shrink-0 w-14 h-14 rounded-xl bg-brand-navy-light flex items-center justify-center">
+          <i data-lucide="shield-check" class="w-7 h-7 text-brand-red"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">有資格者による確実な施工</h3>
+          <p class="text-gray-600 leading-relaxed text-sm">消防設備士・防火対象物点検資格者が在籍。法令に基づいた適切な対応を保証します。</p>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="card reveal flex gap-5">
+        <div class="icon-wrap flex-shrink-0 w-14 h-14 rounded-xl bg-brand-navy-light flex items-center justify-center">
+          <i data-lucide="wrench" class="w-7 h-7 text-brand-red"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">工事から点検までワンストップ</h3>
+          <p class="text-gray-600 leading-relaxed text-sm">設計・施工・点検・メンテナンスを一社完結。複数業者との調整は不要です。</p>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="card reveal flex gap-5">
+        <div class="icon-wrap flex-shrink-0 w-14 h-14 rounded-xl bg-brand-navy-light flex items-center justify-center">
+          <i data-lucide="star" class="w-7 h-7 text-brand-red"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">創業25年の豊富な実績</h3>
+          <p class="text-gray-600 leading-relaxed text-sm">マンション・商業施設・病院・工場など幅広い対象物での施工実績1,000件以上。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services" class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-brand-red text-sm font-bold tracking-widest uppercase mb-3">Services</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-navy tracking-tight">サービス内容</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 設備工事 -->
+      <div class="card reveal p-0 overflow-hidden">
+        <div class="service-img">
+          <img src="https://seibubousai.com/wp-content/themes/seibubousai/img/S__90382338.jpg" alt="設備工事">
+        </div>
+        <div class="p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="icon-wrap w-12 h-12 rounded-lg bg-brand-navy-light flex items-center justify-center flex-shrink-0">
+              <i data-lucide="flame" class="w-6 h-6 text-brand-red"></i>
+            </div>
+            <div>
+              <span class="text-xs text-brand-red font-bold tracking-widest">01</span>
+              <h3 class="text-xl font-bold text-brand-navy">設備工事</h3>
+            </div>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-5">自動火災報知設備・スプリンクラー・消火栓などの設計から施工まで。有資格者が安全・確実に担当します。</p>
+          <a href="#contact" class="text-brand-red font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+            詳しく見る <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+      <!-- メンテナンス -->
+      <div class="card reveal p-0 overflow-hidden">
+        <div class="service-img">
+          <img src="https://seibubousai.com/wp-content/themes/seibubousai/img/S__90382340.jpg" alt="メンテナンス">
+        </div>
+        <div class="p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="icon-wrap w-12 h-12 rounded-lg bg-brand-navy-light flex items-center justify-center flex-shrink-0">
+              <i data-lucide="wrench" class="w-6 h-6 text-brand-red"></i>
+            </div>
+            <div>
+              <span class="text-xs text-brand-red font-bold tracking-widest">02</span>
+              <h3 class="text-xl font-bold text-brand-navy">メンテナンス</h3>
+            </div>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-5">定期保守・故障対応・リニューアル提案。緊急時も一社完結で迅速に対応します。</p>
+          <a href="#contact" class="text-brand-red font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+            詳しく見る <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+      <!-- 建築物・設備点検 -->
+      <div class="card reveal p-0 overflow-hidden">
+        <div class="service-img">
+          <img src="https://seibubousai.com/wp-content/themes/seibubousai/img/4324199_m.jpg" alt="建築物・設備点検">
+        </div>
+        <div class="p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="icon-wrap w-12 h-12 rounded-lg bg-brand-navy-light flex items-center justify-center flex-shrink-0">
+              <i data-lucide="clipboard-check" class="w-6 h-6 text-brand-red"></i>
+            </div>
+            <div>
+              <span class="text-xs text-brand-red font-bold tracking-widest">03</span>
+              <h3 class="text-xl font-bold text-brand-navy">建築物・設備点検</h3>
+            </div>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-5">消防法に基づく機器点検（6ヶ月ごと）・総合点検（年1回）を適切に実施します。</p>
+          <a href="#contact" class="text-brand-red font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+            詳しく見る <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+      <!-- 負荷試験 -->
+      <div class="card reveal p-0 overflow-hidden">
+        <div class="service-img">
+          <img src="https://seibubousai.com/wp-content/themes/seibubousai/img/S__90292226.jpg" alt="負荷試験">
+        </div>
+        <div class="p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="icon-wrap w-12 h-12 rounded-lg bg-brand-navy-light flex items-center justify-center flex-shrink-0">
+              <i data-lucide="zap" class="w-6 h-6 text-brand-red"></i>
+            </div>
+            <div>
+              <span class="text-xs text-brand-red font-bold tracking-widest">04</span>
+              <h3 class="text-xl font-bold text-brand-navy">負荷試験</h3>
+            </div>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-5">年1回の負荷試験を停電なしで対応可能。報告書の作成・提出まで一括サポート。</p>
+          <a href="#contact" class="text-brand-red font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+            詳しく見る <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WORKS ===================== -->
+<section id="works" class="py-16 md:py-24 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-brand-red text-sm font-bold tracking-widest uppercase mb-3">Works</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-navy tracking-tight">施工実績</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- 実績1 -->
+      <div class="card reveal p-0 overflow-hidden">
+        <div class="work-img">
+          <img src="https://seibubousai.com/wp-content/themes/seibubousai/img/4418018_m.jpg" alt="マンション 自動火災報知設備">
+        </div>
+        <div class="p-6">
+          <span class="inline-block bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full mb-3">工事</span>
+          <h3 class="text-base font-bold text-brand-navy mb-2">大型マンション<br>自動火災報知設備リニューアル</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">築30年の大型マンションで全棟リニューアル。居住者への影響を最小限に抑えた施工計画で完工。</p>
+        </div>
+      </div>
+      <!-- 実績2 -->
+      <div class="card reveal p-0 overflow-hidden">
+        <div class="work-img">
+          <img src="https://seibubousai.com/wp-content/themes/seibubousai/img/4361659_m.jpg" alt="商業施設 スプリンクラー点検">
+        </div>
+        <div class="p-6">
+          <span class="inline-block bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full mb-3">点検</span>
+          <h3 class="text-base font-bold text-brand-navy mb-2">商業施設<br>スプリンクラー設備点検</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">延床5,000㎡の商業施設で年次総合点検を実施。報告書作成・消防署提出まで対応。</p>
+        </div>
+      </div>
+      <!-- 実績3 -->
+      <div class="card reveal p-0 overflow-hidden">
+        <div class="work-img">
+          <img src="https://seibubousai.com/wp-content/themes/seibubousai/img/1600435_m.jpg" alt="病院 非常用発電機 負荷試験">
+        </div>
+        <div class="p-6">
+          <span class="inline-block bg-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">負荷試験</span>
+          <h3 class="text-base font-bold text-brand-navy mb-2">病院<br>非常用発電機 負荷試験</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">停電なし工法で実施。患者・医療機器への影響ゼロを実現。</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-10 reveal">
+      <a href="#contact" class="btn-outline-red">
+        施工実績一覧を見る <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section id="testimonials" class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-brand-red text-sm font-bold tracking-widest uppercase mb-3">Testimonials</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-navy tracking-tight">お客様の声</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card reveal">
+        <div class="flex gap-1 mb-4">
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+        </div>
+        <p class="text-gray-700 leading-relaxed mb-5 text-sm">"急な故障でも翌日には駆けつけてくれました。地元の会社ならではの対応の速さに助かっています。"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand-navy-light flex items-center justify-center">
+            <i data-lucide="building-2" class="w-5 h-5 text-brand-navy"></i>
+          </div>
+          <div>
+            <p class="font-bold text-brand-navy text-sm">ビル管理会社・担当者様</p>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="flex gap-1 mb-4">
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+        </div>
+        <p class="text-gray-700 leading-relaxed mb-5 text-sm">"点検から報告書の提出まで全部お任せできて、管理の手間が大幅に減りました。"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand-navy-light flex items-center justify-center">
+            <i data-lucide="store" class="w-5 h-5 text-brand-navy"></i>
+          </div>
+          <div>
+            <p class="font-bold text-brand-navy text-sm">商業施設・施設管理者様</p>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="flex gap-1 mb-4">
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+        </div>
+        <p class="text-gray-700 leading-relaxed mb-5 text-sm">"費用の見積もりが明確で、追加費用が発生しなかった点が信頼できました。"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand-navy-light flex items-center justify-center">
+            <i data-lucide="home" class="w-5 h-5 text-brand-navy"></i>
+          </div>
+          <div>
+            <p class="font-bold text-brand-navy text-sm">賃貸マンション・オーナー様</p>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="flex gap-1 mb-4">
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+        </div>
+        <p class="text-gray-700 leading-relaxed mb-5 text-sm">"居住者への説明資料まで用意してくれて、住民からのクレームがゼロでした。"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand-navy-light flex items-center justify-center">
+            <i data-lucide="users" class="w-5 h-5 text-brand-navy"></i>
+          </div>
+          <div>
+            <p class="font-bold text-brand-navy text-sm">マンション管理組合・理事長様</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FLOW ===================== -->
+<section id="flow-section" class="py-16 md:py-24 bg-brand-navy">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-red-400 text-sm font-bold tracking-widest uppercase mb-3">Flow</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">ご依頼の流れ</h2>
+    </div>
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-0 md:gap-2">
+      <!-- ステップ1 -->
+      <div class="flow-step flex-1 flex flex-col items-center text-center p-6">
+        <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center mb-4 text-white font-black text-xl">1</div>
+        <i data-lucide="mail" class="w-8 h-8 text-red-400 mb-3"></i>
+        <h3 class="text-white font-bold mb-2">お問い合わせ</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">お電話・メール・LINEにてお気軽にご連絡ください</p>
+      </div>
+      <div class="hidden md:flex items-center text-red-400 text-2xl font-bold px-1">→</div>
+      <!-- ステップ2 -->
+      <div class="flow-step flex-1 flex flex-col items-center text-center p-6">
+        <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center mb-4 text-white font-black text-xl">2</div>
+        <i data-lucide="search" class="w-8 h-8 text-red-400 mb-3"></i>
+        <h3 class="text-white font-bold mb-2">現地調査・お見積り</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">現地へ伺い、無料で調査・お見積りを作成します</p>
+      </div>
+      <div class="hidden md:flex items-center text-red-400 text-2xl font-bold px-1">→</div>
+      <!-- ステップ3 -->
+      <div class="flow-step flex-1 flex flex-col items-center text-center p-6">
+        <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center mb-4 text-white font-black text-xl">3</div>
+        <i data-lucide="file-signature" class="w-8 h-8 text-red-400 mb-3"></i>
+        <h3 class="text-white font-bold mb-2">ご提案・ご契約</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">最適なプランをご提案し、ご納得いただけたらご契約</p>
+      </div>
+      <div class="hidden md:flex items-center text-red-400 text-2xl font-bold px-1">→</div>
+      <!-- ステップ4 -->
+      <div class="flow-step flex-1 flex flex-col items-center text-center p-6">
+        <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center mb-4 text-white font-black text-xl">4</div>
+        <i data-lucide="hard-hat" class="w-8 h-8 text-red-400 mb-3"></i>
+        <h3 class="text-white font-bold mb-2">施工・点検</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">有資格者が安全・確実に施工・点検を実施します</p>
+      </div>
+      <div class="hidden md:flex items-center text-red-400 text-2xl font-bold px-1">→</div>
+      <!-- ステップ5 -->
+      <div class="flow-step flex-1 flex flex-col items-center text-center p-6">
+        <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center mb-4 text-white font-black text-xl">5</div>
+        <i data-lucide="clipboard-list" class="w-8 h-8 text-red-400 mb-3"></i>
+        <h3 class="text-white font-bold mb-2">報告書提出・アフター</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">報告書を作成・提出し、アフターフォローも万全</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEWS ===================== -->
+<section class="py-16 md:py-24 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-brand-red text-sm font-bold tracking-widest uppercase mb-3">News</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-navy tracking-tight">新着情報</h2>
+    </div>
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden reveal">
+      <a href="#" class="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-6 border-b border-gray-100 hover:bg-gray-50 transition-colors group">
+        <span class="text-gray-500 text-sm font-mono flex-shrink-0">2026.06.01</span>
+        <span class="inline-block bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full flex-shrink-0">お知らせ</span>
+        <span class="text-gray-800 font-medium group-hover:text-brand-red transition-colors text-sm">夏季の消防設備点検のご予約受付中</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 ml-auto hidden sm:block group-hover:text-brand-red transition-colors"></i>
+      </a>
+      <a href="#" class="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-6 border-b border-gray-100 hover:bg-gray-50 transition-colors group">
+        <span class="text-gray-500 text-sm font-mono flex-shrink-0">2026.05.15</span>
+        <span class="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full flex-shrink-0">コラム</span>
+        <span class="text-gray-800 font-medium group-hover:text-brand-red transition-colors text-sm">消防法改正ポイント解説：2026年度版</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 ml-auto hidden sm:block group-hover:text-brand-red transition-colors"></i>
+      </a>
+      <a href="#" class="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-6 hover:bg-gray-50 transition-colors group">
+        <span class="text-gray-500 text-sm font-mono flex-shrink-0">2026.04.20</span>
+        <span class="inline-block bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full flex-shrink-0">実績</span>
+        <span class="text-gray-800 font-medium group-hover:text-brand-red transition-colors text-sm">鹿児島市内 商業施設のスプリンクラー工事が完工</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 ml-auto hidden sm:block group-hover:text-brand-red transition-colors"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT US ===================== -->
+<section id="about" class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-brand-red text-sm font-bold tracking-widest uppercase mb-3">About Us</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-navy tracking-tight">会社概要</h2>
+    </div>
+
+    <!-- 企業理念 -->
+    <div class="text-center mb-14 reveal">
+      <div class="inline-block bg-brand-navy-light rounded-2xl px-10 py-8 relative">
+        <i data-lucide="quote" class="w-10 h-10 text-brand-red opacity-30 absolute top-4 left-6"></i>
+        <p class="text-2xl md:text-3xl font-black text-brand-navy leading-tight">
+          お客様のご要望に<br>安心と信頼でお答えする
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      <!-- 会社情報テーブル -->
+      <div class="reveal">
+        <table class="info-table w-full text-sm">
+          <tr>
+            <td>社名</td>
+            <td>株式会社 西部防災</td>
+          </tr>
+          <tr>
+            <td>代表者</td>
+            <td>代表取締役社長 姶良 正義</td>
+          </tr>
+          <tr>
+            <td>設立</td>
+            <td>平成12年10月（2000年10月）</td>
+          </tr>
+          <tr>
+            <td>資本金</td>
+            <td>1,000万円</td>
+          </tr>
+          <tr>
+            <td>所在地</td>
+            <td>〒890-0054 鹿児島市荒田二丁目63番19号</td>
+          </tr>
+          <tr>
+            <td>TEL</td>
+            <td><a href="tel:0992142701" class="text-brand-red hover:underline font-medium">099-214-2701</a></td>
+          </tr>
+          <tr>
+            <td>FAX</td>
+            <td>099-214-2702</td>
+          </tr>
+          <tr>
+            <td>メール</td>
+            <td><a href="mailto:seibu.bousai@san.bbiq.jp" class="text-brand-red hover:underline break-all">seibu.bousai@san.bbiq.jp</a></td>
+          </tr>
+          <tr>
+            <td>対応エリア</td>
+            <td>鹿児島県下各市町村を中心に（南九州全域）</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- 資格バッジ -->
+      <div class="reveal">
+        <h3 class="text-lg font-bold text-brand-navy mb-5">保有資格</h3>
+        <div class="flex flex-wrap gap-3">
+          <div class="flex items-center gap-2 bg-brand-navy text-white px-4 py-2.5 rounded-lg text-sm font-medium">
+            <i data-lucide="shield" class="w-4 h-4 text-red-400"></i>
+            消防設備士（甲・乙）
+          </div>
+          <div class="flex items-center gap-2 bg-brand-navy text-white px-4 py-2.5 rounded-lg text-sm font-medium">
+            <i data-lucide="clipboard-check" class="w-4 h-4 text-red-400"></i>
+            消防設備点検資格者（1・2種）
+          </div>
+          <div class="flex items-center gap-2 bg-brand-navy text-white px-4 py-2.5 rounded-lg text-sm font-medium">
+            <i data-lucide="zap" class="w-4 h-4 text-red-400"></i>
+            電気工事士
+          </div>
+          <div class="flex items-center gap-2 bg-brand-navy text-white px-4 py-2.5 rounded-lg text-sm font-medium">
+            <i data-lucide="flame" class="w-4 h-4 text-red-400"></i>
+            防火設備検査員
+          </div>
+          <div class="flex items-center gap-2 bg-brand-navy text-white px-4 py-2.5 rounded-lg text-sm font-medium">
+            <i data-lucide="hard-hat" class="w-4 h-4 text-red-400"></i>
+            建設業許可
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-brand-navy mt-8 mb-5">主な取引先</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg text-sm">自治体・官公庁</span>
+          <span class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg text-sm">病院・医療施設</span>
+          <span class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg text-sm">工場・倉庫</span>
+          <span class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg text-sm">学校・教育機関</span>
+          <span class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg text-sm">商業施設</span>
+          <span class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg text-sm">住宅・マンション</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section id="contact" class="py-20 md:py-28 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200" alt="" class="w-full h-full object-cover">
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(192,57,43,0.92) 0%, rgba(146,43,33,0.95) 100%)"></div>
+  </div>
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-red-200 text-sm font-bold tracking-widest uppercase mb-4 reveal">Contact</p>
+    <h2 class="text-3xl md:text-5xl font-black text-white mb-6 reveal leading-tight">
+      まずはお気軽に<br>ご相談ください
+    </h2>
+    <p class="text-red-100 text-base md:text-lg mb-12 reveal leading-relaxed">
+      現地調査・お見積もりは<strong class="text-white">無料</strong>です。<br>
+      お電話・メール・LINEでお問い合わせください。
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center reveal">
+      <a href="tel:0992142701" class="flex items-center justify-center gap-2 bg-white text-brand-red font-bold px-8 py-4 rounded-xl text-base hover:-translate-y-1 hover:shadow-xl transition-all">
+        <i data-lucide="phone" class="w-5 h-5"></i>
+        電話で相談する
+        <span class="text-sm font-normal ml-1 opacity-70">099-214-2701</span>
+      </a>
+      <a href="mailto:seibu.bousai@san.bbiq.jp" class="flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-xl text-base hover:bg-white hover:text-brand-red transition-all hover:-translate-y-1">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        無料お見積もり依頼
+      </a>
+      <a href="https://line.me/ti/p/~seibubousai" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-green-500 text-white font-bold px-8 py-4 rounded-xl text-base hover:bg-green-600 hover:-translate-y-1 hover:shadow-xl transition-all">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで相談
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-brand-navy-dark text-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <!-- ロゴ・会社情報 -->
+      <div>
+        <img src="https://seibubousai.com/wp-content/themes/seibubousai/img/seibu2.png"
+             alt="株式会社西部防災" class="h-12 w-auto object-contain mb-4"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <p class="text-white font-bold text-lg hidden mb-4">株式会社西部防災</p>
+        <div class="space-y-2 text-gray-400 text-sm">
+          <p>〒890-0054 鹿児島市荒田二丁目63番19号</p>
+          <p>
+            <a href="tel:0992142701" class="text-gray-300 hover:text-white transition-colors">
+              TEL: 099-214-2701
+            </a>
+          </p>
+          <p class="text-gray-500">FAX: 099-214-2702</p>
+        </div>
+      </div>
+      <!-- ナビリンク -->
+      <div>
+        <h3 class="text-white font-bold mb-5 text-sm tracking-wider uppercase">メニュー</h3>
+        <ul class="space-y-3 text-gray-400 text-sm">
+          <li><a href="#services" class="hover:text-white transition-colors">サービス内容</a></li>
+          <li><a href="#works" class="hover:text-white transition-colors">施工実績</a></li>
+          <li><a href="#testimonials" class="hover:text-white transition-colors">お客様の声</a></li>
+          <li><a href="#about" class="hover:text-white transition-colors">会社概要</a></li>
+          <li><a href="#contact" class="hover:text-white transition-colors">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <!-- 対応エリア -->
+      <div>
+        <h3 class="text-white font-bold mb-5 text-sm tracking-wider uppercase">対応エリア</h3>
+        <div class="space-y-2 text-gray-400 text-sm">
+          <div class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-red flex-shrink-0"></i>
+            <span>鹿児島県（県下各市町村）</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-red flex-shrink-0"></i>
+            <span>宮崎県</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-red flex-shrink-0"></i>
+            <span>熊本県</span>
+          </div>
+        </div>
+        <div class="mt-6">
+          <a href="https://seibubousai.com" target="_blank" rel="noopener"
+             class="text-gray-400 hover:text-white text-xs flex items-center gap-1 transition-colors">
+            <i data-lucide="globe" class="w-3 h-3"></i>seibubousai.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <p class="text-gray-500 text-xs">© 2026 株式会社西部防災. All Rights Reserved.</p>
+      <p class="text-gray-600 text-xs">〒890-0054 鹿児島市荒田二丁目63番19号</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== スマホ固定ドック ===================== -->
+<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+  <div class="flex border-t border-white/10">
+    <a href="tel:0992142701" class="dock-btn flex-1 flex flex-col items-center justify-center gap-1 py-3 bg-brand-navy text-white text-xs font-bold">
+      <i data-lucide="phone" class="w-5 h-5"></i>
+      電話
+    </a>
+    <a href="mailto:seibu.bousai@san.bbiq.jp" class="dock-btn flex-1 flex flex-col items-center justify-center gap-1 py-3 bg-brand-navy-dark text-white text-xs font-bold border-x border-white/10">
+      <i data-lucide="mail" class="w-5 h-5"></i>
+      メール
+    </a>
+    <a href="#contact" class="dock-btn flex-1 flex flex-col items-center justify-center gap-1 py-3 bg-brand-red text-white text-xs font-bold">
+      <i data-lucide="file-text" class="w-5 h-5"></i>
+      お見積り
+    </a>
+  </div>
+</div>
+
+<!-- ===================== JavaScript ===================== -->
+<script>
+  // Lucide アイコン初期化
+  document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+  });
+
+  // ==================== ハンバーガーメニュー ====================
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIconOpen = document.getElementById('menu-icon-open');
+  const menuIconClose = document.getElementById('menu-icon-close');
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    if (isOpen) {
+      mobileMenu.classList.add('hidden');
+      menuIconOpen.classList.remove('hidden');
+      menuIconClose.classList.add('hidden');
+    } else {
+      mobileMenu.classList.remove('hidden');
+      menuIconOpen.classList.add('hidden');
+      menuIconClose.classList.remove('hidden');
+    }
+  });
+
+  document.querySelectorAll('[data-close]').forEach(el => {
+    el.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuIconOpen.classList.remove('hidden');
+      menuIconClose.classList.add('hidden');
+    });
+  });
+
+  // ==================== ヘッダースクロール変化 ====================
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // ==================== Hero スライダー ====================
+  const slides = document.querySelectorAll('.hero-slide');
+  let currentSlide = 0;
+
+  function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+
+  setInterval(nextSlide, 5000);
+
+  // ==================== GSAP ====================
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero 入場アニメーション
+    gsap.timeline({ delay: 0.3 })
+      .from('#hero-tagline', {
+        y: 30, opacity: 0, duration: 0.7, ease: 'power3.out'
+      })
+      .from('#hero-title', {
+        y: 40, opacity: 0, duration: 0.8, ease: 'power3.out'
+      }, '-=0.4')
+      .from('#hero-sub', {
+        y: 20, opacity: 0, duration: 0.6, ease: 'power2.out'
+      }, '-=0.3')
+      .from('#hero-btns', {
+        y: 20, opacity: 0, duration: 0.6, ease: 'power2.out'
+      }, '-=0.2');
+
+    // Hero 背景 Parallax
+    gsap.to('#hero-bg', {
+      yPercent: 20,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    // ==================== 数字カウントアップ ====================
+    ScrollTrigger.create({
+      trigger: '#stats-bar',
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        // 創業25年
+        gsap.to({ val: 0 }, {
+          val: 25,
+          duration: 2,
+          ease: 'power2.out',
+          onUpdate: function() {
+            const el = document.getElementById('count-years');
+            if (el) el.textContent = Math.round(this.targets()[0].val) + '年以上';
+          }
+        });
+        // 1000件
+        gsap.to({ val: 0 }, {
+          val: 1000,
+          duration: 2.2,
+          ease: 'power2.out',
+          onUpdate: function() {
+            const el = document.getElementById('count-cases');
+            if (el) el.textContent = Math.round(this.targets()[0].val).toLocaleString() + '件以上';
+          }
+        });
+      }
+    });
+
+    // ==================== スクロール登場アニメーション ====================
+    gsap.utils.toArray('.reveal').forEach((el, i) => {
+      gsap.fromTo(el,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          ease: 'power2.out',
+          delay: (i % 3) * 0.08,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            once: true
+          }
+        }
+      );
+    });
+
+    // ==================== Flowステップ ====================
+    gsap.utils.toArray('.flow-step').forEach((el, i) => {
+      gsap.fromTo(el,
+        { x: -30, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power2.out',
+          delay: i * 0.15,
+          scrollTrigger: {
+            trigger: '#flow-section',
+            start: 'top 75%',
+            once: true
+          }
+        }
+      );
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+pydantic-settings
+httpx
+
+# Google Sheets
+google-api-python-client
+google-auth
+google-auth-oauthlib
+
+# Optional (future): signature verification helpers, etc.
+cryptography

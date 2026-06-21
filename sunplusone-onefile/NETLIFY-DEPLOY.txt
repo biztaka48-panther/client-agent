@@ -1,0 +1,59 @@
+Netlify で桜島背景が出ないときのチェックリスト
+============================================
+
+原因
+----
+index.html は背景画像を次のパスで読みます。
+
+  images/sakurajima.png.jpg
+
+このファイルが「デプロイに含まれていない」と、本番では 404 になり、
+onerror で別画像（Unsplash）に切り替わります。
+
+※ 誤って sakurajima.png.jpg.jpg と三重拡張子にした場合は、
+   sakurajima.png.jpg にリネームするか copy-sakurajima-to-repo.cmd を実行。
+
+会社ロゴ（ヘッダー）
+--------------------
+index.html は images/logo.png を参照します（仮の logo.svg ではない）。
+
+正本: public/images/logo.png
+本番用: sync-public-images.cmd で public/images → images にコピーしてから git push。
+
+対処（どれか1つでOK）
+--------------------
+1) 画像をリポジトリに入れる（Git 連携のとき）
+   - copy-sakurajima-to-repo.cmd を実行するか、手で
+     sunplusone-onefile/images/sakurajima.png.jpg を置く
+   - git add images/sakurajima.png.jpg
+   - git commit / git push
+   - Netlify が再ビルドされたらブラウザで Ctrl+F5
+
+2) ZIP / ドラッグ＆ドロップでデプロイするとき
+   - index.html と「同じ階層」に images フォルダがあること
+   - その中に sakurajima.png.jpg があること
+   - 再デプロイ後 Ctrl+F5
+
+3) リポジトリが monorepo のとき
+   - Netlify の Publish directory を sunplusone-onefile に設定
+   - または sunplusone-onefile だけを別リポジトリにする
+
+4) サイト全体が「ページが見つかりません」(404) のとき
+   - 原因: Netlify の公開ルートに index.html が無い（リポジトリ直下を公開している）。
+   - 対処: リポジトリ直下の netlify.toml（publish = "sunplusone-onefile"）をコミットするか、
+     Netlify ダッシュボードで Publish directory を sunplusone-onefile に設定。
+   - 誤ったパス（/recruit など）で404になる場合は _redirects を同梱済み。
+
+5) ビルドが exit code 2 / 「公開ディレクトリはベースと同じにできない」/ @netlify/plugin-nextjs 失敗
+   - 原因: Netlify に「Next.js プラグイン」が有効だが、このサイトは静的 HTML のみ。
+   - 対処（どちらか必須）:
+     A) Netlify → Site configuration → Integrations（または Plugins）→
+        @netlify/plugin-nextjs を削除／無効化して再デプロイ。
+     B) 別の Netlify サイトを作り、リポジトリではなく sunplusone-onefile だけを ZIP デプロイする。
+     C) Build settings の「Base directory」が sunplusone-onefile のときは、
+        リポジトリ直下の netlify.toml の publish と二重指定にならないよう、
+        UI の Base を空にするか、publish を「.」に揃える（どちらか一方に統一）。
+
+参考URL
+-------
+デモ: https://extraordinary-blini-1bea55.netlify.app/

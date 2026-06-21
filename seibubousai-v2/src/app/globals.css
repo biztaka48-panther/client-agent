@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Design Tokens — 株式会社 西部防災 v2
+   鹿児島 × 防災プロ カラーパレット
+   ============================================================ */
+
+:root {
+  /* Primary — 深い防災レッド（消防車・緊急性の象徴） */
+  --color-primary:      #C0392B;
+  --color-primary-dark: #96281B;
+  --color-primary-glow: rgba(192, 57, 43, 0.4);
+
+  /* Dark Base — 鹿児島の夜景・重厚感 */
+  --color-bg-deep:      #0A0E14;
+  --color-bg-card:      #111827;
+  --color-bg-surface:   #1C2333;
+
+  /* Accent — 桜島溶岩・オレンジ炎 */
+  --color-accent:       #E67E22;
+  --color-accent-glow:  rgba(230, 126, 34, 0.3);
+
+  /* Text */
+  --color-text-primary:   #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted:     #475569;
+
+  /* Success / Alert */
+  --color-success:  #10B981;
+  --color-warning:  #F59E0B;
+
+  /* Legacy compatibility */
+  --background: var(--color-bg-deep);
+  --foreground: var(--color-text-primary);
+}
+
+/* ============================================================
+   Tailwind v4 Theme Extension
+   ============================================================ */
+
+@theme inline {
+  /* Background / Surface */
+  --color-bg-deep:    var(--color-bg-deep);
+  --color-bg-card:    var(--color-bg-card);
+  --color-bg-surface: var(--color-bg-surface);
+
+  /* Primary */
+  --color-primary:      var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+
+  /* Accent */
+  --color-accent: var(--color-accent);
+
+  /* Text */
+  --color-text-primary:   var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted:     var(--color-text-muted);
+
+  /* Status */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Typography scale (mobile-base) */
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-lg:   18px;
+  --text-xl:   20px;
+  --text-2xl:  24px;
+  --text-3xl:  30px;
+  --text-4xl:  36px;
+  --text-5xl:  48px;
+  --text-6xl:  60px;
+}
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+
+body {
+  background: #F8FAFC;
+  color: #0F172A;
+  font-family: 'Noto Sans JP', Arial, sans-serif;
+}
+
+/* ============================================================
+   Button Hover Effects
+   ============================================================ */
+
+.btn-primary {
+  transition: all 0.25s ease;
+  box-shadow: 0 0 15px rgba(192, 57, 43, 0.25);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(192, 57, 43, 0.45),
+              0 8px 25px rgba(15, 23, 42, 0.15);
+}
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   Card Hover Effects（ライトテーマ）
+   ============================================================ */
+
+.service-card {
+  transition: all 0.3s ease;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(192, 57, 43, 0.5);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.14),
+              0 0 24px rgba(192, 57, 43, 0.14);
+}

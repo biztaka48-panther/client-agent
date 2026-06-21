@@ -1,0 +1,330 @@
+#!/usr/bin/env python3
+"""Generate menu.html — typography-focused refined menu."""
+from pathlib import Path
+
+FOOD = [
+    ("刺身・鮮魚", [
+        ("お刺身盛り合わせ", "1,100 yen〜", "その日の仕入れで彩る鮮魚の盛り合わせ", "おすすめ"),
+        ("生うに", "3,500 yen", "濃厚な旨みをそのまま", None),
+        ("首長まぐろ刺身", "時価", "脂の乗った赤身・中トロ", None),
+        ("鯛刺身", "時価", "旬の鯛を丁寧に", None),
+        ("かんぱち刺身", "時価", "コリのある食感", None),
+        ("地どり刺身", "時価", "鹿児島地どりのさっぱりとした一皿", None),
+        ("きびなご刺身", "時価", "鹿児島近海の旬", "数量限定"),
+    ]),
+    ("焼き物", [
+        ("鮎の塩焼き", "1,200 yen", "香ばしい塩焼き", None),
+        ("カツオの腹皮", "880 yen", "脂がのった腹皮を炙り焼き", None),
+        ("いわしの塩焼き", "880 yen", "外はパリッと中はジューシー", None),
+        ("北海道産キンキ塩焼き", "3,300 yen", "脂の乗ったキンキを塩で", "おすすめ"),
+    ]),
+    ("本日のおすすめ", [
+        ("あわびとアスパラの肝ソース炒め", "2,200 yen", "アワビの旨みとアスパラの食感", "おすすめ"),
+        ("ゴーヤチャンプル", "880 yen", "さっぱりとした定番", None),
+        ("あんこう塩焼き", "1,100 yen", "あんこうの身を塩焼きに", None),
+        ("あんこう唐揚げ", "1,100 yen", "カリッと揚げたあんこう", None),
+        ("ヤングコーン焼き", "550 yen", "甘みたっぷり", None),
+        ("とうもろこしかき揚げ", "1,100 yen", "サクサクの衣", None),
+    ]),
+    ("揚げ物", [
+        ("きびなご唐揚げ", "1,100 yen", "鹿児島の名魚を揚げに", None),
+        ("メヒカリ唐揚げ", "1,100 yen", "カリッと揚げたメヒカリ", "人気"),
+        ("大海老唐揚げ", "1,100 yen", "プリプリの海老", None),
+        ("自家製さつま揚げ", "550 yen", "手作りの優しい味", None),
+        ("さつまいもスティック", "770 yen", "ほくほく甘み", None),
+    ]),
+    ("肉料理", [
+        ("さつまどりガーリックステーキ", "1,100 yen", "香ばしいガーリック", None),
+        ("鹿児島地どり炭火焼き", "1,100 yen", "炭火の香り", "人気"),
+        ("黒豚なんこつやわらか煮", "880 yen", "とろける食感", None),
+        ("鹿籠豚ロース味噌焼き", "1,300 yen", "甘辛味噌が染み込む", None),
+        ("鹿籠豚しゃぶ鍋", "2,200 yen", "2人前より", "おすすめ"),
+        ("中おちカルビ野菜炒め", "1,500 yen", "ボリューム満点", None),
+        ("黒毛和牛ローストビーフ", "2,200 yen", "厳選和牛を低温調理", "人気"),
+        ("黒毛和牛サーロインステーキ", "3,300 yen", "上質なサーロイン", "おすすめ"),
+        ("黒毛和牛肩ロースステーキ", "2,500 yen", "赤身の旨み", None),
+    ]),
+    ("サラダ", [
+        ("自家製ポテトサラダ", "770 yen", "手作りの定番", None),
+        ("季節のフルーツと野菜サラダ", "1,100 yen", "旬の彩り", None),
+    ]),
+    ("アラカルト", [
+        ("ナス田楽", "660 yen", "甘辛味噌", None),
+        ("あさりバター", "880 yen", "バターの香り", None),
+        ("エビチリ", "1,500 yen", "甘辛マヨソース", "人気"),
+        ("とりの唐揚げ", "1,100 yen", "さつまどり使用", "人気"),
+        ("揚げ豆腐", "880 yen", "出汁効いた一皿", None),
+        ("季節野菜と海老のピザ", "1,800 yen", "シェア向け", "おすすめ"),
+    ]),
+    ("おつまみ", [
+        ("ポテトフライ", "660 yen", "カリッと", None),
+        ("ごぼうスティック", "660 yen", "サクサク", None),
+        ("チーズ春巻き", "440 yen", "1本", None),
+        ("冷やっこ", "330 yen", "さっぱり", None),
+        ("枝豆", "550 yen", "定番", None),
+        ("塩ゆでピーナッツ", "550 yen", "ビールに", None),
+        ("チャンジャ", "550 yen", "ピリ辛", None),
+        ("信州味噌の根きゅうり漬け", "660 yen", "信州の味", None),
+    ]),
+    ("ご飯もの", [
+        ("焼きのり包みおにぎり", "440 yen", "1個", None),
+        ("カリカリ梅と玉子チャーハン", "1,320 yen", "パリパリ食感", None),
+        ("自家製トマトソーススパゲッティ", "1,600 yen", "手作りソース", None),
+        ("貝汁", "440 yen", "あっさり", None),
+        ("とうふと海藻の味噌汁", "330 yen", "優しい味", None),
+    ]),
+    ("甘味", [
+        ("ミルキーな大学いも", "660 yen", "ほくほく甘み", None),
+        ("ココナッツアイス", "660 yen", "さっぱり", None),
+    ]),
+]
+
+SAKE = [
+    ("大盃 不動", "群馬県", "特別純米", "300ml 2,200 yen / 1合 1,200 yen"),
+    ("こしひかり", "新潟県", "純米吟醸", "300ml 2,200 yen"),
+    ("越前岬", "福井県", "槽搾り純米酒", "1合 1,200 yen"),
+    ("蓬莱泉", "愛知県", "純米酒", "1合 1,200 yen"),
+    ("マッチョ", "群馬県", "純米酒", "1合 1,600 yen"),
+    ("大信州 手の内", "長野県", "生詰純米吟醸", "1合 1,600 yen"),
+    ("鬼夜叉 遠心分離", "新潟県佐渡島", "純米酒", "1合 1,600 yen"),
+]
+
+WHISKY = [
+    ("OSUZU MALT", "スーパーレア・40cc", "3,300 yen"),
+    ("津貫", "プレミアム・40cc", "1,870 yen"),
+    ("イチローズモルト", "プレミアム・40cc", "1,100 yen"),
+    ("マッカラン12年", "プレミアム・40cc", "2,640 yen"),
+    ("シーバスミズナラ", "ライトテイスト・40cc", "880 yen"),
+    ("ミズナラウッド", "ライトテイスト・40cc", "880 yen"),
+    ("HHAE", "ライトテイスト", "770 yen"),
+]
+
+GIN = [("タンカレーNo.10", "40cc", "880 yen")]
+
+SHOCHU = [
+    ("一轍", "南九州市・長期熟成", "880 yen"),
+    ("千本桜", "都城市・やさしい甘み", "770 yen"),
+    ("猫泉", "種子島・白麹古酒", "770 yen"),
+    ("獺祭焼酎", "酒粕焼酎", "880 yen"),
+    ("フラミンゴオレンジ", "グラス", "1,100 yen"),
+    ("安田", "グラス", "1,100 yen"),
+    ("萬膳庵", "グラス", "1,100 yen"),
+]
+
+WINE = {
+    "スパークリング": [
+        ("マルス甲州スパークリング", "やや辛口", "250ml 2,200 yen"),
+        ("ペティアン・ド・マルス", "辛口", "250ml 2,200 yen / 720ml 5,500 yen"),
+    ],
+    "白ワイン": [
+        ("甲州ヴェルディーニョ", "辛口", "グラス 880 yen / 750ml 4,400 yen"),
+        ("甲州オランジュ・グリ", "やや辛口", "750ml 5,500 yen"),
+    ],
+    "赤ワイン": [
+        ("穂坂マスカットベーリーA", "軽めミディアム", "グラス 880 yen / 750ml 4,400 yen"),
+        ("穂坂ヤマソービニオン", "ミディアム", "750ml 5,500 yen"),
+        ("穂坂日之城シラー", "フルボディ", "750ml 11,000 yen"),
+        ("穂坂日之城メルロー", "フルボディ", "750ml 11,000 yen"),
+    ],
+}
+
+
+def badge_html(tag):
+    if not tag:
+        return ""
+    cls = "badge-limited" if tag == "数量限定" else "badge-popular" if tag == "人気" else "badge-rec"
+    return f'<span class="menu-badge {cls}">{tag}</span>'
+
+
+def food_item(name, price, desc, badge):
+    return f"""<div class="menu-item fade-item">
+  <div class="menu-item-line">
+    <span class="menu-item-name-wrap">
+      <span class="menu-item-name">{name}</span>
+      {badge_html(badge)}
+    </span>
+    <span class="menu-item-leader" aria-hidden="true"></span>
+    <span class="menu-item-price">{price}</span>
+  </div>
+  <p class="menu-item-desc">{desc}</p>
+</div>"""
+
+
+def food_section(title, items):
+    rows = "\n".join(food_item(*item) for item in items)
+    return f"""<section class="menu-category fade-item">
+  <button class="menu-category-head" type="button" aria-expanded="true">
+    <span class="menu-category-title">{title}</span>
+    <span class="menu-category-toggle" aria-hidden="true"></span>
+  </button>
+  <div class="menu-category-body">
+    {rows}
+  </div>
+</section>"""
+
+
+def sake_rows():
+    rows = ""
+    for name, pref, kind, price in SAKE:
+        rows += f"""<div class="sake-row fade-item">
+  <span class="sake-name">{name}</span>
+  <span class="sake-pref">{pref}</span>
+  <span class="sake-kind">{kind}</span>
+  <span class="sake-price">{price}</span>
+</div>"""
+    return rows
+
+
+def drink_list(items):
+    out = ""
+    for name, note, price in items:
+        out += f'<div class="drink-row fade-item"><span class="drink-name">{name}<small>{note}</small></span><span class="drink-price">{price}</span></div>'
+    return out
+
+
+def wine_sections():
+    html = ""
+    for cat, items in WINE.items():
+        rows = ""
+        for name, note, price in items:
+            rows += f'<div class="drink-row fade-item"><span class="drink-name">{name}<small>{note}</small></span><span class="drink-price">{price}</span></div>'
+        html += f"""<div class="wine-sub fade-item">
+  <h4 class="wine-sub-title">{cat}</h4>
+  {rows}
+</div>"""
+    return html
+
+
+food_html = "\n".join(food_section(t, items) for t, items in FOOD)
+
+html = f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/signboard/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/signboard/apple-touch-icon.png">
+  <link rel="canonical" href="https://yanoji.com/menu.html">
+  <title>お品書き | お酒と食彩 家のじ（ヤノジ）</title>
+  <meta name="description" content="家のじのお品書き。旬の食材と厳選した全国の銘酒。刺身・焼き物・肉料理・日本酒・ウイスキー・ワイン。">
+  <meta property="og:title" content="お品書き | お酒と食彩 家のじ">
+  <meta property="og:url" content="https://yanoji.com/menu.html">
+  <meta property="og:image" content="https://yanoji.com/assets/images/signboard/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/menu-page.css">
+</head>
+<body class="menu-page">
+
+  <nav id="nav" class="menu-nav">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/signboard/kanban.png" alt="家のじ">
+      <div class="nav-logo-text">家のじ<small>YANOJI / 鹿児島天文館</small></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="index.html#instagram-today">本日の旬</a></li>
+      <li><a href="menu.html" aria-current="page">お品書き</a></li>
+      <li><a href="index.html#access">アクセス</a></li>
+      <li><a href="https://tabelog.com/kagoshima/A4601/A460101/46017982/" target="_blank" rel="noopener" class="btn-nav-reserve">📅 予約</a></li>
+    </ul>
+    <a class="nav-tel" href="tel:0992392777">099-239-2777</a>
+    <button class="nav-burger" id="navBurger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="nav-mobile-overlay" id="mobileMenu">
+    <button class="nav-mobile-close" id="mobileClose" aria-label="閉じる">✕</button>
+    <a href="index.html">トップ</a>
+    <a href="index.html#instagram-today">本日の旬</a>
+    <a href="menu.html">お品書き</a>
+    <a href="index.html#access">アクセス</a>
+    <a href="tel:0992392777">📞 099-239-2777</a>
+  </div>
+
+  <header class="menu-hero">
+    <div class="menu-hero-bg" aria-hidden="true"></div>
+    <div class="menu-hero-inner fade-item visible">
+      <p class="menu-hero-en">Food &amp; Drink</p>
+      <h1 class="menu-hero-title">MENU</h1>
+      <p class="menu-hero-copy">旬の食材と厳選したお酒を<br>心ゆくまでお楽しみください。</p>
+      <div class="menu-hero-rule" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <div class="menu-switch" role="tablist" aria-label="メニュー切替">
+    <button class="menu-switch-btn active" type="button" role="tab" id="tab-food" aria-selected="true" aria-controls="panel-food">FOOD</button>
+    <button class="menu-switch-btn" type="button" role="tab" id="tab-drink" aria-selected="false" aria-controls="panel-drink">DRINK</button>
+  </div>
+
+  <main class="menu-main">
+    <div class="menu-panel active" id="panel-food" role="tabpanel" aria-labelledby="tab-food">
+      <header class="menu-section-head fade-item">
+        <span class="menu-section-en">Food</span>
+        <h2>FOOD MENU</h2>
+        <p class="menu-section-note">仕入れ状況により内容・価格が変わる場合があります</p>
+      </header>
+      <div class="food-grid">
+        {food_html}
+      </div>
+    </div>
+
+    <div class="menu-panel" id="panel-drink" role="tabpanel" aria-labelledby="tab-drink" hidden>
+      <header class="menu-section-head fade-item">
+        <span class="menu-section-en">Drink</span>
+        <h2>DRINK MENU</h2>
+        <p class="menu-section-note">税込表示・2026年6月時点</p>
+      </header>
+
+      <div class="drink-block fade-item">
+        <div class="drink-block-head"><h3 class="drink-block-title">日本酒</h3></div>
+        <div class="drink-block-body">
+          <div class="sake-table">
+            <div class="sake-head"><span>銘柄</span><span>都道府県</span><span>種類</span><span>価格</span></div>
+            {sake_rows()}
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-block fade-item">
+        <div class="drink-block-head"><h3 class="drink-block-title">ウイスキー</h3></div>
+        <div class="drink-block-body"><div class="drink-list">{drink_list(WHISKY)}</div></div>
+      </div>
+
+      <div class="drink-block fade-item">
+        <div class="drink-block-head"><h3 class="drink-block-title">ジン</h3></div>
+        <div class="drink-block-body"><div class="drink-list">{drink_list(GIN)}</div></div>
+      </div>
+
+      <div class="drink-block fade-item">
+        <div class="drink-block-head"><h3 class="drink-block-title">焼酎</h3></div>
+        <div class="drink-block-body"><div class="drink-list">{drink_list(SHOCHU)}</div></div>
+      </div>
+
+      <div class="drink-block fade-item">
+        <div class="drink-block-head"><h3 class="drink-block-title">ワイン</h3></div>
+        <div class="drink-block-body"><div class="wine-list">{wine_sections()}</div></div>
+      </div>
+
+      <p class="menu-footer-note fade-item">価格は仕入れ状況により変更となる場合があります。<br>詳しくはスタッフまでお尋ねください。</p>
+    </div>
+  </main>
+
+  <footer class="menu-footer">
+    <p><a href="index.html">← トップページへ</a></p>
+    <p class="menu-footer-copy">© 2026 お酒と食彩 家のじ</p>
+  </footer>
+
+  <nav class="mobile-dock" aria-label="固定メニュー">
+    <a href="tel:0992392777">📞<span>電話</span></a>
+    <a href="https://tabelog.com/kagoshima/A4601/A460101/46017982/" target="_blank" rel="noopener" class="dock-reserve">📅<span>予約</span></a>
+    <a href="index.html#access">📍<span>地図</span></a>
+  </nav>
+
+  <script src="js/menu-page.js"></script>
+</body>
+</html>
+"""
+
+Path(__file__).resolve().parent.joinpath("menu.html").write_text(html, encoding="utf-8")
+print("wrote menu.html", len(html), "chars")

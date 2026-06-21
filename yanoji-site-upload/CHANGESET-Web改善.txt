@@ -1,0 +1,29 @@
+【家のじ HP 改善差分サマリー（プロWeb改善・2026-05-01）】
+※「直前」との機械diffは環境により困難なため、このファイルに論理差分として記載。
+
+■ 変更ファイル
+  - index.html（CSS/HTML/JS 同一ファイル内）
+
+■ head
+  + Behold.io ウィジェット読み込み（1回のみ）
+    <script src="https://w.behold.so/widget.js" type="module"></script>
+
+■ body（レイアウト・CV）
+  + ヒーロー：営業時間（曜日自動）／空席文言
+  + ヒーロー：CTA 文言・順序（予約主役・min-height 56px）
+  + ヒーロー：タグラインを .hero-tagline-block で可読化
+  + #instagram-today セクション（FV直下／Behold grid 6件／columns="2"）
+  + .mobile-dock（スマホ固定：電話・予約・地図）
+  + アクセス側「ご予約」ボタンを btn-hero-reserve へ統一
+  ± ナビ・フッター「今の旬」→「本日の旬」（#instagram-today）
+
+■ JavaScript
+  + setHeroHours() … 月定休・日／平日の表示
+  ± initBehold() … 全 behold-widget にFeed IDチェック／グリッド用フォールバック文言制御
+  ± パーティクル … 春季は数・透明度を抑制
+
+■ 外部ライブラリ
+  + https://w.behold.so/widget.js（Instagram自動表示・Feed ID要）
+
+■ Netlify へアップする単位
+  このフォルダ（yanoji-site-upload）一式をドラッグ＆ドロップ。

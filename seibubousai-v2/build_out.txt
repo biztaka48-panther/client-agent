@@ -1,0 +1,22 @@
+
+> seibubousai-v2@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.8min
+  Running TypeScript ...
+Failed to type check.
+
+.next/dev/types/routes.d.ts:66:3
+Type error: Declaration or statement expected.
+
+  [90m64 |[0m }
+  [90m65 |[0m     children: [33mReact[0m.[33mReactNode[0m
+[31m[1m>[0m [90m66 |[0m   } & {
+  [90m   |[0m   [31m[1m^[0m
+  [90m67 |[0m     [[33mK[0m [36min[0m [33mLayoutSlotMap[0m[[33mLayoutRoute[0m]]: [33mReact[0m.[33mReactNode[0m
+  [90m68 |[0m   }
+  [90m69 |[0m }
+Next.js build worker exited with code: 1 and signal: null

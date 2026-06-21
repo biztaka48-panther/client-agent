@@ -1,0 +1,18 @@
+# 静的デモ（sunplusone-onefile）用。リポジトリ直下に index.html は無い。
+#
+# 【必須】Netlify UI で「@netlify/plugin-nextjs」が有効だと、静的 publish と衝突し
+# 「公開ディレクトリはベースと同じにできない」(exit code 2) で落ちます。
+# → Site configuration → Integrations / Plugins → @netlify/plugin-nextjs を削除してください。
+# （NETLIFY_NEXT_PLUGIN_SKIP はプラグイン v5 では効かないことがありますが、試行として残しています）
+
+[build]
+  command = "echo 'static: sunplusone-onefile'"
+  publish = "sunplusone-onefile"
+
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "1"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

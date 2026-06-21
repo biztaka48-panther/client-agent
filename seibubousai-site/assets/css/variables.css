@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Bebas+Neue&family=Shippori+Mincho:wght@500;700&display=swap');
+
+:root {
+  /* Colors */
+  --color-bg:        #0a0e1a;
+  --color-bg-2:      #0f1525;
+  --color-bg-card:   #151d30;
+  --color-primary:   #e63027;
+  --color-primary-l: #ff4d44;
+  --color-text:      #f0f0f0;
+  --color-text-sub:  #8a9ab5;
+  --color-line:      rgba(255,255,255,0.08);
+  --color-gold:      #c9a84c;
+
+  /* Fonts */
+  --font-display:  'Bebas Neue', sans-serif;
+  --font-ja-serif: 'Shippori Mincho', serif;
+  --font-ja-body:  'Noto Sans JP', sans-serif;
+
+  /* Breakpoints (reference only) */
+  --bp-sm:  640px;
+  --bp-md:  768px;
+  --bp-lg:  1024px;
+  --bp-xl:  1280px;
+  --bp-2xl: 1536px;
+
+  /* Spacing */
+  --section-padding: clamp(4rem, 8vw, 8rem);
+  --container-max:   1200px;
+  --container-pad:   clamp(1.5rem, 5vw, 3rem);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.18, 1);
+}

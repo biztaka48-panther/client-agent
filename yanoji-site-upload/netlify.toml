@@ -1,0 +1,35 @@
+# 家のじ HP — Netlify 静的ホスト設定
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# 写真は同名で差し替えるため、キャッシュは10分に短縮
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=600, must-revalidate"
+
+# 独自ドメイン: www / http → https://yanoji.com
+[[redirects]]
+  from = "https://www.yanoji.com/*"
+  to = "https://yanoji.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://yanoji.com/*"
+  to = "https://yanoji.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.yanoji.com/*"
+  to = "https://yanoji.com/:splat"
+  status = 301
+  force = true

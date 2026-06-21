@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  /* 公式ロゴに準拠したツートン（紺 #004098 / 黄 #FFD700 付近） */
+  --color-ink: #0a1628;
+  --color-ink-muted: #3d4a5c;
+  --color-surface: #f4f7fb;
+  --color-card: #ffffff;
+  --color-line: #dce4ef;
+  --color-brand: #004098;
+  --color-brand-light: #0a5cb8;
+  --color-gold: #ffd700;
+  --color-gold-soft: #fff9cc;
+  --color-gold-hover: #e6c200;
+  --font-sans: "Yu Gothic", YuGothic, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-surface);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}

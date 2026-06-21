@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>株式会社サンプラスワン | 交通誘導・施設・駐車場警備など（デモ単一HTML）</title>
+  <meta name="description" content="交通誘導・施設・駐車場警備など。鹿児島の警備会社サンプラスワンです。単一ページの提案デモ。公式情報は https://sunplusone.com/" />
+  <meta property="og:title" content="株式会社サンプラスワン（デモ）" />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --navy: #004098;
+      --navy-light: #0a5cb8;
+      --gold: #ffd700;
+      --gold-hover: #e6c200;
+      --gold-soft: #fff9cc;
+      --ink: #0a1628;
+      --muted: #3d4a5c;
+      --line: #dce4ef;
+      --surface: #f4f7fb;
+      --card: #ffffff;
+      --radius-pill: 9999px;
+      --shadow-dock: 0 12px 40px rgba(0, 64, 152, 0.35);
+      --font: "Yu Gothic", YuGothic, "Hiragino Sans", Meiryo, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--surface);
+      line-height: 1.6;
+      padding-bottom: 5rem;
+    }
+    @media (min-width: 768px) { body { padding-bottom: 2rem; } }
+    a { color: var(--navy); }
+    a:hover { text-decoration-thickness: 2px; }
+    .skip {
+      position: absolute; left: -9999px; z-index: 200;
+    }
+    .skip:focus {
+      left: 1rem; top: 1rem; padding: .5rem 1rem; background: var(--card);
+      outline: 2px solid var(--gold); border-radius: 8px;
+    }
+    .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+    @media (min-width: 768px) { .wrap { padding: 0 1.5rem; } }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,64,152,.12);
+    }
+    .header-top {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: .75rem; padding: .6rem 0;
+    }
+    .logo-mark {
+      display: flex; align-items: center; gap: .5rem; text-decoration: none; color: var(--ink);
+      flex-shrink: 0;
+    }
+    .logo-img {
+      display: block; height: 44px; width: auto; max-width: 60vw;
+      object-fit: contain;
+    }
+    @media (min-width: 768px) { .logo-img { height: 52px; max-width: 280px; } }
+    .btn-search-fake {
+      display: none; align-items: center; gap: .4rem;
+      padding: .45rem .9rem; border-radius: var(--radius-pill);
+      border: 1px solid var(--line); background: var(--surface); cursor: pointer;
+      font-size: .8rem; color: var(--muted);
+    }
+    @media (min-width: 768px) { .btn-search-fake { display: flex; } }
+    .btn-icon { display: flex; padding: .4rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--surface); cursor: pointer; }
+    @media (min-width: 768px) { .header-mobile-search { display: none; } }
+
+    .nav-row {
+      display: none; flex-wrap: wrap; justify-content: center; gap: .15rem;
+      padding: .35rem 0 .6rem; border-top: 1px solid rgba(255,215,0,.35);
+      background: linear-gradient(180deg, #fff 0%, var(--surface) 100%);
+    }
+    @media (min-width: 1024px) { .nav-row { display: flex; } }
+    .nav-row a {
+      text-decoration: none; font-weight: 700; font-size: .85rem; color: var(--ink);
+      padding: .4rem .65rem; border-radius: .5rem;
+    }
+    .nav-row a:hover { background: var(--gold-soft); color: var(--navy); }
+
+    /* Bands */
+    .band-anniv {
+      background: linear-gradient(90deg, var(--navy), var(--navy-light));
+      color: #fff; border-top: 4px solid var(--gold);
+      padding: 1.25rem 0; font-size: .9rem;
+    }
+    .band-anniv .badge {
+      display: inline-block; padding: .2rem .6rem; border-radius: var(--radius-pill);
+      background: rgba(255,215,0,.22); border: 1px solid rgba(255,215,0,.5);
+      font-size: .7rem; font-weight: 700; color: var(--gold-soft);
+    }
+    .recruit-strip {
+      background: linear-gradient(90deg, var(--gold), var(--gold-soft), var(--gold));
+      padding: .75rem 0; font-size: .8rem; font-weight: 700; text-align: center; color: var(--ink);
+    }
+
+    /* ===== Hero（モダン版・桜島背景） ===== */
+    .hero {
+      position: relative; overflow: hidden;
+      background: #001a4d;
+      color: #fff;
+      border-bottom: 4px solid var(--gold);
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 60%;
+      filter: saturate(1.05) brightness(.95) contrast(1.02);
+    }
+    .hero-bg::after {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(95deg, rgba(0,16,42,.82) 0%, rgba(0,16,42,.55) 32%, rgba(0,16,42,.18) 60%, transparent 100%),
+        linear-gradient(180deg, rgba(0,16,42,.15) 0%, rgba(0,16,42,.35) 100%);
+    }
+    @media (max-width: 899px) {
+      .hero-bg::after {
+        background:
+          linear-gradient(180deg, rgba(0,16,42,.3) 0%, rgba(0,16,42,.55) 55%, rgba(0,16,42,.8) 100%);
+      }
+    }
+    .hero-grid {
+      position: relative; z-index: 2;
+      display: grid; gap: 1.5rem;
+      grid-template-columns: 1fr;
+      align-items: center;
+      padding: 2.75rem 1.25rem 3rem;
+      max-width: 72rem; margin: 0 auto;
+    }
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.05fr 1fr; padding: 4rem 1.5rem 4.25rem; min-height: 28rem; }
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .3rem .85rem; border-radius: var(--radius-pill);
+      background: rgba(255,215,0,.16); border: 1px solid rgba(255,215,0,.55);
+      font-size: .72rem; font-weight: 800; color: var(--gold-soft); letter-spacing: .12em;
+    }
+    .hero h1 {
+      margin: .85rem 0 .5rem;
+      font-size: clamp(1.75rem, 5vw, 2.85rem);
+      line-height: 1.18; letter-spacing: .02em; font-weight: 900;
+      text-shadow: 0 2px 14px rgba(0,0,0,.35);
+    }
+    .hero h1 .accent { color: var(--gold); }
+    .hero-lead {
+      font-size: clamp(.9rem, 1.6vw, 1rem); line-height: 1.75;
+      max-width: 32rem; margin: 0; color: rgba(255,255,255,.92);
+      text-shadow: 0 1px 6px rgba(0,0,0,.35);
+    }
+    .hero-quote {
+      margin-top: .55rem; font-size: .72rem; opacity: .85; font-weight: 600;
+    }
+    .hero-cta {
+      display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.35rem;
+    }
+    .btn-hero {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .85rem 1.3rem; border-radius: var(--radius-pill);
+      font-weight: 800; text-decoration: none; font-size: .92rem;
+      transition: transform .15s, box-shadow .15s, background .15s;
+    }
+    .btn-hero:hover { transform: translateY(-1px); }
+    .btn-hero-gold {
+      background: linear-gradient(180deg, #ffe34d, var(--gold));
+      color: var(--ink); border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 10px 24px rgba(255,215,0,.32);
+    }
+    .btn-hero-glass {
+      background: rgba(255,255,255,.14);
+      color: #fff; border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    }
+    .btn-hero-glass:hover { background: rgba(255,255,255,.22); }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: .55rem; margin-top: 1.5rem;
+      max-width: 28rem;
+    }
+    .hero-stats div {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22);
+      border-radius: 1rem; padding: .65rem .55rem; text-align: center;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    }
+    .hero-stats strong { display: block; font-size: clamp(1.1rem, 2.2vw, 1.5rem); color: var(--gold); }
+    .hero-stats span { font-size: .65rem; font-weight: 700; color: rgba(255,255,255,.88); letter-spacing: .05em; }
+
+    /* 右側：ガラスパネル＋写真4枚 */
+    .hero-panel {
+      position: relative; padding: 1.1rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 1.5rem;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.32);
+    }
+    .hero-panel-title {
+      display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+      font-size: .72rem; font-weight: 800; letter-spacing: .14em;
+      color: var(--gold-soft); margin: 0 .25rem .65rem;
+    }
+    .hero-thumbs { display: grid; grid-template-columns: repeat(2, 1fr); gap: .55rem; }
+    .hero-thumbs figure {
+      margin: 0; position: relative; border-radius: 1rem; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.35); background: #001a4d;
+      box-shadow: 0 6px 14px rgba(0,0,0,.25);
+    }
+    .hero-thumbs img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .hero-thumbs figcaption {
+      position: absolute; inset: auto 0 0 0; padding: .3rem .5rem;
+      font-size: .65rem; font-weight: 800; color: #fff; letter-spacing: .04em;
+      background: linear-gradient(transparent, rgba(0,24,72,.92));
+    }
+    .hero-photo-note {
+      display: inline-block; margin-top: .8rem; padding: .25rem .6rem;
+      border-radius: var(--radius-pill); background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.45); color: #fff;
+      font-size: .65rem; font-weight: 700;
+    }
+    .hero-sakurajima-note {
+      position: absolute; right: 1rem; bottom: 1rem; z-index: 3;
+      font-size: .62rem; color: rgba(255,255,255,.78); letter-spacing: .04em;
+      background: rgba(0,0,0,.32); padding: .2rem .55rem; border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    /* Film strip — 必須 */
+    .strip-section {
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, var(--navy) 0%, #081428 100%);
+      color: #fff; padding: 2.5rem 0 2rem;
+    }
+    .strip-section h2 { margin: .25rem 0; font-size: clamp(1.4rem, 3vw, 2rem); }
+    .strip-hint {
+      display: inline-block; margin-top: .75rem; padding: .35rem .8rem;
+      border-radius: var(--radius-pill); border: 1px solid rgba(255,215,0,.45);
+      background: rgba(255,255,255,.08); font-size: .72rem; font-weight: 700; color: var(--gold-soft);
+    }
+    .film-strip {
+      display: flex; gap: 1rem; margin-top: 1.75rem;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      scroll-padding: 0 1rem; padding: .5rem 1rem 1.25rem;
+      -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+      scrollbar-color: rgba(255,215,0,.5) transparent;
+    }
+    @media (min-width: 1024px) {
+      .film-strip { scroll-padding: 0 max(1rem, calc((100vw - 72rem) / 2 + 1rem)); padding-inline: max(1rem, calc((100vw - 72rem) / 2 + .5rem)); }
+    }
+    .film-card {
+      position: relative; flex: 0 0 min(88vw, 420px); scroll-snap-align: center; scroll-snap-stop: always;
+      min-height: min(52vh, 380px); border-radius: 2.2rem; overflow: hidden;
+      border: 2px solid rgba(255,215,0,.38); box-shadow: 0 20px 50px rgba(0,0,0,.35);
+      text-decoration: none; color: #fff; transition: transform .25s, box-shadow .25s;
+    }
+    .film-card:hover, .film-card:focus-visible {
+      transform: translateY(-4px); outline: none;
+      border-color: var(--gold); box-shadow: 0 22px 60px rgba(0,64,152,.55);
+    }
+    .film-card img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .film-card .grad {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, #0a1628 0%, rgba(10,22,40,.82) 45%, rgba(0,64,152,.35) 100%);
+    }
+    .film-card .body {
+      position: absolute; inset: auto 0 0 0; padding: 1.25rem 1.5rem 1.35rem;
+    }
+    .film-card .tag { font-size: .68rem; font-weight: 800; letter-spacing: .12em; color: var(--gold); }
+    .film-card h3 { margin: .35rem 0 0; font-size: 1.2rem; line-height: 1.35; }
+    .film-card p { margin: .5rem 0 0; font-size: .82rem; opacity: .92; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .film-card .more { margin-top: .75rem; font-size: .85rem; font-weight: 800; color: var(--gold); }
+    .strip-cta { text-align: center; margin-top: .5rem; }
+    .strip-cta a {
+      display: inline-flex; align-items: center; gap: .35rem; padding: .55rem 1.1rem;
+      border-radius: var(--radius-pill); border: 1px solid rgba(255,215,0,.55);
+      background: rgba(255,255,255,.1); color: var(--gold-soft); font-weight: 800; font-size: .85rem; text-decoration: none;
+    }
+    .strip-cta a:hover { background: var(--gold); color: var(--ink); }
+
+    /* Gallery */
+    .gallery { background: linear-gradient(180deg, var(--card), var(--surface)); }
+    .gallery h2 { color: var(--navy); }
+    .g-grid {
+      display: grid; gap: .65rem; margin-top: 1.25rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 900px) { .g-grid { grid-template-columns: repeat(4, 1fr); } }
+    .g-cell { position: relative; aspect-ratio: 4/3; border-radius: 1rem; overflow: hidden;
+      border: 2px solid rgba(0,64,152,.12); box-shadow: 0 4px 16px rgba(0,64,152,.08);
+    }
+    .g-cell img { width: 100%; height: 100%; object-fit: cover; }
+    .g-cap {
+      position: absolute; inset: auto 0 0 0; padding: .5rem .6rem;
+      font-size: .62rem; line-height: 1.35; color: #fff;
+      background: linear-gradient(transparent, rgba(0,64,152,.88));
+    }
+
+    /* News & recruit blocks */
+    .card-block { padding: 2rem 0; }
+    .news-card {
+      max-width: 42rem; margin: 0 auto;
+      padding: 1.25rem; border-radius: 1.35rem;
+      border: 2px solid rgba(0,64,152,.14); background: var(--card);
+      box-shadow: 0 4px 20px rgba(0,64,152,.06);
+    }
+    .news-list { list-style: none; padding: 0; margin: 0; font-size: .88rem; }
+    .news-list li { padding: .65rem 0; border-bottom: 1px solid var(--line); display: flex; gap: .75rem; flex-wrap: wrap; }
+    .news-list time { flex: 0 0 6.5rem; color: var(--muted); }
+    .news-card { background: var(--card); border: 1px solid rgba(0,64,152,.12); }
+    .rec-grid { display: grid; gap: 1.5rem; align-items: start; margin-top: 1rem; }
+    @media (min-width: 900px) { .rec-grid { grid-template-columns: 1fr 18rem; } }
+    .rec-pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .25rem .65rem; border-radius: var(--radius-pill);
+      border: 1px solid rgba(0,64,152,.2); font-size: .72rem; font-weight: 800; color: var(--navy); background: rgba(0,64,152,.06);
+    }
+    .chk-list { list-style: none; padding: 0; margin: 1rem 0 0; }
+    .chk-list li { padding: .6rem .8rem; margin-bottom: .45rem; border-radius: 1rem;
+      border: 1px solid rgba(255,215,0,.4); font-size: .88rem; font-weight: 600; background: rgba(255,255,255,.9);
+    }
+    .cta-box {
+      padding: 1rem; border-radius: 1.5rem;
+      border: 2px dashed rgba(0,64,152,.22);
+      background: linear-gradient(180deg, rgba(255,249,204,.9), var(--card));
+    }
+    .btn {
+      display: inline-flex; justify-content: center; width: 100%; padding: .75rem;
+      border-radius: .85rem; font-weight: 800; text-decoration: none; font-size: .88rem;
+      border: none; cursor: pointer; margin-top: .5rem;
+    }
+    .btn-gold { background: var(--gold); color: var(--ink); border: 2px solid var(--gold-hover); }
+    .btn-gold:hover { filter: brightness(1.05); }
+    .btn-outline { background: var(--card); color: var(--navy); border: 2px solid var(--gold); }
+    .btn-dark { background: var(--ink); color: var(--gold-soft); }
+    .foot { background: var(--ink); color: rgba(255,255,255,.88); padding: 2rem 0 8rem; font-size: .82rem; }
+    @media (min-width: 768px) { .foot { padding-bottom: 2rem; } }
+    .foot a { color: var(--gold); }
+
+    /* Quick search floating — left, no overlap dock */
+    .btn-quick {
+      position: fixed; z-index: 90;
+      left: max(.75rem, env(safe-area-inset-left));
+      bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px) + .75rem);
+      display: flex; align-items: center; gap: .35rem;
+      padding: .45rem .75rem; border-radius: var(--radius-pill);
+      border: 2px solid rgba(255,215,0,.45); background: rgba(255,255,255,.94);
+      font-size: .8rem; font-weight: 700; color: var(--ink); cursor: pointer;
+      box-shadow: 0 6px 24px rgba(0,64,152,.2);
+    }
+    @media (min-width: 768px) {
+      .btn-quick { bottom: 2rem; left: 1.5rem; }
+    }
+    .kbd { font-size: .62rem; padding: .1rem .35rem; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--muted); }
+    code { font-size: .78em; background: rgba(0,64,152,.06); padding: .1rem .3rem; border-radius: .25rem; }
+    .office-list {
+      list-style: none; margin: .85rem 0 0; padding: 0;
+      display: grid; gap: .45rem;
+      grid-template-columns: 1fr;
+      font-size: .88rem; font-weight: 600;
+    }
+    @media (min-width: 640px) { .office-list { grid-template-columns: 1fr 1fr; } }
+    .office-list li {
+      padding: .55rem .75rem; border-radius: .75rem; border: 1px solid var(--line);
+      background: var(--card); box-shadow: 0 1px 8px rgba(0,64,152,.06);
+    }
+
+    /* 写真付き情報セクション（料金・会社案内・アクセス） */
+    .info-grid { display: grid; gap: 1.25rem; align-items: center; grid-template-columns: 1fr; }
+    @media (min-width: 760px) { .info-grid { grid-template-columns: 1fr 1fr; } }
+    .info-photo { margin: 0; position: relative; border-radius: 1rem; overflow: hidden;
+      border: 2px solid rgba(0,64,152,.12); box-shadow: 0 8px 24px rgba(0,64,152,.12); background: #ecf2fb;
+    }
+    .info-photo img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .info-photo figcaption { position: absolute; inset: auto 0 0 0; padding: .35rem .6rem;
+      color: #fff; font-size: .7rem; font-weight: 700; background: linear-gradient(transparent, rgba(0,64,152,.82));
+    }
+
+    /* 採用の写真3点 */
+    .recruit-photos { display: grid; gap: .8rem; grid-template-columns: 1fr; margin-bottom: 1.5rem; }
+    @media (min-width: 760px) { .recruit-photos { grid-template-columns: repeat(3, 1fr); } }
+    .recruit-photos figure { margin: 0; position: relative; border-radius: 1rem; overflow: hidden;
+      border: 2px solid rgba(255,215,0,.45); box-shadow: 0 6px 16px rgba(0,64,152,.12);
+    }
+    .recruit-photos img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .recruit-photos figcaption { position: absolute; inset: auto 0 0 0; padding: .35rem .6rem;
+      color: #fff; font-size: .72rem; font-weight: 700; background: linear-gradient(transparent, rgba(0,64,152,.85));
+    }
+
+    /* ===== 共通セクション ===== */
+    .sec { padding: 3rem 0; border-bottom: 1px solid rgba(0,64,152,.08); }
+    .sec-alt { background: linear-gradient(180deg, #fff, var(--surface)); }
+    .sec-recruit { background: linear-gradient(135deg, rgba(255,215,0,.18) 0%, transparent 50%, rgba(0,64,152,.06) 100%); }
+    .sec-head { margin-bottom: 1.5rem; }
+    .sec-kicker {
+      display: inline-block; font-size: .68rem; font-weight: 800; letter-spacing: .22em;
+      color: var(--navy); padding: .25rem .65rem; border-radius: var(--radius-pill);
+      background: rgba(0,64,152,.08); border: 1px solid rgba(0,64,152,.15);
+    }
+    .sec-title {
+      margin: .65rem 0 .35rem; color: var(--navy);
+      font-size: clamp(1.4rem, 2.6vw, 1.95rem); line-height: 1.3; font-weight: 800;
+    }
+    .sec-lead { margin: 0; color: var(--muted); font-size: .92rem; max-width: 44rem; line-height: 1.7; }
+
+    /* 業務詳細カードグリッド */
+    .detail-grid {
+      display: grid; gap: .85rem; margin-top: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .detail-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .detail-grid { grid-template-columns: repeat(3, 1fr); } }
+    .detail-card {
+      position: relative; padding: 1.1rem 1.1rem 1.15rem 1.2rem;
+      background: var(--card); border-radius: 1rem;
+      border: 1px solid rgba(0,64,152,.12); border-left: 4px solid var(--gold);
+      box-shadow: 0 4px 14px rgba(0,64,152,.06);
+      scroll-margin-top: 6rem;
+    }
+    .detail-card h3 { margin: .35rem 0 .3rem; font-size: 1rem; color: var(--navy); }
+    .detail-card p { margin: 0; font-size: .85rem; color: var(--ink); line-height: 1.7; }
+    .detail-tag {
+      display: inline-block; padding: .1rem .55rem; border-radius: var(--radius-pill);
+      background: var(--navy); color: var(--gold); font-size: .68rem; font-weight: 800; letter-spacing: .12em;
+    }
+
+    /* お問い合わせ（紺背景） */
+    .sec-contact {
+      background: linear-gradient(135deg, var(--navy) 0%, #002b6b 100%);
+      color: #fff; border-bottom: 4px solid var(--gold);
+    }
+    .contact-form { max-width: 34rem; margin-top: 1rem; display: grid; gap: .65rem; }
+    .contact-form label {
+      display: flex; flex-direction: column; gap: .3rem;
+      font-size: .82rem; font-weight: 700; color: rgba(255,255,255,.92);
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: .65rem .75rem; border-radius: .65rem;
+      border: 1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.95); color: var(--ink);
+      font-family: inherit; font-size: .95rem;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: 2px solid var(--gold); outline-offset: 1px;
+    }
+
+    /* Glass bubble dock — 必須 */
+    .dock-wrap {
+      pointer-events: none;
+      position: fixed; right: max(.5rem, env(safe-area-inset-right));
+      bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px) + .25rem);
+      z-index: 85; display: flex; flex-direction: column; align-items: flex-end; gap: .55rem;
+    }
+    @media (min-width: 768px) {
+      .dock-wrap { bottom: 1.25rem; right: 1.25rem; }
+    }
+    .dock-wrap a { pointer-events: auto; text-decoration: none; }
+    .bubble {
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow-dock); transition: transform .2s, box-shadow .2s;
+    }
+    .bubble:hover { transform: scale(1.04); }
+    .bubble-tel {
+      width: 3rem; height: 3rem; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.45);
+      background: rgba(0, 64, 152, 0.82); color: var(--gold-soft);
+    }
+    @media (min-width: 768px) { .bubble-tel { width: 3.5rem; height: 3.5rem; } }
+    .bubble-rec {
+      width: 3.5rem; height: 3.5rem; border-radius: 40%;
+      border: 2px solid rgba(255,215,0,.65);
+      background: rgba(255,255,255,.28); color: var(--ink);
+    }
+    @media (min-width: 768px) { .bubble-rec { width: 4rem; height: 4rem; } }
+    .bubble-mail {
+      min-height: 3.5rem; max-width: 11.5rem; padding: .75rem 1rem;
+      border-radius: 2rem 2rem 1.75rem 2rem;
+      border: 2px solid rgba(255,215,0,.85);
+      background: linear-gradient(145deg, rgba(255,215,0,.95), rgba(230,194,0,.92));
+      color: var(--ink); flex-direction: column; align-items: flex-start;
+      box-shadow: 0 12px 40px rgba(255,215,0,.38);
+    }
+    @media (min-width: 768px) { .bubble-mail { max-width: 13rem; padding: .85rem 1.1rem; } }
+    .bubble-mail strong { font-size: .68rem; line-height: 1.45; }
+    .bubble-mail span.sub { font-size: .62rem; font-weight: 800; color: rgba(0,64,152,.85); margin-top: .35rem; }
+    .ico { width: 1.25rem; height: 1.25rem; }
+    @media (min-width: 768px) { .ico { width: 1.4rem; height: 1.4rem; } }
+
+    /* Search modal */
+    .modal-back {
+      display: none; position: fixed; inset: 0; z-index: 120;
+      background: rgba(10,22,40,.55); align-items: flex-start; justify-content: center;
+      padding: 10vh 1rem 2rem;
+    }
+    .modal-back.is-open { display: flex; }
+    .modal {
+      width: 100%; max-width: 28rem; background: var(--card); border-radius: 1.25rem;
+      border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.25); overflow: hidden;
+    }
+    .modal-h { display: flex; align-items: center; gap: .5rem; padding: .65rem .75rem; border-bottom: 1px solid var(--line); }
+    .modal-h input { flex: 1; border: 0; font-size: .9rem; outline: none; }
+    .modal-list { list-style: none; margin: 0; padding: .25rem 0; max-height: 45vh; overflow: auto; font-size: .85rem; }
+    .modal-list a { display: flex; justify-content: space-between; gap: .5rem; padding: .55rem .85rem; text-decoration: none; color: var(--ink); }
+    .modal-list a:hover { background: var(--gold-soft); }
+    .modal-list .g { font-size: .68rem; color: var(--muted); }
+    .modal-foot { padding: .45rem .85rem; font-size: .68rem; color: var(--muted); border-top: 1px solid var(--line); }
+    .sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+    .mobile-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--ink); color: #fff;
+      border-top: 2px solid rgba(255,215,0,.45); font-size: .68rem; font-weight: 700;
+    }
+    @media (min-width: 768px) { .mobile-bar { display: none; } }
+    .mobile-bar a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem; padding: .55rem; color: #fff; text-decoration: none; border-right: 1px solid rgba(255,255,255,.12); }
+    .mobile-bar a:last-child { border-right: 0; }
+    .mobile-bar a:nth-child(2) { background: var(--gold); color: var(--ink); }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">本文へ</a>
+
+  <header class="site-header">
+    <div class="wrap header-top">
+      <a class="logo-mark" href="#" aria-label="株式会社サンプラスワン トップへ">
+        <img class="logo-img" src="images/logo.svg" width="280" height="72" decoding="async" alt="株式会社サンプラスワン（SUNPLUS ONE）" />
+      </a>
+      <button type="button" class="btn-search-fake" id="openSearchTop" aria-label="サイト内検索を開く">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        サイト内検索
+      </button>
+      <button type="button" class="btn-icon header-mobile-search" id="openSearchMobile" aria-label="サイト内検索">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+    </div>
+    <nav class="nav-row wrap" aria-label="メインメニュー">
+      <a href="#">ホーム</a>
+      <a href="#business">事業内容</a>
+      <a href="#recruit">採用情報</a>
+      <a href="#fees">警備料金</a>
+      <a href="#offices">事業所紹介</a>
+      <a href="#company">会社案内</a>
+      <a href="#access">アクセス</a>
+      <a href="#news">お知らせ</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <div class="band-anniv">
+    <div class="wrap">
+      <span class="badge">設立30周年</span>
+      <h2 style="margin:.5rem 0 0; font-size:1.05rem;">これまでの歩みに感謝を込めて</h2>
+      <p style="margin:.5rem 0 0; opacity:.92; font-size:.85rem;">地域の安全を支えてきた実績を礎に、次の10年へ。デジタル面でも見やすく、問い合わせしやすい体験へアップデートする提案案です。</p>
+      <p style="margin:.65rem 0 0; font-size:.72rem; opacity:.85;">30周年の詳細年次・社史は、貴社公式資料・旧サイト下層ページの移行時に確定してください。<a href="https://sunplusone.com/" style="color:var(--gold-soft);">sunplusone.com</a></p>
+    </div>
+  </div>
+  <div class="recruit-strip">積極採用中（仮案） — 詳しくは「採用情報」または右下バブルをタップ</div>
+
+  <main id="main">
+    <section class="hero" aria-label="ヒーロー">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="images/sakurajima.png" alt="" decoding="async"
+             onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='images/sakurajima.jpg';}else if(this.dataset.fb==='1'){this.dataset.fb=2;this.src='images/sakurajima.jpeg';}else{this.dataset.fb=3;this.src='https://images.unsplash.com/photo-1492571350019-22de08371fd3?auto=format&amp;fit=crop&amp;w=1800&amp;q=80';}" />
+      </div>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="hero-eyebrow">SUNPLUS ONE <span style="opacity:.7;">— 暮らしに安心をプラス</span></span>
+          <h1>鹿児島の安全を、<br /><span class="accent">交通誘導 No.1</span> で支える。</h1>
+          <p class="hero-lead">交通誘導・施設・駐車場警備など、現場に合わせた最適解を。確かな実績と豊富な経験で、地域の皆様に安全で快適な環境を提供いたします。</p>
+          <p class="hero-quote">※リード文は公式サイト掲載内容（鹿児島県No.1）の転記に基づきます。</p>
+          <div class="hero-cta">
+            <a class="btn-hero btn-hero-gold" href="#contact">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+              警備のご依頼へ
+            </a>
+            <a class="btn-hero btn-hero-glass" href="tel:0992571553">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.86.3 1.7.54 2.5a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.58-1.11a2 2 0 012.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0122 16.92z"/></svg>
+              099-257-1553
+            </a>
+            <a class="btn-hero btn-hero-glass" href="#recruit">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+              採用情報
+            </a>
+          </div>
+          <div class="hero-stats" aria-hidden="true">
+            <div><strong>No.1</strong><span>交通誘導県内シェア</span></div>
+            <div><strong>30年</strong><span>地域に根ざす実績</span></div>
+            <div><strong>10拠点</strong><span>本社・支店・営業所</span></div>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="現場イメージ">
+          <p class="hero-panel-title"><span>FIELD GALLERY</span><span style="opacity:.7;">仮配置</span></p>
+          <div class="hero-thumbs">
+            <figure><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?auto=format&amp;fit=crop&amp;w=600&amp;q=75" alt="交通誘導イメージ" /><figcaption>交通誘導</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1486406146926-c627a92ad188?auto=format&amp;fit=crop&amp;w=600&amp;q=75" alt="施設警備イメージ" /><figcaption>施設警備</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=600&amp;q=75" alt="駐車場誘導イメージ" /><figcaption>駐車場</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1521791136064-7986c292c6f0?auto=format&amp;fit=crop&amp;w=600&amp;q=75" alt="チームイメージ" /><figcaption>チーム</figcaption></figure>
+          </div>
+          <span class="hero-photo-note">Unsplash デモ写真／本番は許諾済み写真へ差し替え</span>
+        </aside>
+      </div>
+      <span class="hero-sakurajima-note" aria-hidden="true">背景：桜島（提供画像）</span>
+    </section>
+
+    <section id="business" class="strip-section" aria-labelledby="strip-title">
+      <div class="wrap">
+        <p style="margin:0; font-size:.68rem; font-weight:800; letter-spacing:.22em; color:var(--gold);" id="strip-title">BUSINESS LINEUP</p>
+        <h2>業務内容を、場面でつかむ</h2>
+        <p style="max-width:40rem; font-size:.86rem; opacity:.88;">業務カードが順に自動スライドします。スクロールやホバーで一時停止できます。</p>
+        <span class="strip-hint" id="stripHint">自動再生中（ホバーで停止）</span>
+      </div>
+
+      <div class="film-strip" role="region" aria-label="業務紹介フィルムストリップ" tabindex="0">
+        <a class="film-card" href="#detail-traffic">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="" />
+          <div class="grad" aria-hidden="true"></div>
+          <div class="body">
+            <span class="tag">SERVICE 01</span>
+            <h3>交通誘導警備業務</h3>
+            <p>工事現場・イベント等の交通誘導。県内シェアの訴求は公式サイト表記に準拠。</p>
+            <span class="more">詳しく見る →</span>
+          </div>
+        </a>
+        <a class="film-card" href="#detail-facility">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="" />
+          <div class="grad" aria-hidden="true"></div>
+          <div class="body">
+            <span class="tag">SERVICE 02</span>
+            <h3>施設警備業務</h3>
+            <p>商業施設・公共施設等の常駐・巡回警備。</p>
+            <span class="more">詳しく見る →</span>
+          </div>
+        </a>
+        <a class="film-card" href="#detail-machine">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="" />
+          <div class="grad" aria-hidden="true"></div>
+          <div class="body">
+            <span class="tag">SERVICE 03</span>
+            <h3>機械警備業務</h3>
+            <p>センサー・監視システムと連携した遠隔監視・駆け付け。</p>
+            <span class="more">詳しく見る →</span>
+          </div>
+        </a>
+        <a class="film-card" href="#detail-event">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1507676184212-d03ab07a01e7?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="" />
+          <div class="grad" aria-hidden="true"></div>
+          <div class="body">
+            <span class="tag">SERVICE 04</span>
+            <h3>イベント警備業務</h3>
+            <p>コンサート・祭礼・スポーツ大会等の雑踏・誘導警備。</p>
+            <span class="more">詳しく見る →</span>
+          </div>
+        </a>
+        <a class="film-card" href="#detail-train">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="" />
+          <div class="grad" aria-hidden="true"></div>
+          <div class="body">
+            <span class="tag">SERVICE 05</span>
+            <h3>列車見張り業務</h3>
+            <p>線路・車両周辺の安全確保に関わる見張り業務。</p>
+            <span class="more">詳しく見る →</span>
+          </div>
+        </a>
+        <a class="film-card" href="#detail-parking">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="" />
+          <div class="grad" aria-hidden="true"></div>
+          <div class="body">
+            <span class="tag">SERVICE 06</span>
+            <h3>駐車場警備</h3>
+            <p>駐車場内の誘導・混雑緩和・トラブル防止。</p>
+            <span class="more">詳しく見る →</span>
+          </div>
+        </a>
+        <div style="flex:0 0 .5rem" aria-hidden="true"></div>
+      </div>
+      <div class="strip-cta"><a href="https://sunplusone.com/" target="_blank" rel="noopener noreferrer">公式サイトの事業詳細を見る</a></div>
+    </section>
+
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-kicker">SERVICE DETAIL</span>
+          <h2 class="sec-title">業務ごとのポイント</h2>
+          <p class="sec-lead">フィルムストリップで気になった業務の概要をまとめました。詳細は <a href="#contact">お問い合わせ</a> で。</p>
+        </div>
+        <div class="detail-grid">
+          <article id="detail-traffic" class="detail-card"><span class="detail-tag">01</span><h3>交通誘導警備業務</h3><p>誘導計画に沿った安全管理。地域特性に合わせた運用（仮案）。</p></article>
+          <article id="detail-facility" class="detail-card"><span class="detail-tag">02</span><h3>施設警備業務</h3><p>入退館管理・巡回。異常時の初動（仮案）。</p></article>
+          <article id="detail-machine" class="detail-card"><span class="detail-tag">03</span><h3>機械警備業務</h3><p>機械と人のハイブリッド運用（仮案）。</p></article>
+          <article id="detail-event" class="detail-card"><span class="detail-tag">04</span><h3>イベント警備業務</h3><p>来場者動線の整理。関係各所との連携（仮案）。</p></article>
+          <article id="detail-train" class="detail-card"><span class="detail-tag">05</span><h3>列車見張り業務</h3><p>現場手順に沿った運用（仮案）。</p></article>
+          <article id="detail-parking" class="detail-card"><span class="detail-tag">06</span><h3>駐車場警備</h3><p>夜間・休日対応の可否はお問い合わせで要確認。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec gallery">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-kicker">FIELD GALLERY</span>
+          <h2 class="sec-title">フォトギャラリー（デモ）</h2>
+          <p class="sec-lead">Unsplash のストックです。本番は許諾済み写真へ差し替え。</p>
+        </div>
+        <div class="g-grid">
+          <div class="g-cell"><img loading="lazy" src="https://images.unsplash.com/photo-1486406146926-c627a92ad188?auto=format&amp;fit=crop&amp;w=500&amp;q=70" alt="" /><div class="g-cap">都市・施設のイメージ</div></div>
+          <div class="g-cell"><img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=500&amp;q=70" alt="" /><div class="g-cap">安全・見守り</div></div>
+          <div class="g-cell"><img loading="lazy" src="https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?auto=format&amp;fit=crop&amp;w=500&amp;q=70" alt="" /><div class="g-cap">現場イメージ</div></div>
+          <div class="g-cell"><img loading="lazy" src="https://images.unsplash.com/photo-1521791136064-7986c292c6f0?auto=format&amp;fit=crop&amp;w=500&amp;q=70" alt="" /><div class="g-cap">チーム</div></div>
+          <div class="g-cell"><img loading="lazy" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=500&amp;q=70" alt="" /><div class="g-cap">オフィス</div></div>
+          <div class="g-cell"><img loading="lazy" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=500&amp;q=70" alt="" /><div class="g-cap">チームワーク</div></div>
+          <div class="g-cell"><img loading="lazy" src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&amp;fit=crop&amp;w=500&amp;q=70" alt="" /><div class="g-cap">夜景</div></div>
+          <div class="g-cell"><img loading="lazy" src="https://images.unsplash.com/photo-1507676184212-d03ab07a01e7?auto=format&amp;fit=crop&amp;w=500&amp;q=70" alt="" /><div class="g-cap">屋外</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recruit" class="sec sec-recruit">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-kicker">RECRUIT</span>
+          <h2 class="sec-title">一緒に働きましょう！</h2>
+          <p class="sec-lead">私たちの仕事や働き方、スタッフの紹介を通じて、社内の雰囲気とやりがいをご紹介します。<small style="display:block;margin-top:.35rem;font-size:.72rem;color:var(--muted);">上記は公式サイト掲載の募集コピーを転記しています。</small></p>
+        </div>
+        <div class="recruit-photos">
+          <figure><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="ミーティングの様子" /><figcaption>未経験スタートも安心の研修体制（仮案）</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="現場の制服" /><figcaption>地域に根ざした現場運用（仮案）</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="チームの様子" /><figcaption>チームで支える日々の安全（仮案）</figcaption></figure>
+        </div>
+        <div class="rec-grid">
+          <div>
+            <span class="rec-pill"><span style="width:6px;height:6px;border-radius:50%;background:var(--gold);"></span>積極採用中（仮案）</span>
+            <p style="margin:.45rem 0 0;font-size:.9rem;font-weight:600;color:var(--navy);">現場スタッフの確保が業界全体の課題です。まずは話からでも大丈夫です。</p>
+            <ul class="chk-list">
+              <li>✓ 未経験スタート歓迎（研修・教育制度あり）※詳細は採用ページで要確認</li>
+              <li>✓ シフト・勤務形態の相談窓口を分かりやすく（仮案）</li>
+              <li>✓ 資格取得・ステップアップの道筋を見える化（仮案）</li>
+            </ul>
+            <p style="font-size:.72rem; color:var(--muted); margin-top:.75rem;">人手不足の表現・待遇数値は法令・労務と照合のうえ貴社文案に差し替えてください。ここはデモ用のたたき台です。</p>
+          </div>
+          <div class="cta-box">
+            <p style="margin:0; text-align:center; font-weight:800; font-size:.75rem; color:var(--navy);">まずはここから</p>
+            <a class="btn btn-gold" href="https://sunplusone.com/" target="_blank" rel="noopener noreferrer">公式の採用ページを見る</a>
+            <a class="btn btn-outline" href="tel:0992571553">電話で相談（099-257-1553）</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fees" class="sec sec-alt">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-kicker">PRICE</span>
+          <h2 class="sec-title">警備料金</h2>
+          <p class="sec-lead">詳細な料金表は公式サイトおよびお問い合わせでご確認ください。</p>
+        </div>
+        <div class="info-grid">
+          <div>
+            <ul style="margin:0; padding-left:1.1rem; font-size:.9rem; line-height:1.95;">
+              <li><strong>交通誘導</strong>：現場条件・人数・時間帯で算定</li>
+              <li><strong>施設警備</strong>：常駐／巡回／時間帯別の見積</li>
+              <li><strong>イベント警備</strong>：人員規模・運営期間で個別対応</li>
+            </ul>
+            <p style="margin:1rem 0 0;font-size:.85rem;">現場条件に合わせた見積の相談は <a href="#contact"><strong>お問い合わせ</strong></a> へ。PDF 掲載やフォーム送信の本番連携は別途。</p>
+          </div>
+          <figure class="info-photo">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="見積・打ち合わせのイメージ" />
+            <figcaption>現場条件をうかがってお見積（仮案）</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="offices" class="sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-kicker">OFFICES</span>
+          <h2 class="sec-title">事業所紹介</h2>
+          <p class="sec-lead">メニュー掲載名に基づく一覧。所在地の細部は各公式下層で要確認。</p>
+        </div>
+        <ul class="office-list">
+          <li id="hq">本社 <span style="font-size:.75rem;color:var(--muted);">（鹿児島市与次郎2丁目3-41／フッター表記と一致）</span></li>
+          <li>北九州支店</li>
+          <li>薩摩川内営業所</li>
+          <li>霧島営業所</li>
+          <li>出水営業所</li>
+          <li>都城営業所</li>
+          <li>熊毛出張所</li>
+          <li>南さつま営業所</li>
+          <li>さつま町出張所</li>
+          <li>中央事業所ベース</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="company" class="sec sec-alt">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-kicker">COMPANY</span>
+          <h2 class="sec-title">会社案内</h2>
+          <p class="sec-lead">下層メニューに相当する導線（公式サイト転記項目）。詳細ページは別途移行検討。</p>
+        </div>
+        <div class="info-grid">
+          <div>
+            <ul style="margin:0;padding-left:1.1rem;line-height:1.95;font-size:.92rem;color:var(--ink);">
+              <li><a href="https://sunplusone.com/" target="_blank" rel="noopener noreferrer">警備実績</a></li>
+              <li><a href="https://sunplusone.com/" target="_blank" rel="noopener noreferrer">社内の取り組み</a></li>
+              <li><a href="https://sunplusone.com/" target="_blank" rel="noopener noreferrer">一般事業主行動計画</a></li>
+              <li><a href="https://sunplusone.com/" target="_blank" rel="noopener noreferrer">サービスのFAQ</a></li>
+              <li><a href="https://sunplusone.com/" target="_blank" rel="noopener noreferrer">警備業標識</a></li>
+            </ul>
+            <p style="font-size:.72rem;color:var(--muted);margin-top:.75rem;">※リンク先はひとまず公式トップへ。旧URLは Next 側の移行メモでマッピング推奨。</p>
+          </div>
+          <figure class="info-photo">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="オフィスのイメージ" />
+            <figcaption>地域に根ざして30年（仮案）</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="access" class="sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-kicker">ACCESS</span>
+          <h2 class="sec-title">アクセス（本社）</h2>
+          <p class="sec-lead">詳細マップ・各営業所は公式サイトを参照。</p>
+        </div>
+        <div class="info-grid">
+          <div>
+            <p style="margin:0; font-size:.95rem; line-height:1.85;">〒890-0051<br />鹿児島県鹿児島市与次郎2丁目3-41<br />TEL: 099-257-1553 / FAX: 099-257-5830</p>
+          </div>
+          <figure class="info-photo">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="鹿児島の街並みイメージ" />
+            <figcaption>鹿児島市 与次郎エリア（イメージ）</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="sec sec-alt">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-kicker">NEWS</span>
+          <h2 class="sec-title">新着情報</h2>
+        </div>
+        <div class="news-card">
+          <ul class="news-list">
+            <li><time>2026.03.06.</time><span>設立30周年のご挨拶と感謝の御礼</span></li>
+            <li><time>2025.09.19.</time><span>blog「職場体験の様子をご紹介します！」</span></li>
+            <li><time>2025.08.04.</time><span>blog「サンプラスワンの熱中症対策」</span></li>
+            <li><time>2025.04.29.</time><span>blog「総務部特製カレー」</span></li>
+            <li><time>2025.04.15.</time><span>blog「現任教育を実施しました」</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="sec sec-contact">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-kicker" style="color:var(--gold);">CONTACT</span>
+          <h2 class="sec-title" style="color:#fff;">お問い合わせ・ご依頼</h2>
+          <p class="sec-lead" style="color:rgba(255,255,255,.85);">フォーム送信はサーバー連携が必要なため、この単一ファイルでは入力欄の見本のみです。</p>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('デモです。本番では送信先APIやメールを接続してください。');">
+          <label>会社名<input required type="text" /></label>
+          <label>お名前<input required type="text" /></label>
+          <label>メール<input type="email" /></label>
+          <label>ご依頼内容<textarea rows="4"></textarea></label>
+          <button type="submit" class="btn btn-gold" style="margin-top:.25rem;">送信（デモ）</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p style="margin:0; font-weight:700;">鹿児島の警備会社 株式会社サンプラスワン</p>
+      <p style="margin:.75rem 0 0;"><a href="https://sunplusone.com/">公式サイト sunplusone.com</a></p>
+      <p style="margin:.65rem 0 0; font-size:.74rem;">Copyright © 2016 サンプラスワン All Rights Reserved.（サイト転記）</p>
+      <p style="margin:.5rem 0 0; font-size:.74rem; opacity:.82;">単一 HTML 提案デモ。ブランドおよび公式表記は各社に帰属します。</p>
+    </div>
+  </footer>
+
+  <!-- Glass bubble dock（必須） -->
+  <div class="dock-wrap" aria-label="クイックアクション">
+    <a class="bubble bubble-tel" href="tel:0992571553" aria-label="電話する 099-257-1553">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.86.3 1.7.54 2.5a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.58-1.11a2 2 0 012.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0122 16.92z"/></svg>
+    </a>
+    <a class="bubble bubble-rec" href="#recruit" aria-label="採用情報">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+    </a>
+    <a class="bubble bubble-mail" href="#contact" aria-label="警備のご依頼・お問い合わせ">
+      <span style="display:flex; align-items:flex-start; gap:.4rem;">
+        <svg class="ico" style="flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+        <strong>警備のご依頼<br />お問い合わせ</strong>
+      </span>
+      <span class="sub">フォームへ →</span>
+    </a>
+  </div>
+
+  <button type="button" class="btn-quick" id="openSearchFloat" aria-haspopup="dialog">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    クイック検索
+    <span class="kbd">Ctrl+K</span>
+  </button>
+
+  <div class="mobile-bar" aria-label="モバイル主要アクション">
+    <a href="tel:0992571553">電話</a>
+    <a href="#recruit">採用</a>
+    <a href="#contact">依頼</a>
+  </div>
+
+  <div class="modal-back" id="searchModal" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="modal" role="document">
+      <div class="modal-h">
+        <span class="sr" id="searchTitle">サイト内検索</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" id="searchInput" placeholder="ページ内リンクを絞り込み…" autocomplete="off" />
+        <button type="button" id="closeSearch" style="border:0;background:transparent;cursor:pointer;padding:.25rem;" aria-label="閉じる">✕</button>
+      </div>
+      <ul class="modal-list" id="searchList"></ul>
+      <p class="modal-foot">ショートカット: Windows Ctrl+K / Mac ⌘+K</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var entries = [
+        { t: "ホーム", h: "#", g: "主要" },
+        { t: "事業内容（フィルムストリップ）", h: "#business", g: "主要" },
+        { t: "業務ごとのポイント", h: "#detail-traffic", g: "下層" },
+        { t: "採用情報", h: "#recruit", g: "主要" },
+        { t: "警備料金", h: "#fees", g: "主要" },
+        { t: "事業所紹介", h: "#offices", g: "主要" },
+        { t: "会社案内", h: "#company", g: "主要" },
+        { t: "アクセス（本社）", h: "#access", g: "主要" },
+        { t: "お知らせ", h: "#news", g: "主要" },
+        { t: "お問い合わせフォーム", h: "#contact", g: "お問い合わせ" },
+        { t: "公式サイト", h: "https://sunplusone.com/", g: "外部" }
+      ];
+      var modal = document.getElementById("searchModal");
+      var input = document.getElementById("searchInput");
+      var list = document.getElementById("searchList");
+
+      function render(q) {
+        var s = (q || "").trim().toLowerCase();
+        var items = !s ? entries : entries.filter(function (e) {
+          return e.t.toLowerCase().indexOf(s) !== -1 || e.g.toLowerCase().indexOf(s) !== -1;
+        });
+        list.innerHTML = items.map(function (e) {
+          return '<li><a href="' + e.h + '"><span>' + e.t + '</span><span class="g">' + e.g + "</span></a></li>";
+        }).join("");
+        Array.prototype.forEach.call(list.querySelectorAll("a"), function (a) {
+          a.addEventListener("click", function () { close(); });
+        });
+      }
+
+      function open() {
+        modal.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+        render(input.value);
+        setTimeout(function () { input.focus(); }, 50);
+      }
+      function close() {
+        modal.classList.remove("is-open");
+        document.body.style.overflow = "";
+        input.value = "";
+        render("");
+      }
+
+      function bindOpen(id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener("click", open);
+      }
+      bindOpen("openSearchTop");
+      bindOpen("openSearchMobile");
+      bindOpen("openSearchFloat");
+      document.getElementById("closeSearch").addEventListener("click", close);
+      modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
+      input.addEventListener("input", function () { render(input.value); });
+
+      document.addEventListener("keydown", function (e) {
+        if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
+          e.preventDefault();
+          if (modal.classList.contains("is-open")) close(); else open();
+        }
+        if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+      });
+    })();
+
+    /* フィルムストリップ：自動スライド（ホバーで停止 / ユーザー操作で一時停止 / 端で折り返し） */
+    (function () {
+      var strip = document.querySelector(".film-strip");
+      var hint = document.getElementById("stripHint");
+      if (!strip) return;
+      var cards = strip.querySelectorAll(".film-card");
+      if (!cards.length) return;
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        if (hint) hint.textContent = "← 横スクロールで次の業務へ →";
+        return;
+      }
+      var idx = 0, dir = 1, paused = false, userPausedUntil = 0;
+
+      function step() {
+        if (paused || Date.now() < userPausedUntil) return;
+        idx += dir;
+        if (idx >= cards.length) { idx = cards.length - 2; dir = -1; }
+        if (idx < 0) { idx = 1; dir = 1; }
+        var t = cards[idx];
+        if (!t) return;
+        strip.scrollTo({
+          left: t.offsetLeft - (strip.clientWidth - t.clientWidth) / 2,
+          behavior: "smooth"
+        });
+      }
+      var timer = setInterval(step, 3500);
+
+      strip.addEventListener("mouseenter", function () { paused = true; if (hint) hint.textContent = "一時停止中（ホバー解除で再開）"; });
+      strip.addEventListener("mouseleave", function () { paused = false; if (hint) hint.textContent = "自動再生中（ホバーで停止）"; });
+      strip.addEventListener("focusin", function () { paused = true; });
+      strip.addEventListener("focusout", function () { paused = false; });
+      ["wheel", "touchstart", "pointerdown"].forEach(function (ev) {
+        strip.addEventListener(ev, function () { userPausedUntil = Date.now() + 5000; }, { passive: true });
+      });
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) { paused = true; } else { paused = false; }
+      });
+    })();
+  </script>
+</body>
+</html>

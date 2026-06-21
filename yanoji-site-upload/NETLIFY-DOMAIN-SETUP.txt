@@ -1,0 +1,53 @@
+【家のじ HP — 独自ドメイン & Behold 連携手順】
+
+■ 想定ドメイン
+  https://yanoji.com
+  （別名にする場合は js/site-config.js の siteUrl と netlify.toml を同じ名前に変更）
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Netlify にサイトを公開
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  1) https://app.netlify.com にログイン
+  2) 「Add new site」→「Deploy manually」
+  3) yanoji-site-upload フォルダを丸ごとドラッグ＆ドロップ
+  4) 仮URL（xxxx.netlify.app）で表示を確認
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. 独自ドメインを取得・接続
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【A】Netlify でドメインを買う場合（いちばん簡単）
+  1) Netlify 管理画面 → Domain management →「Add or register domain」
+  2) yanoji.com を検索して購入（空いていれば）
+  3) 自動で DNS が設定され、数分〜48時間で https://yanoji.com が有効に
+
+【B】お名前.com / ムームー等で既に持っている場合
+  1) Netlify → Domain management →「Add a domain」→ yanoji.com を入力
+  2) 表示される DNS レコードをレジストラ側に登録
+     ・A レコード … Netlify の IP（画面に表示）
+     ・または CNAME … サイト名.netlify.app
+  3) Netlify で HTTPS（Let's Encrypt）を有効化
+
+※ www も使う場合は Netlify に www.yanoji.com も追加。
+  netlify.toml で www → yanoji.com へリダイレクト済みです。
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. Behold.io で Instagram 自動連携
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  1) https://behold.so で無料アカウント作成
+  2) 「Create Feed」→ Instagram @yanoji2777 でログイン・連携
+     ※ ビジネス or クリエイターアカウント推奨
+  3) 発行された Feed ID（英数字の文字列）をコピー
+  4) js/site-config.js を開き beholdFeedId に貼り付け
+     例: beholdFeedId: 'xxxxxxxxxxxxxxxx'
+  5) Netlify に再デプロイ（フォルダを再度ドロップ）
+
+→ @yanoji2777 に投稿するたび、HP の「本日の旬」と「今の旬」に自動反映されます。
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. 動作確認チェックリスト
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  □ https://yanoji.com でサイトが開く
+  □ ブラウザタブに円形ロゴ（ファビコン）が出る
+  □ #instagram-today に最新投稿が6件グリッド表示
+  □ #season に最新投稿が1件表示
+  □ 投稿をクリックすると Instagram の該当投稿へ飛ぶ

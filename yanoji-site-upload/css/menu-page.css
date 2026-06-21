@@ -1,0 +1,331 @@
+/* 家のじ MENU — 落ち着いた和モダン・タイポグラフィ中心 */
+:root {
+  --ink: #0a0e14;
+  --ink-panel: #111820;
+  --ink-raised: #161e2a;
+  --wood: #4a3828;
+  --wood-line: rgba(74, 56, 40, 0.55);
+  --gold: #e8b84b;
+  --gold-soft: rgba(232, 184, 75, 0.85);
+  --gold-dim: #b8923a;
+  --amber: #c8781a;
+  --text: #ede0c8;
+  --text-sub: #8f8174;
+  --crimson: #a02820;
+  --font-display: 'Shippori Mincho', serif;
+  --font-serif: 'Noto Serif JP', serif;
+  --font-ui: 'Noto Sans JP', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body.menu-page {
+  font-family: var(--font-serif);
+  background: var(--ink);
+  color: var(--text);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+.menu-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 28px;
+  background: rgba(10, 14, 20, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(232, 184, 75, 0.1);
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; }
+.nav-logo img { height: 42px; width: auto; border-radius: 4px; }
+.nav-logo-text {
+  font-family: var(--font-display); font-weight: 800; color: var(--gold);
+  font-size: 0.95rem; letter-spacing: 0.1em;
+}
+.nav-logo-text small {
+  display: block; font-family: var(--font-ui); font-size: 0.52rem;
+  letter-spacing: 0.28em; color: var(--text-sub); font-weight: 400;
+}
+.nav-links { display: flex; gap: 22px; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.14em;
+  color: var(--text); opacity: 0.82; transition: color 0.2s, opacity 0.2s;
+}
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--gold); opacity: 1; }
+.btn-nav-reserve {
+  background: var(--crimson); color: #fff !important; padding: 8px 16px;
+  border-radius: 1px; font-weight: 700; opacity: 1 !important;
+}
+.nav-tel { font-family: var(--font-ui); font-size: 0.78rem; color: var(--gold-soft); font-weight: 600; letter-spacing: 0.06em; }
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-burger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
+.nav-mobile-overlay {
+  display: none; position: fixed; inset: 0; z-index: 1100;
+  background: rgba(10, 14, 20, 0.97); flex-direction: column;
+  align-items: center; justify-content: center; gap: 28px;
+}
+.nav-mobile-overlay.open { display: flex; }
+.nav-mobile-overlay a { font-size: 1rem; letter-spacing: 0.18em; }
+.nav-mobile-close {
+  position: absolute; top: 22px; right: 28px; background: none; border: none;
+  color: var(--text-sub); font-size: 1.4rem; cursor: pointer;
+}
+
+/* HERO — 店内の落ち着いた1枚背景 */
+.menu-hero {
+  position: relative; min-height: 46vh; display: flex; align-items: center;
+  justify-content: center; margin-top: 70px; overflow: hidden;
+}
+.menu-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,14,20,0.55) 0%, rgba(10,14,20,0.88) 55%, var(--ink) 100%),
+    url('../assets/images/interior/counter-sake-wall.jpg') center / cover no-repeat;
+  filter: saturate(0.85) brightness(0.55);
+}
+.menu-hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, transparent 0%, rgba(10,14,20,0.4) 100%);
+}
+.menu-hero-inner {
+  position: relative; z-index: 1; text-align: center; padding: 56px 24px 48px;
+  max-width: 640px;
+}
+.menu-hero-en {
+  font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.5em;
+  color: var(--amber); margin-bottom: 20px;
+}
+.menu-hero-title {
+  font-family: var(--font-display); font-size: clamp(2.2rem, 7vw, 3.8rem);
+  font-weight: 800; letter-spacing: 0.42em; text-indent: 0.42em;
+  color: var(--gold); margin-bottom: 24px;
+}
+.menu-hero-copy {
+  font-size: 0.92rem; letter-spacing: 0.14em; color: var(--text-sub); line-height: 2.2;
+}
+.menu-hero-rule {
+  width: 48px; height: 1px; background: var(--wood-line); margin: 28px auto 0;
+}
+
+/* タブ切替 */
+.menu-switch {
+  display: flex; justify-content: center; gap: 0;
+  margin: -28px auto 64px; position: relative; z-index: 2; max-width: 480px;
+  border: 1px solid rgba(232, 184, 75, 0.2);
+  background: var(--ink-panel);
+}
+.menu-switch-btn {
+  flex: 1; padding: 16px 20px; background: transparent; border: none;
+  font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.25em;
+  color: var(--text-sub); cursor: pointer; transition: all 0.25s;
+  border-bottom: 2px solid transparent;
+}
+.menu-switch-btn.active {
+  color: var(--gold); background: rgba(232, 184, 75, 0.06);
+  border-bottom-color: var(--gold);
+}
+.menu-switch-btn:hover:not(.active) { color: var(--text); }
+
+/* MAIN */
+.menu-main { max-width: 960px; margin: 0 auto; padding: 0 28px 100px; }
+.menu-panel { display: none; animation: menuFade 0.4s ease; }
+.menu-panel.active { display: block; }
+@keyframes menuFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.menu-section-head { text-align: center; margin-bottom: 48px; }
+.menu-section-en {
+  font-family: var(--font-ui); font-size: 0.6rem; letter-spacing: 0.45em;
+  color: var(--amber); display: block; margin-bottom: 10px;
+}
+.menu-section-head h2 {
+  font-family: var(--font-display); font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  color: var(--gold); letter-spacing: 0.28em; text-indent: 0.28em;
+  font-weight: 700;
+}
+.menu-section-note {
+  margin-top: 14px; font-size: 0.72rem; color: var(--text-sub);
+  letter-spacing: 0.1em; line-height: 1.9;
+}
+
+/* FOOD — カテゴリパネル */
+.food-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px 40px;
+}
+.menu-category {
+  background: var(--ink-panel);
+  border: 1px solid rgba(232, 184, 75, 0.1);
+  border-top: 2px solid var(--wood-line);
+  padding: 0;
+}
+.menu-category-head {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px 14px; background: transparent; border: none; cursor: pointer;
+}
+.menu-category-title {
+  font-family: var(--font-display); font-size: 1.05rem; color: var(--gold-soft);
+  letter-spacing: 0.18em; font-weight: 600;
+}
+.menu-category-toggle {
+  font-family: var(--font-ui); font-size: 0.65rem; color: var(--text-sub);
+  letter-spacing: 0.1em;
+}
+.menu-category-toggle::before { content: '−'; }
+.menu-category-head[aria-expanded="false"] .menu-category-toggle::before { content: '+'; }
+.menu-category-body { padding: 0 22px 22px; }
+.menu-category-head[aria-expanded="false"] + .menu-category-body { display: none; }
+
+.menu-item {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.menu-item:last-child { border-bottom: none; padding-bottom: 0; }
+.menu-item-line {
+  display: flex; align-items: baseline; gap: 6px; flex-wrap: nowrap;
+}
+.menu-item-name-wrap {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0; max-width: 72%;
+}
+.menu-item-name {
+  font-size: 0.88rem; letter-spacing: 0.06em; color: var(--text);
+}
+.menu-item-leader {
+  flex: 1; min-width: 12px; height: 1px; align-self: center;
+  border-bottom: 1px dotted rgba(232, 184, 75, 0.22);
+  margin: 0 4px;
+}
+.menu-item-price {
+  flex-shrink: 0; font-family: var(--font-ui); font-size: 0.82rem;
+  color: var(--gold-soft); letter-spacing: 0.04em; white-space: nowrap;
+}
+.menu-item-desc {
+  margin-top: 5px; font-size: 0.72rem; color: var(--text-sub);
+  letter-spacing: 0.04em; line-height: 1.6;
+}
+.menu-badge {
+  font-family: var(--font-ui); font-size: 0.52rem; letter-spacing: 0.08em;
+  padding: 2px 7px; border-radius: 1px; white-space: nowrap;
+  border: 1px solid;
+}
+.badge-rec { color: var(--amber); border-color: rgba(200, 120, 26, 0.5); background: rgba(200, 120, 26, 0.08); }
+.badge-popular { color: #e8a0a0; border-color: rgba(160, 40, 32, 0.45); background: rgba(160, 40, 32, 0.1); }
+.badge-limited { color: #9ec4a8; border-color: rgba(124, 184, 124, 0.4); background: rgba(42, 90, 58, 0.15); }
+
+/* DRINK */
+.drink-block {
+  margin-bottom: 40px;
+  background: var(--ink-panel);
+  border: 1px solid rgba(232, 184, 75, 0.1);
+  border-top: 2px solid var(--wood-line);
+  overflow: hidden;
+}
+.drink-block-head {
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid rgba(232, 184, 75, 0.08);
+}
+.drink-block-title {
+  font-family: var(--font-display); font-size: 1.05rem;
+  color: var(--gold-soft); letter-spacing: 0.2em; font-weight: 600;
+}
+.drink-block-body { padding: 8px 24px 20px; }
+
+.sake-head, .sake-row {
+  display: grid; grid-template-columns: 1.5fr 1fr 1.1fr 1.1fr; gap: 16px;
+  padding: 13px 0; align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.82rem;
+}
+.sake-head {
+  font-family: var(--font-ui); font-size: 0.58rem; letter-spacing: 0.22em;
+  color: var(--amber); border-bottom-color: rgba(232, 184, 75, 0.15);
+  padding-top: 8px;
+}
+.sake-row:last-child { border-bottom: none; }
+.sake-name { color: var(--text); letter-spacing: 0.04em; }
+.sake-pref, .sake-kind { color: var(--text-sub); font-size: 0.78rem; }
+.sake-price { text-align: right; color: var(--gold-soft); font-family: var(--font-ui); white-space: nowrap; }
+
+.drink-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 20px;
+  padding: 13px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.84rem;
+}
+.drink-row:last-child { border-bottom: none; }
+.drink-name { color: var(--text); letter-spacing: 0.04em; }
+.drink-name small {
+  display: block; font-size: 0.72rem; color: var(--text-sub);
+  margin-top: 3px; letter-spacing: 0.03em;
+}
+.drink-price {
+  flex-shrink: 0; text-align: right; font-family: var(--font-ui);
+  color: var(--gold-soft); white-space: nowrap;
+}
+
+.wine-sub { margin-top: 20px; }
+.wine-sub:first-child { margin-top: 8px; }
+.wine-sub-title {
+  font-family: var(--font-display); font-size: 0.88rem; color: var(--gold-dim);
+  letter-spacing: 0.14em; margin-bottom: 4px; padding: 10px 0 6px;
+  border-bottom: 1px solid rgba(232, 184, 75, 0.12);
+}
+
+.menu-footer-note {
+  margin-top: 48px; padding: 24px; text-align: center;
+  border: 1px solid rgba(232, 184, 75, 0.1); background: rgba(255,255,255,0.02);
+  font-size: 0.75rem; color: var(--text-sub); letter-spacing: 0.08em; line-height: 2;
+}
+
+/* FOOTER & DOCK */
+.menu-footer {
+  text-align: center; padding: 48px 24px 100px;
+  border-top: 1px solid rgba(232, 184, 75, 0.08);
+}
+.menu-footer a {
+  font-family: var(--font-ui); font-size: 0.75rem; letter-spacing: 0.15em;
+  color: var(--text-sub); transition: color 0.2s;
+}
+.menu-footer a:hover { color: var(--gold); }
+.menu-footer-copy { margin-top: 12px; font-size: 0.68rem; color: var(--text-sub); opacity: 0.7; }
+
+.mobile-dock {
+  display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 900;
+  background: rgba(10, 14, 20, 0.96); border-top: 1px solid rgba(232, 184, 75, 0.15);
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+  grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+}
+.mobile-dock a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 50px; font-family: var(--font-ui); font-size: 0.58rem;
+  letter-spacing: 0.12em; color: var(--text); border: 1px solid rgba(255,255,255,0.06);
+}
+.mobile-dock .dock-reserve { background: var(--crimson); color: #fff; font-weight: 700; border-color: transparent; }
+
+.fade-item {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-item.visible { opacity: 1; transform: none; }
+
+@media (max-width: 768px) {
+  .nav-links, .nav-tel { display: none; }
+  .nav-burger { display: flex; }
+  .food-grid { grid-template-columns: 1fr; gap: 20px; }
+  .menu-main { padding: 0 18px 88px; }
+  .menu-switch { margin-bottom: 40px; }
+  .sake-head { display: none; }
+  .sake-row {
+    grid-template-columns: 1fr; gap: 2px; padding: 16px 0;
+  }
+  .sake-row .sake-pref::before { content: '産地　'; color: var(--text-sub); font-size: 0.72rem; }
+  .sake-row .sake-kind::before { content: '種類　'; color: var(--text-sub); font-size: 0.72rem; }
+  .sake-price { text-align: left; margin-top: 4px; }
+  .mobile-dock { display: grid; }
+  body.menu-page { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
+}

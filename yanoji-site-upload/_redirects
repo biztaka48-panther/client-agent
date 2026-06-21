@@ -1,0 +1,3 @@
+https://www.yanoji.com/*  https://yanoji.com/:splat  301!
+http://yanoji.com/*        https://yanoji.com/:splat  301!
+http://www.yanoji.com/*    https://yanoji.com/:splat  301!

@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>朝井慈久 AI活用代行サービス — ヒアリング＆提案ジェネレーター</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --color-bg-primary: #0a0f1e;
+      --color-bg-secondary: #111827;
+      --color-bg-tertiary: #1a2235;
+      --color-accent-gold: #c9a84c;
+      --color-accent-light: #e8c97a;
+      --color-accent-dim: #8a6f2e;
+      --color-text-primary: #f0e6d3;
+      --color-text-secondary: #9ca3af;
+      --color-text-muted: #6b7280;
+      --color-success: #10b981;
+      --color-error: #ef4444;
+      --color-border: rgba(201, 168, 76, 0.2);
+      --color-border-strong: rgba(201, 168, 76, 0.5);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-gold: 0 0 20px rgba(201, 168, 76, 0.15);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--color-bg-primary);
+      color: var(--color-text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== Screen Management ===== */
+    .screen {
+      display: none;
+      min-height: 100vh;
+    }
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== Common Components ===== */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    .logo-text {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-accent-gold);
+      letter-spacing: 0.05em;
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      letter-spacing: 0.1em;
+      margin-top: 2px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-accent-gold);
+      color: var(--color-bg-primary);
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 14px 32px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: var(--color-accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+    }
+    .btn-primary:disabled {
+      background: var(--color-accent-dim);
+      color: rgba(10,15,30,0.5);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--color-accent-gold);
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-md);
+      padding: 12px 24px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-secondary:hover {
+      background: var(--color-border);
+      border-color: var(--color-accent-gold);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: var(--color-accent-gold);
+    }
+
+    /* ===== API Key Modal ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 24px;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .modal-box {
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5), var(--shadow-gold);
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-icon {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .modal-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .modal-desc {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      text-align: center;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .modal-desc a {
+      color: var(--color-accent-gold);
+      text-decoration: none;
+    }
+    .modal-desc a:hover { text-decoration: underline; }
+    .modal-input {
+      width: 100%;
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--color-text-primary);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color var(--transition);
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .modal-input:focus {
+      border-color: var(--color-accent-gold);
+      box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+    }
+    .modal-input::placeholder { color: var(--color-text-muted); letter-spacing: 0; }
+    .modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* ===== Error Toast ===== */
+    .error-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-error);
+      color: white;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      z-index: 9999;
+      animation: toastIn 0.3s ease;
+      max-width: 90vw;
+      text-align: center;
+    }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    /* ===== Screen 1: Welcome ===== */
+    #screen-welcome {
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .welcome-inner {
+      max-width: 560px;
+      width: 100%;
+    }
+    .welcome-logo {
+      margin-bottom: 48px;
+    }
+    .welcome-logo .logo-text { font-size: 32px; }
+    .welcome-tagline {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--color-text-primary);
+      margin-bottom: 20px;
+    }
+    .welcome-tagline span { color: var(--color-accent-gold); }
+    .welcome-desc {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    .welcome-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .welcome-features {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+    .welcome-feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .feature-label {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+
+    /* (screen-info removed: basic info is now collected in chat) */
+
+    /* ===== Screen 3: Hearing Chat ===== */
+    #screen-hearing {
+      flex-direction: column;
+    }
+    .hearing-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg-secondary);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .hearing-header-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .progress-bar-wrapper {
+      flex: 1;
+    }
+    .progress-label {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-bottom: 6px;
+    }
+    .progress-label span { color: var(--color-accent-gold); font-weight: 600; }
+    .progress-bar-bg {
+      height: 4px;
+      background: var(--color-bg-tertiary);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-accent-dim), var(--color-accent-gold));
+      border-radius: 100px;
+      transition: width 0.5s ease;
+    }
+
+    .chat-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+    .chat-messages {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chat-bubble {
+      display: flex;
+      gap: 12px;
+      animation: bubbleIn 0.3s ease;
+    }
+    @keyframes bubbleIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chat-bubble.ai {
+      align-self: flex-start;
+      max-width: 85%;
+    }
+    .chat-bubble.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+      max-width: 85%;
+    }
+    .chat-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .chat-avatar.ai-avatar {
+      background: rgba(201, 168, 76, 0.15);
+      border: 1px solid var(--color-border);
+    }
+    .chat-avatar.user-avatar {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .bubble-content {
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .chat-bubble.ai .bubble-content {
+      border-left: 3px solid var(--color-accent-gold);
+      border-top-left-radius: 4px;
+    }
+    .chat-bubble.user .bubble-content {
+      border-right: 3px solid var(--color-success);
+      border-top-right-radius: 4px;
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    /* Typing indicator */
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 0;
+    }
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent-gold);
+      animation: typingDot 1.2s infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingDot {
+      0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(-4px); }
+    }
+
+    .answer-area {
+      border-top: 1px solid var(--color-border);
+      padding: 16px 24px 24px;
+      background: var(--color-bg-secondary);
+    }
+    .answer-area-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .answer-textarea {
+      width: 100%;
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--color-text-primary);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px;
+      resize: none;
+      outline: none;
+      min-height: 80px;
+      transition: border-color var(--transition);
+      margin-bottom: 10px;
+    }
+    .answer-textarea:focus {
+      border-color: var(--color-accent-gold);
+      box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+    }
+    .answer-choices {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .choice-btn {
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      color: var(--color-text-primary);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: all var(--transition);
+    }
+    .choice-btn:hover {
+      border-color: var(--color-accent-gold);
+      background: rgba(201, 168, 76, 0.05);
+    }
+    .choice-btn.selected {
+      border-color: var(--color-accent-gold);
+      background: rgba(201, 168, 76, 0.12);
+      color: var(--color-accent-light);
+    }
+    .answer-submit-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    /* ===== Screen 4: Analyzing ===== */
+    #screen-analyzing {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .analyzing-inner { max-width: 480px; width: 100%; }
+    .analyzing-ring {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+    .ring-outer {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid var(--color-border);
+      border-top-color: var(--color-accent-gold);
+      animation: spin 1.5s linear infinite;
+    }
+    .ring-inner {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--color-border);
+      border-bottom-color: var(--color-accent-light);
+      animation: spin 2s linear infinite reverse;
+    }
+    .ring-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .analyzing-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .analyzing-status {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      min-height: 22px;
+      margin-bottom: 32px;
+      transition: opacity 0.3s ease;
+    }
+    .analyzing-progress-bg {
+      height: 6px;
+      background: var(--color-bg-tertiary);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .analyzing-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-accent-dim), var(--color-accent-gold), var(--color-accent-light));
+      border-radius: 100px;
+      transition: width 0.5s ease;
+      width: 0%;
+    }
+
+    /* ===== Screen 5: Proposal ===== */
+    #screen-proposal {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .proposal-nav {
+      width: 100%;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .proposal-nav-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .proposal-body {
+      padding: 40px 24px 80px;
+      width: 100%;
+    }
+    #proposal-content {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Proposal sections */
+    .proposal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--color-accent-gold);
+      margin-bottom: 32px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .proposal-header-left .logo-text { font-size: 24px; }
+    .proposal-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-top: 6px;
+    }
+    .proposal-client {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      margin-top: 4px;
+    }
+    .proposal-date {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      text-align: right;
+      align-self: flex-end;
+    }
+
+    .proposal-section {
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      margin-bottom: 20px;
+      page-break-inside: avoid;
+    }
+    .section-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-accent-gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::before {
+      content: '';
+      width: 3px;
+      height: 18px;
+      background: var(--color-accent-gold);
+      border-radius: 2px;
+    }
+
+    .executive-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text-primary);
+    }
+
+    .issue-list { display: flex; flex-direction: column; gap: 12px; }
+    .issue-item {
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+    .issue-title { font-weight: 500; font-size: 14px; margin-bottom: 4px; }
+    .issue-impact { font-size: 13px; color: var(--color-text-secondary); }
+
+    .proposal-name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-accent-light);
+      margin-bottom: 4px;
+    }
+    .proposal-type-badge {
+      display: inline-block;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: var(--color-accent-gold);
+      margin-bottom: 14px;
+    }
+    .proposal-overview { font-size: 14px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .feature-tag {
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+      font-size: 13px;
+      color: var(--color-text-primary);
+    }
+
+    .effects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .effect-card {
+      background: rgba(16, 185, 129, 0.05);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      text-align: center;
+    }
+    .effect-metric { font-size: 11px; color: var(--color-text-muted); margin-bottom: 4px; }
+    .effect-value { font-size: 16px; font-weight: 700; color: var(--color-success); }
+
+    .difficulty-row { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--color-text-secondary); }
+    .stars { font-size: 18px; color: var(--color-accent-gold); letter-spacing: 2px; }
+
+    .alt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .alt-card {
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+    }
+    .alt-number { font-size: 11px; color: var(--color-text-muted); margin-bottom: 6px; }
+    .alt-name { font-weight: 600; font-size: 15px; margin-bottom: 8px; color: var(--color-accent-light); }
+    .alt-overview { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 8px; line-height: 1.6; }
+    .alt-merit { font-size: 13px; color: var(--color-success); }
+
+    .roadmap-list { display: flex; flex-direction: column; gap: 0; }
+    .roadmap-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .roadmap-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .roadmap-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.15);
+      border: 2px solid var(--color-accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-accent-gold);
+      flex-shrink: 0;
+    }
+    .roadmap-line {
+      width: 2px;
+      flex: 1;
+      background: var(--color-border);
+      min-height: 32px;
+      margin: 6px 0;
+    }
+    .roadmap-content {
+      padding: 4px 0 28px;
+    }
+    .roadmap-phase { font-size: 12px; color: var(--color-accent-gold); font-weight: 600; margin-bottom: 4px; }
+    .roadmap-milestone { font-size: 14px; color: var(--color-text-primary); }
+
+    .cost-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .cost-card {
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      text-align: center;
+    }
+    .cost-label { font-size: 11px; color: var(--color-text-muted); margin-bottom: 8px; }
+    .cost-value { font-size: 16px; font-weight: 700; color: var(--color-accent-gold); }
+    .cost-note { font-size: 12px; color: var(--color-text-muted); margin-top: 12px; }
+
+    .cta-section {
+      text-align: center;
+      padding: 36px;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.05), rgba(201, 168, 76, 0.02));
+      border: 1px solid var(--color-border-strong);
+    }
+    .cta-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .cta-desc { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 24px; }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-accent-gold);
+      color: var(--color-bg-primary);
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 14px 32px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .cta-button:hover {
+      background: var(--color-accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+    }
+
+    /* ===== Print CSS ===== */
+    @media print {
+      body { background: white; color: black; }
+      .screen:not(#screen-proposal) { display: none !important; }
+      #screen-proposal { display: block !important; }
+      .proposal-nav, .action-buttons { display: none !important; }
+      .proposal-section { page-break-inside: avoid; border: 1px solid #ddd; }
+      .proposal-header { border-bottom: 2px solid #c9a84c; }
+      .cta-section .cta-button { display: none; }
+      * { box-shadow: none !important; }
+      .proposal-body { padding: 20px 0; }
+      .section-title { color: #8a6f2e; }
+      .proposal-name { color: #8a6f2e; }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      body { font-size: 90%; }
+      .welcome-tagline { font-size: 20px; }
+      .welcome-features { gap: 16px; }
+      .cost-grid { grid-template-columns: 1fr; }
+      .effects-grid { grid-template-columns: repeat(2, 1fr); }
+      .alt-grid { grid-template-columns: 1fr; }
+      .answer-area {
+        position: sticky;
+        bottom: 0;
+      }
+      .proposal-nav-inner { flex-direction: column; gap: 12px; }
+    }
+    @media (max-width: 480px) {
+      .cost-grid { grid-template-columns: 1fr; }
+      .effects-grid { grid-template-columns: 1fr; }
+      .proposal-section { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Screen 1: Welcome ===== -->
+  <div id="screen-welcome" class="screen active">
+    <div class="welcome-inner">
+      <div class="welcome-logo">
+        <div class="logo-text">朝井慈久</div>
+        <div class="logo-sub">AI活用代行サービス</div>
+      </div>
+      <h1 class="welcome-tagline">
+        貴社の「困りごと」を、<br><span>AIで解決策に変える。</span>
+      </h1>
+      <p class="welcome-desc">
+        約5分のヒアリングで、貴社に最適なシステム・アプリの<br>提案書を自動生成します。
+      </p>
+      <div class="welcome-actions">
+        <button class="btn-primary" onclick="startChat()">
+          無料でヒアリングを始める →
+        </button>
+        <span class="badge">⏱ 約5分</span>
+      </div>
+      <div class="welcome-features">
+        <div class="welcome-feature">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-label">業種別<br>最適提案</div>
+        </div>
+        <div class="welcome-feature">
+          <div class="feature-icon">🤖</div>
+          <div class="feature-label">AI自動<br>分析</div>
+        </div>
+        <div class="welcome-feature">
+          <div class="feature-icon">📄</div>
+          <div class="feature-label">PDF出力<br>対応</div>
+        </div>
+        <div class="welcome-feature">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-label">即時<br>生成</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Screen 3: Hearing Chat ===== -->
+  <div id="screen-hearing" class="screen">
+    <div class="hearing-header">
+      <div class="hearing-header-inner">
+        <div class="logo-text" style="font-size:18px; flex-shrink:0;">朝井慈久</div>
+        <div class="progress-bar-wrapper">
+          <div class="progress-label">質問 <span id="progress-current">1</span> / 12</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="hearing-progress" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-area" id="chat-area">
+      <div class="chat-messages" id="chat-messages"></div>
+    </div>
+    <div class="answer-area" id="answer-area">
+      <div class="answer-area-inner" id="answer-ui"></div>
+    </div>
+  </div>
+
+  <!-- ===== Screen 4: Analyzing ===== -->
+  <div id="screen-analyzing" class="screen">
+    <div class="analyzing-inner">
+      <div class="analyzing-ring">
+        <div class="ring-outer"></div>
+        <div class="ring-inner"></div>
+        <div class="ring-center">🤖</div>
+      </div>
+      <h2 class="analyzing-title">AI分析中...</h2>
+      <div class="analyzing-status" id="analyzing-status">ヒアリング内容を分析しています...</div>
+      <div class="analyzing-progress-bg">
+        <div class="analyzing-progress-fill" id="analyzing-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Screen 5: Proposal ===== -->
+  <div id="screen-proposal" class="screen">
+    <div class="proposal-nav">
+      <div class="proposal-nav-inner">
+        <div>
+          <div class="logo-text" style="font-size:20px;">朝井慈久</div>
+          <div class="logo-sub">AI活用代行サービス</div>
+        </div>
+        <div class="action-buttons">
+          <button class="btn-secondary" onclick="window.print()">📥 PDFとして保存</button>
+          <button class="btn-secondary" onclick="copyProposalText()">📋 テキストをコピー</button>
+          <button class="btn-secondary" onclick="restartApp()">🔄 もう一度ヒアリングする</button>
+        </div>
+      </div>
+    </div>
+    <div class="proposal-body">
+      <div id="proposal-content"></div>
+    </div>
+  </div>
+
+  <script>
+    // ===== App State =====
+    const AppState = {
+      currentScreen: 'screen-welcome',
+      clientData: { name: '', industry: '', size: '', tools: [], itLevel: '3' },
+      hearingAnswers: {},
+      currentQuestionIndex: 0,
+      proposalData: null,
+      selectedChoices: []
+    };
+
+    // setup_ プレフィックスの質問は clientData に格納する
+    const SETUP_KEY_MAP = {
+      setup_name:     (v) => { AppState.clientData.name = v; },
+      setup_industry: (v) => { AppState.clientData.industry = v; },
+      setup_size:     (v) => { AppState.clientData.size = v; },
+      setup_tools:    (v) => { AppState.clientData.tools = Array.isArray(v) ? v : [v]; },
+      setup_itLevel:  (v) => { AppState.clientData.itLevel = v.replace(/[^1-5]/g, '') || '3'; }
+    };
+
+    // ===== Questions (基本情報5問 + ヒアリング7問 = 計12問) =====
+    const QUESTIONS = [
+      // --- 基本情報 ---
+      {
+        id: 'setup_name',
+        text: 'ようこそ！朝井慈久 AI活用代行サービスのヒアリングを始めます。\nまず、お名前または会社名を教えてください。',
+        type: 'textarea',
+        placeholder: '例: 山田太郎 / 株式会社○○',
+        short: true
+      },
+      {
+        id: 'setup_industry',
+        text: '{name}さん、よろしくお願いします！\n貴社の業種を教えてください。',
+        type: 'choice',
+        choices: ['飲食業', '建設・塗装業', '小売業', '製造業', 'サービス業', '医療・介護', '運輸・物流', 'IT・通信', '教育', 'その他']
+      },
+      {
+        id: 'setup_size',
+        text: '従業員規模はいかがですか？',
+        type: 'choice',
+        choices: ['1人（個人事業主）', '2〜10名', '11〜50名', '51名以上']
+      },
+      {
+        id: 'setup_tools',
+        text: '現在お使いの主な業務ツールを教えてください（複数選択できます）。',
+        type: 'multi_choice',
+        choices: ['Excel', 'Word', 'LINE', '紙・手書き', '専用ソフト', 'Google Workspace', 'その他']
+      },
+      {
+        id: 'setup_itLevel',
+        text: 'IT活用の現状を教えてください。\n（1 = 全くデジタル化していない ／ 5 = かなりデジタル化している）',
+        type: 'choice',
+        choices: ['1 — 全くデジタル化していない', '2 — ほぼ紙・口頭が中心', '3 — 一部ツールを使っている', '4 — 積極的に活用している', '5 — かなりデジタル化している']
+      },
+      // --- ヒアリング ---
+      {
+        id: 'pain_main',
+        text: 'ありがとうございます！ここからは困りごとを詳しく聞かせてください。\n今一番「これが大変だ」と感じている業務を教えてください。',
+        type: 'textarea',
+        placeholder: '例: 毎月の売上集計に2日かかっている、在庫管理が手書きで大変...'
+      },
+      {
+        id: 'pain_frequency',
+        text: 'その業務は、どれくらいの頻度で発生しますか？',
+        type: 'choice',
+        choices: ['毎日', '週数回', '月数回', '月1回以下', 'その都度（不定期）']
+      },
+      {
+        id: 'pain_time',
+        text: 'その業務に現在どれくらいの時間がかかっていますか？',
+        type: 'choice',
+        choices: ['30分未満', '30分〜2時間', '半日（2〜4時間）', '1日以上', '複数日']
+      },
+      {
+        id: 'pain_impact',
+        text: 'その大変さが引き起こしている問題を教えてください（複数選択可）',
+        type: 'multi_choice',
+        choices: ['残業・休日出勤が増える', 'ミスが多発する', '売上機会を逃す', '従業員のモチベーション低下', 'お客様への対応が遅れる', 'コストがかかりすぎる']
+      },
+      {
+        id: 'pain_secondary',
+        text: 'ほかにも困っていることがあれば教えてください。なければ「特になし」で大丈夫です。',
+        type: 'textarea',
+        placeholder: '例: 顧客への連絡が煩雑、見積書作成に時間がかかる...',
+        optional: true
+      },
+      {
+        id: 'budget',
+        text: '改善のための投資感覚を教えてください（月額目安）',
+        type: 'choice',
+        choices: ['〜3万円/月', '3〜10万円/月', '10〜30万円/月', '30万円以上/月', '費用感は相談したい']
+      },
+      {
+        id: 'timeline',
+        text: '解決策を導入したい時期はいつごろをお考えですか？',
+        type: 'choice',
+        choices: ['できるだけ早く（1ヶ月以内）', '3ヶ月以内', '半年以内', '1年以内', 'まずは情報収集したい']
+      }
+    ];
+
+    // ===== Navigation =====
+    function navigateTo(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(screenId);
+      target.classList.add('active');
+      AppState.currentScreen = screenId;
+      target.style.opacity = '0';
+      target.style.transform = 'translateY(20px)';
+      requestAnimationFrame(() => {
+        target.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        target.style.opacity = '1';
+        target.style.transform = 'translateY(0)';
+      });
+    }
+
+    // ===== Start Chat (ウェルカムから直接チャットへ) =====
+    function startChat() {
+      AppState.clientData = { name: '', industry: '', size: '', tools: [], itLevel: '3' };
+      AppState.hearingAnswers = {};
+      AppState.currentQuestionIndex = 0;
+      AppState.selectedChoices = [];
+      document.getElementById('chat-messages').innerHTML = '';
+      document.getElementById('answer-ui').innerHTML = '';
+      navigateTo('screen-hearing');
+      setTimeout(() => askQuestion(0), 600);
+    }
+
+    // ===== Hearing Chat =====
+    function updateHearingProgress(index) {
+      const pct = (index / QUESTIONS.length) * 100;
+      document.getElementById('hearing-progress').style.width = pct + '%';
+      document.getElementById('progress-current').textContent = Math.min(index + 1, QUESTIONS.length);
+    }
+
+    function askQuestion(index) {
+      if (index >= QUESTIONS.length) {
+        startAnalyzing();
+        return;
+      }
+      updateHearingProgress(index);
+      const q = QUESTIONS[index];
+      const name = AppState.clientData.name || '';
+      const text = q.text.replace('{name}', name);
+
+      // 最初の質問はすぐ表示（思案インジケーター不要）
+      if (index === 0) {
+        addAiBubble(text, () => setTimeout(() => showAnswerUI(q), 800));
+      } else {
+        showThinkingIndicator(() => {
+          addAiBubble(text, () => setTimeout(() => showAnswerUI(q), 800));
+        });
+      }
+    }
+
+    function showThinkingIndicator(callback) {
+      const messagesEl = document.getElementById('chat-messages');
+      const indicator = document.createElement('div');
+      indicator.className = 'chat-bubble ai';
+      indicator.id = 'thinking-indicator';
+      indicator.innerHTML = `
+        <div class="chat-avatar ai-avatar">🤖</div>
+        <div class="bubble-content">
+          <div class="typing-indicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+        </div>`;
+      messagesEl.appendChild(indicator);
+      scrollChatToBottom();
+      setTimeout(() => {
+        indicator.remove();
+        callback();
+      }, 1200);
+    }
+
+    function addAiBubble(text, onComplete) {
+      const messagesEl = document.getElementById('chat-messages');
+      const bubble = document.createElement('div');
+      bubble.className = 'chat-bubble ai';
+      bubble.innerHTML = `
+        <div class="chat-avatar ai-avatar">🤖</div>
+        <div class="bubble-content" id="typing-content"></div>`;
+      messagesEl.appendChild(bubble);
+      scrollChatToBottom();
+
+      const contentEl = document.getElementById('typing-content');
+      let i = 0;
+      const interval = setInterval(() => {
+        contentEl.textContent += text[i];
+        i++;
+        scrollChatToBottom();
+        if (i >= text.length) {
+          clearInterval(interval);
+          contentEl.removeAttribute('id');
+          if (onComplete) onComplete();
+        }
+      }, 30);
+    }
+
+    function addUserBubble(text) {
+      const messagesEl = document.getElementById('chat-messages');
+      const bubble = document.createElement('div');
+      bubble.className = 'chat-bubble user';
+      bubble.innerHTML = `
+        <div class="chat-avatar user-avatar">👤</div>
+        <div class="bubble-content">${escapeHtml(text)}</div>`;
+      messagesEl.appendChild(bubble);
+      scrollChatToBottom();
+    }
+
+    function scrollChatToBottom() {
+      const area = document.getElementById('chat-area');
+      area.scrollTop = area.scrollHeight;
+    }
+
+    function showAnswerUI(question) {
+      const ui = document.getElementById('answer-ui');
+      AppState.selectedChoices = [];
+
+      if (question.type === 'textarea') {
+        const rows = question.short ? 2 : 4;
+        ui.innerHTML = `
+          <textarea class="answer-textarea" id="answer-textarea"
+            placeholder="${question.placeholder || ''}"
+            rows="${rows}"
+            onkeydown="if(event.key==='Enter' && !event.shiftKey && !event.ctrlKey){event.preventDefault(); submitAnswer();}"></textarea>
+          <div class="answer-submit-row">
+            ${question.optional ? '<button class="btn-secondary" onclick="submitAnswer(true)">特になし</button>' : ''}
+            <button class="btn-primary" onclick="submitAnswer()">送信 →</button>
+          </div>`;
+        setTimeout(() => document.getElementById('answer-textarea')?.focus(), 100);
+
+      } else if (question.type === 'choice') {
+        const btns = question.choices.map(c =>
+          `<button class="choice-btn" onclick="selectSingleChoice(this, '${escapeAttr(c)}')">${c}</button>`
+        ).join('');
+        ui.innerHTML = `
+          <div class="answer-choices">${btns}</div>
+          <div class="answer-submit-row">
+            <button class="btn-primary" id="btn-submit-choice" onclick="submitAnswer()" disabled>送信 →</button>
+          </div>`;
+
+      } else if (question.type === 'multi_choice') {
+        const btns = question.choices.map(c =>
+          `<button class="choice-btn" onclick="toggleMultiChoice(this, '${escapeAttr(c)}')">${c}</button>`
+        ).join('');
+        ui.innerHTML = `
+          <div class="answer-choices">${btns}</div>
+          <div class="answer-submit-row">
+            <button class="btn-primary" id="btn-submit-multi" onclick="submitAnswer()" disabled>選択して送信 →</button>
+          </div>`;
+      }
+    }
+
+    function selectSingleChoice(btn, value) {
+      document.querySelectorAll('#answer-ui .choice-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      AppState.selectedChoices = [value];
+      const submitBtn = document.getElementById('btn-submit-choice');
+      if (submitBtn) submitBtn.disabled = false;
+    }
+
+    function toggleMultiChoice(btn, value) {
+      btn.classList.toggle('selected');
+      if (btn.classList.contains('selected')) {
+        AppState.selectedChoices.push(value);
+      } else {
+        AppState.selectedChoices = AppState.selectedChoices.filter(v => v !== value);
+      }
+      const submitBtn = document.getElementById('btn-submit-multi');
+      if (submitBtn) submitBtn.disabled = AppState.selectedChoices.length === 0;
+    }
+
+    function submitAnswer(isSkip) {
+      const q = QUESTIONS[AppState.currentQuestionIndex];
+      let answer;
+
+      if (isSkip) {
+        answer = '特になし';
+      } else if (q.type === 'textarea') {
+        const val = document.getElementById('answer-textarea')?.value.trim();
+        if (!val) return;
+        answer = val;
+      } else if (q.type === 'choice') {
+        if (AppState.selectedChoices.length === 0) return;
+        answer = AppState.selectedChoices[0];
+      } else if (q.type === 'multi_choice') {
+        if (AppState.selectedChoices.length === 0) return;
+        answer = AppState.selectedChoices;
+      }
+
+      // setup_ 質問は clientData に格納、それ以外は hearingAnswers に格納
+      if (SETUP_KEY_MAP[q.id]) {
+        SETUP_KEY_MAP[q.id](answer);
+      } else {
+        AppState.hearingAnswers[q.id] = answer;
+      }
+
+      document.getElementById('answer-ui').innerHTML = '';
+
+      const displayText = Array.isArray(answer) ? answer.join('、') : answer;
+      addUserBubble(displayText);
+
+      AppState.currentQuestionIndex++;
+      setTimeout(() => askQuestion(AppState.currentQuestionIndex), 800);
+    }
+
+    // ===== Analyzing =====
+    function startAnalyzing() {
+      // APIキーが未入力の場合はモーダルで取得してから開始
+      if (!getApiKey()) {
+        showApiKeyModal(() => beginAnalyzing());
+        return;
+      }
+      beginAnalyzing();
+    }
+
+    function beginAnalyzing() {
+      navigateTo('screen-analyzing');
+      const statuses = [
+        'ヒアリング内容を分析しています...',
+        '貴社の業種・規模に合わせた解決策を検索中...',
+        '最適なシステム構成を設計しています...',
+        '提案書を生成しています...'
+      ];
+      let step = 0;
+      const statusEl = document.getElementById('analyzing-status');
+      const progressEl = document.getElementById('analyzing-progress');
+
+      const statusInterval = setInterval(() => {
+        statusEl.style.opacity = '0';
+        setTimeout(() => {
+          step = Math.min(step + 1, statuses.length - 1);
+          statusEl.textContent = statuses[step];
+          statusEl.style.opacity = '1';
+        }, 300);
+      }, 2000);
+
+      let progress = 0;
+      const progressInterval = setInterval(() => {
+        progress = Math.min(progress + 1.5, 85);
+        progressEl.style.width = progress + '%';
+      }, 120);
+
+      callApiWithRetry(() => generateProposal(AppState.clientData, AppState.hearingAnswers))
+        .then(data => {
+          clearInterval(statusInterval);
+          clearInterval(progressInterval);
+          progressEl.style.width = '100%';
+          if (data) {
+            AppState.proposalData = data;
+            setTimeout(() => {
+              renderProposal(data);
+              navigateTo('screen-proposal');
+            }, 600);
+          }
+        });
+    }
+
+    // ===== API Key Modal =====
+    function getApiKey() {
+      return sessionStorage.getItem('anthropic_key') || null;
+    }
+
+    function showApiKeyModal(onSubmit) {
+      const existing = document.getElementById('api-key-modal');
+      if (existing) existing.remove();
+
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.id = 'api-key-modal';
+      overlay.innerHTML = `
+        <div class="modal-box">
+          <div class="modal-icon">🔑</div>
+          <div class="modal-title">Anthropic APIキーを入力</div>
+          <div class="modal-desc">
+            AI提案書の生成に必要です。<br>
+            キーをお持ちでない方は
+            <a href="https://console.anthropic.com/" target="_blank">こちらで取得</a>
+            できます（無料枠あり）。
+          </div>
+          <input type="password" class="modal-input" id="api-key-input"
+            placeholder="sk-ant-..." autocomplete="off"
+            onkeydown="if(event.key==='Enter') document.getElementById('btn-api-submit').click()">
+          <div class="modal-actions">
+            <button class="btn-primary" id="btn-api-submit" onclick="submitApiKey()">
+              この内容で提案書を生成する →
+            </button>
+            <button class="btn-secondary" onclick="cancelApiKey()">
+              キャンセル（ヒアリングをやり直す）
+            </button>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+      setTimeout(() => document.getElementById('api-key-input')?.focus(), 100);
+
+      window._apiKeyCallback = onSubmit;
+    }
+
+    function submitApiKey() {
+      const val = document.getElementById('api-key-input')?.value.trim();
+      if (!val || !val.startsWith('sk-')) {
+        document.getElementById('api-key-input').style.borderColor = 'var(--color-error)';
+        document.getElementById('api-key-input').placeholder = '※ sk-ant-... から始まるキーを入力してください';
+        return;
+      }
+      sessionStorage.setItem('anthropic_key', val);
+      document.getElementById('api-key-modal')?.remove();
+      if (window._apiKeyCallback) window._apiKeyCallback(val);
+    }
+
+    function cancelApiKey() {
+      document.getElementById('api-key-modal')?.remove();
+      navigateTo('screen-welcome');
+    }
+
+    // ===== Claude API =====
+    async function generateProposal(clientData, hearingAnswers) {
+      const apiKey = getApiKey();
+      if (!apiKey) {
+        showError('APIキーが入力されていません。');
+        navigateTo('screen-welcome');
+        return null;
+      }
+
+      const systemPrompt = `あなたは中小企業・個人事業主向けのAI活用コンサルタントです。
+朝井慈久AI活用代行サービスの専門家として、クライアントのヒアリング内容を分析し、
+具体的で実行可能な解決策を提案してください。
+
+提案は以下の原則に従ってください:
+- 業種・規模に合った現実的な提案（大企業向けの大規模システムは避ける）
+- 導入しやすい順番で提案（スモールスタートを優先）
+- 具体的なツール名・サービス名を挙げる（LINE、Notion、Excel VBA、Googleスプレッドシート等）
+- 費用対効果を数字で示す
+- 建設・施設管理分野のノウハウがある場合はその観点も加える
+
+回答は必ず以下のJSON形式のみで返してください（マークダウンや説明文は不要）:
+{
+  "executive_summary": "エグゼクティブサマリー（2〜3文）",
+  "current_issues": [
+    {"issue": "課題1", "impact": "業務への影響"},
+    {"issue": "課題2", "impact": "業務への影響"}
+  ],
+  "main_proposal": {
+    "name": "提案するシステム・アプリ名",
+    "type": "システム種別（例: LINE Bot、Excelマクロ、Webアプリ等）",
+    "overview": "概要説明（3〜5文）",
+    "features": ["主要機能1", "主要機能2", "主要機能3"],
+    "expected_effects": [
+      {"metric": "削減できる時間", "value": "月〇〇時間"},
+      {"metric": "コスト削減", "value": "月〇〇万円"}
+    ],
+    "difficulty": 2,
+    "tech_stack": "使用技術・ツール"
+  },
+  "alternative_proposals": [
+    {"name": "代替案1", "overview": "概要（1〜2文）", "merit": "メリット", "difficulty": 3},
+    {"name": "代替案2", "overview": "概要（1〜2文）", "merit": "メリット", "difficulty": 4}
+  ],
+  "roadmap": [
+    {"phase": "Phase 1（1ヶ月目）", "milestone": "まず着手すること"},
+    {"phase": "Phase 2（2〜3ヶ月目）", "milestone": "次のステップ"},
+    {"phase": "Phase 3（4〜6ヶ月目）", "milestone": "最終形"}
+  ],
+  "cost_estimate": {
+    "initial": "初期費用の目安",
+    "monthly": "月額費用の目安",
+    "roi": "投資回収の目安期間"
+  },
+  "notes": "特記事項・注意点"
+}`;
+
+      const impact = Array.isArray(hearingAnswers.pain_impact)
+        ? hearingAnswers.pain_impact.join('、')
+        : hearingAnswers.pain_impact;
+
+      const userPrompt = `【クライアント情報】
+- 名前/会社名: ${clientData.name}
+- 業種: ${clientData.industry}
+- 従業員規模: ${clientData.size}
+- 現在のツール: ${clientData.tools.join('、')}
+- IT活用レベル: ${clientData.itLevel}/5
+
+【ヒアリング回答】
+Q: 一番大変な業務は?
+A: ${hearingAnswers.pain_main}
+
+Q: 発生頻度は?
+A: ${hearingAnswers.pain_frequency}
+
+Q: かかっている時間は?
+A: ${hearingAnswers.pain_time}
+
+Q: 引き起こしている問題は?
+A: ${impact}
+
+Q: その他の困りごとは?
+A: ${hearingAnswers.pain_secondary || '特になし'}
+
+Q: 月額予算感は?
+A: ${hearingAnswers.budget}
+
+Q: 導入希望時期は?
+A: ${hearingAnswers.timeline}
+
+上記の情報をもとに、最適なAI・システム活用の提案書をJSON形式で生成してください。`;
+
+      const response = await fetch('/api/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Api-Key': apiKey,
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-6',
+          max_tokens: 4000,
+          system: systemPrompt,
+          messages: [{ role: 'user', content: userPrompt }]
+        })
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        const msg = errData.error?.message || `HTTPステータス: ${response.status}`;
+        const errType = errData.error?.type || '';
+        // 認証エラーの場合はセッションのキーを削除して再入力を促す
+        if (response.status === 401) {
+          sessionStorage.removeItem('anthropic_key');
+          throw new Error('APIキーが無効です。正しいキーを入力してください。\n（sk-ant-... から始まる文字列）');
+        }
+        throw new Error(`API エラー: ${msg}${errType ? ' [' + errType + ']' : ''}`);
+      }
+
+      const data = await response.json();
+      const text = data.content[0].text;
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) throw new Error('AIの応答からJSONを取得できませんでした。もう一度お試しください。');
+      return JSON.parse(jsonMatch[0]);
+    }
+
+    // ===== Retry =====
+    async function callApiWithRetry(fn, maxRetries = 2) {
+      for (let i = 0; i <= maxRetries; i++) {
+        try {
+          return await fn();
+        } catch (err) {
+          console.error('API Error:', err);
+          if (i === maxRetries) {
+            showErrorModal(err.message);
+            return null;
+          }
+          // 認証エラーはリトライせず即中断
+          if (err.message.includes('APIキーが無効')) {
+            showErrorModal(err.message);
+            return null;
+          }
+          await new Promise(r => setTimeout(r, 2000));
+        }
+      }
+    }
+
+    function showErrorModal(message) {
+      const existing = document.getElementById('error-modal');
+      if (existing) existing.remove();
+
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.id = 'error-modal';
+      overlay.innerHTML = `
+        <div class="modal-box">
+          <div class="modal-icon">⚠️</div>
+          <div class="modal-title">エラーが発生しました</div>
+          <div class="modal-desc" style="text-align:left; white-space:pre-line;">${escapeHtml(message)}</div>
+          <div class="modal-actions">
+            <button class="btn-primary" onclick="retryWithNewKey()">
+              APIキーを入力し直して再試行
+            </button>
+            <button class="btn-secondary" onclick="document.getElementById('error-modal').remove(); navigateTo('screen-welcome');">
+              最初からやり直す
+            </button>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+    }
+
+    function retryWithNewKey() {
+      sessionStorage.removeItem('anthropic_key');
+      document.getElementById('error-modal')?.remove();
+      showApiKeyModal(() => beginAnalyzing());
+    }
+
+    // ===== Render Proposal =====
+    function renderProposal(data) {
+      const container = document.getElementById('proposal-content');
+      const today = new Date().toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+      const difficultyStars = (n) => '★'.repeat(n) + '☆'.repeat(5 - n);
+
+      container.innerHTML = `
+        <div class="proposal-header">
+          <div class="proposal-header-left">
+            <div class="logo-text">朝井慈久</div>
+            <div class="proposal-title">AI活用 課題解決提案書</div>
+            <div class="proposal-client">${escapeHtml(AppState.clientData.name)} 様</div>
+          </div>
+          <div class="proposal-date">作成日: ${today}</div>
+        </div>
+
+        <!-- エグゼクティブサマリー -->
+        <div class="proposal-section">
+          <div class="section-title">エグゼクティブサマリー</div>
+          <p class="executive-text">${escapeHtml(data.executive_summary)}</p>
+        </div>
+
+        <!-- 現状分析 -->
+        <div class="proposal-section">
+          <div class="section-title">現状分析</div>
+          <div class="issue-list">
+            ${data.current_issues.map(issue => `
+              <div class="issue-item">
+                <div class="issue-title">▶ ${escapeHtml(issue.issue)}</div>
+                <div class="issue-impact">📌 ${escapeHtml(issue.impact)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 推奨解決策 -->
+        <div class="proposal-section">
+          <div class="section-title">推奨解決策</div>
+          <div class="proposal-name">${escapeHtml(data.main_proposal.name)}</div>
+          <div class="proposal-type-badge">${escapeHtml(data.main_proposal.type)}</div>
+          <p class="proposal-overview">${escapeHtml(data.main_proposal.overview)}</p>
+          <div style="margin-bottom:12px; font-size:13px; color:var(--color-text-muted);">主な機能</div>
+          <div class="features-grid">
+            ${data.main_proposal.features.map(f => `<div class="feature-tag">✓ ${escapeHtml(f)}</div>`).join('')}
+          </div>
+          <div style="margin-bottom:12px; font-size:13px; color:var(--color-text-muted);">期待される効果</div>
+          <div class="effects-grid">
+            ${data.main_proposal.expected_effects.map(e => `
+              <div class="effect-card">
+                <div class="effect-metric">${escapeHtml(e.metric)}</div>
+                <div class="effect-value">${escapeHtml(e.value)}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="difficulty-row">
+            <span>導入難易度:</span>
+            <span class="stars">${difficultyStars(data.main_proposal.difficulty)}</span>
+          </div>
+          ${data.main_proposal.tech_stack ? `<div style="margin-top:8px; font-size:13px; color:var(--color-text-muted);">使用技術: ${escapeHtml(data.main_proposal.tech_stack)}</div>` : ''}
+        </div>
+
+        <!-- 代替案 -->
+        <div class="proposal-section">
+          <div class="section-title">代替案</div>
+          <div class="alt-grid">
+            ${data.alternative_proposals.map((alt, i) => `
+              <div class="alt-card">
+                <div class="alt-number">案 ${i + 2}</div>
+                <div class="alt-name">${escapeHtml(alt.name)}</div>
+                <p class="alt-overview">${escapeHtml(alt.overview)}</p>
+                <div class="alt-merit">✅ ${escapeHtml(alt.merit)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- ロードマップ -->
+        <div class="proposal-section">
+          <div class="section-title">導入ロードマップ</div>
+          <div class="roadmap-list">
+            ${data.roadmap.map((phase, i) => `
+              <div class="roadmap-item">
+                <div class="roadmap-connector">
+                  <div class="roadmap-number">${i + 1}</div>
+                  ${i < data.roadmap.length - 1 ? '<div class="roadmap-line"></div>' : ''}
+                </div>
+                <div class="roadmap-content">
+                  <div class="roadmap-phase">${escapeHtml(phase.phase)}</div>
+                  <div class="roadmap-milestone">${escapeHtml(phase.milestone)}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 概算費用 -->
+        <div class="proposal-section">
+          <div class="section-title">概算費用</div>
+          <div class="cost-grid">
+            <div class="cost-card">
+              <div class="cost-label">初期費用</div>
+              <div class="cost-value">${escapeHtml(data.cost_estimate.initial)}</div>
+            </div>
+            <div class="cost-card">
+              <div class="cost-label">月額費用</div>
+              <div class="cost-value">${escapeHtml(data.cost_estimate.monthly)}</div>
+            </div>
+            <div class="cost-card">
+              <div class="cost-label">投資回収</div>
+              <div class="cost-value">${escapeHtml(data.cost_estimate.roi)}</div>
+            </div>
+          </div>
+          ${data.notes ? `<div class="cost-note">※ ${escapeHtml(data.notes)}</div>` : ''}
+        </div>
+
+        <!-- CTA -->
+        <div class="proposal-section cta-section">
+          <div class="section-title" style="justify-content:center;">次のステップ</div>
+          <p class="cta-desc">ご提案内容についてご質問・ご相談がございましたら、お気軽にお問い合わせください。</p>
+          <a href="mailto:contact@example.com" class="cta-button">無料相談を予約する →</a>
+        </div>
+      `;
+    }
+
+    // ===== Utilities =====
+    function escapeHtml(text) {
+      if (typeof text !== 'string') return String(text);
+      return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function escapeAttr(text) {
+      return text.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    function showError(message) {
+      const toast = document.createElement('div');
+      toast.className = 'error-toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 5000);
+    }
+
+    function copyProposalText() {
+      const el = document.getElementById('proposal-content');
+      const text = el ? el.innerText : '';
+      navigator.clipboard.writeText(text).then(() => {
+        showSuccessToast('テキストをコピーしました');
+      }).catch(() => {
+        showError('コピーに失敗しました。手動で選択してコピーしてください。');
+      });
+    }
+
+    function showSuccessToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'error-toast';
+      toast.style.background = 'var(--color-success)';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    function restartApp() {
+      sessionStorage.removeItem('anthropic_key');
+      AppState.clientData = { name: '', industry: '', size: '', tools: [], itLevel: '3' };
+      AppState.hearingAnswers = {};
+      AppState.currentQuestionIndex = 0;
+      AppState.proposalData = null;
+      AppState.selectedChoices = [];
+      navigateTo('screen-welcome');
+    }
+  </script>
+</body>
+</html>

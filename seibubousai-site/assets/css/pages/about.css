@@ -1,0 +1,118 @@
+/* About page */
+.message-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.message-section img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  filter: brightness(0.85);
+  border: 1px solid var(--color-line);
+}
+
+.message-text .en-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.message-text blockquote {
+  font-family: var(--font-ja-serif);
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1.25rem;
+}
+
+.message-text p {
+  font-size: 0.9375rem;
+  color: var(--color-text-sub);
+  line-height: 1.9;
+}
+
+/* Company table */
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.company-table tr {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.company-table th {
+  width: 30%;
+  padding: 1.25rem 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text-sub);
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.company-table td {
+  padding: 1.25rem 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+
+/* License badge */
+.license-box {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--color-gold);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.license-box .badge {
+  background: var(--color-gold);
+  color: var(--color-bg);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.license-box p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text-sub);
+}
+
+/* Area map */
+.map-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+}
+
+.map-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: invert(90%) hue-rotate(180deg) brightness(0.9);
+}
+
+@media (max-width: 768px) {
+  .message-section { grid-template-columns: 1fr; gap: 2rem; }
+  .company-table th { white-space: normal; width: 35%; }
+}

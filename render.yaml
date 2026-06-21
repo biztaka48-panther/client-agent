@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: client-agent-api
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    envVars:
+      - key: ENV
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      # Set the following as "secret" in Render dashboard:
+      # - LINE_LOG_CHANNEL_SECRET
+      # - LINE_LOG_CHANNEL_ACCESS_TOKEN
+      # - LINE_SECRETARY_CHANNEL_SECRET
+      # - LINE_SECRETARY_CHANNEL_ACCESS_TOKEN
+      # - GOOGLE_SHEETS_SPREADSHEET_ID
+      # - GOOGLE_SERVICE_ACCOUNT_JSON
+      # - CLAUDE_API_KEY

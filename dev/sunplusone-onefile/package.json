@@ -1,0 +1,8 @@
+{
+  "name": "sunplusone-onefile",
+  "private": true,
+  "description": "単一 index.html のプレビュー用（本番ビルド不要）",
+  "scripts": {
+    "preview": "node node-server.cjs 3010"
+  }
+}
